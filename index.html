@@ -8,11 +8,10 @@
     <style>
         :root {
             --bg: #050507;
-            --card-bg: rgba(22, 22, 26, 0.8);
-            --primary: #00f2ff; 
-            --secondary: #39ff14; 
+            --card-bg: rgba(22, 22, 26, 0.85);
+            --primary: #00f2ff;
+            --secondary: #39ff14;
             --text: #e0e0e0;
-            --glow: rgba(0, 242, 255, 0.3);
         }
 
         body {
@@ -26,7 +25,6 @@
             margin: 0;
             line-height: 1.6;
             position: relative;
-            overflow-x: hidden;
         }
 
         body::before {
@@ -35,7 +33,7 @@
             position: fixed;
             top: 0; left: 0; bottom: 0; right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
             z-index: 9999;
             pointer-events: none;
             background-size: 100% 3px, 3px 100%;
@@ -50,20 +48,8 @@
             background: radial-gradient(circle at center, rgba(0, 242, 255, 0.1) 0%, transparent 70%);
             border-bottom: 1px solid rgba(0, 242, 255, 0.2);
         }
-        .hero h1 { 
-            font-size: 3.5rem; 
-            color: var(--primary); 
-            margin: 0; 
-            text-shadow: 0 0 15px var(--primary);
-            letter-spacing: 2px;
-        }
-        .terminal-text { 
-            font-family: 'Fira Code', monospace; 
-            color: var(--secondary); 
-            margin-top: 15px; 
-            height: 30px;
-            text-shadow: 0 0 5px var(--secondary);
-        }
+        .hero h1 { font-size: 3rem; color: var(--primary); margin: 0; text-shadow: 0 0 10px var(--primary); }
+        .terminal-text { font-family: 'Fira Code', monospace; color: var(--secondary); margin-top: 10px; height: 30px; }
 
         section { margin: 60px 0; }
         .section-title { 
@@ -72,79 +58,52 @@
             padding-right: 15px; 
             margin-bottom: 30px; 
             text-transform: uppercase;
-            letter-spacing: 1.5px;
         }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .card { 
             background: var(--card-bg); 
             padding: 25px; 
-            border-radius: 4px; 
+            border-radius: 8px; 
             border: 1px solid rgba(0, 242, 255, 0.1); 
-            transition: 0.4s; 
+            transition: 0.3s; 
             backdrop-filter: blur(5px);
         }
-        .card:hover { 
-            border-color: var(--primary); 
-            transform: translateY(-5px); 
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
-            background: rgba(22, 22, 26, 0.95);
-        }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
 
         .skill-tag { 
             display: inline-block; 
-            background: rgba(57, 255, 20, 0.1); 
+            background: rgba(34, 34, 34, 0.8); 
             color: var(--secondary); 
             padding: 4px 10px; 
             margin: 4px; 
             font-size: 0.85rem; 
-            border: 1px solid var(--secondary);
-            border-radius: 2px; 
+            border-radius: 4px; 
+            border: 1px solid rgba(57, 255, 20, 0.3);
             font-family: 'Fira Code'; 
         }
-        .cert-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #333; color: var(--primary); }
-        .lang-item { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid #222; }
         
-        .contact-info { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 25px; }
-        .contact-info a { 
-            color: var(--text); 
-            text-decoration: none; 
-            font-family: 'Fira Code'; 
-            font-size: 0.9rem; 
-            padding: 5px 10px;
-            border: 1px solid transparent;
-            transition: 0.3s;
-        }
-        .contact-info a:hover { 
-            color: var(--primary); 
-            border: 1px solid var(--primary);
-            box-shadow: 0 0 10px var(--primary);
-        }
+        .cert-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #333; color: var(--primary); }
+        .lang-item { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        
+        .contact-info { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+        .contact-info a { color: var(--text); text-decoration: none; font-family: 'Fira Code'; font-size: 0.9rem; }
+        .contact-info a:hover { color: var(--primary); text-shadow: 0 0 5px var(--primary); }
 
         .btn {
             display: inline-block;
-            margin-top: 15px;
-            padding: 8px 20px;
+            margin-top: 10px;
+            padding: 5px 15px;
             border: 1px solid var(--primary);
             color: var(--primary);
             text-decoration: none;
-            font-family: 'Fira Code';
             font-size: 0.8rem;
+            border-radius: 4px;
             transition: 0.3s;
         }
-        .btn:hover {
-            background: var(--primary);
-            color: #000;
-            box-shadow: 0 0 15px var(--primary);
-        }
+        .btn:hover { background: var(--primary); color: #000; }
 
         footer { text-align: center; padding: 40px; border-top: 1px solid #222; font-size: 0.8rem; opacity: 0.6; }
-        
-        @keyframes pulse {
-            0% { opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { opacity: 0.5; }
-        }
     </style>
 </head>
 <body>
@@ -163,15 +122,15 @@
     <div class="container">
         
         <section id="about">
-            <h2 class="section-title">// PROFESSIONAL SUMMARY</h2>
+            <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
             <p>Computer Networks and Cybersecurity student with hands-on experience in enterprise network design,
             traffic analysis, and IDS/IPS implementation using Snort 3. Active participant in national and international 
-                cybersecurity competitions with strong foundations in SOC operations, threat detection, and network troubleshooting.
-                Passionate about Network Engineering, SOC Analysis, and Cloud Security, with practical exposure to Oracle Cloud Infrastructure and automation using Python and Interested in AI-powered Security Solutions and Cloud Technologies.</p>
+            cybersecurity competitions with strong foundations in SOC operations, threat detection, and network troubleshooting.
+            Passionate about Network Engineering, SOC Analysis, and Cloud Security, with practical exposure to Oracle Cloud Infrastructure and automation using Python and Interested in AI-powered Security Solutions and Cloud Technologies.</p>
         </section>
 
         <section id="experience">
-            <h2 class="section-title">// EXPERIENCE</h2>
+            <h2 class="section-title">EXPERIENCE</h2>
             <div class="grid">
                 <div class="card">
                     <h3>SHAFAQ GAME DEV TEAM</h3>
@@ -193,54 +152,78 @@
                 <div class="card">
                     <h3>EDUCATION</h3>
                     <p><b>BACHELOR OF COMPUTER NETWORK SYSTEM </b> </p>
-                    <p>World Islamic Sciences and Education University(WISE) , (2022 – now).</p>
+                    <p>World Islamic Sciences and Education University (WISE), (2022 – now).</p>
                 </div>
             </div>
         </section>
 
         <section id="skills">
-            <h2 class="section-title">// SKILLS</h2>
+            <h2 class="section-title"> SKILLS</h2>
             <div class="grid">
                 <div class="card">
                     <h3>Networking & Security</h3>
-                    <span class="skill-tag">Routing & Switching</span> <span class="skill-tag">VLANs</span> 
-                    <span class="skill-tag">Troubleshooting</span> <span class="skill-tag">Traffic Analysis</span>
-                    <span class="skill-tag">Snort 3 IDS/IPS</span>
-                    <span class="skill-tag">Wireshark & Nmap</span>
-                    <span class="skill-tag">GNS3 / EVE-NG</span> 
-
+                    <span class="skill-tag">Routing & Switching (OSPF, EIGRP, BGP)</span> 
+                    <span class="skill-tag">VLANs, Inter-VLAN Routing</span> 
+                    <span class="skill-tag">Network Troubleshooting</span> 
+                    <span class="skill-tag">Traffic Analysis</span>
+                    <span class="skill-tag">IDS/IPS (Snort 3)</span>
+                    <span class="skill-tag">Wireshark, Nmap</span>
+                    <span class="skill-tag">GNS3, CISCO PT, EVE-NG</span> 
                 </div>
                 <div class="card">
                     <h3>Cybersecurity & SOC</h3>
-                    <span class="skill-tag">SIEM Concepts</span> <span class="skill-tag">Incident Response</span>
-                    <span class="skill-tag">Threat Intel</span> <span class="skill-tag">OSINT</span>
-                    <span class="skill-tag">Forensics</span> <span class="skill-tag">MITRE ATT&CK</span> 
+                    <span class="skill-tag">SOC & SIEM Concepts</span> 
+                    <span class="skill-tag">Incident Response</span>
+                    <span class="skill-tag">Threat Intelligence</span> 
+                    <span class="skill-tag">OSINT</span>
+                    <span class="skill-tag">Digital Forensics</span> 
+                    <span class="skill-tag">MITRE ATT&CK Awareness</span> 
                 </div>
                 <div class="card">
                     <h3>Programming & Scripting</h3>
-                    <span class="skill-tag">Python (Security Tools)</span> <span class="skill-tag">Bash Scripting</span>
-                    <span class="skill-tag">SQL / MySQL</span> <span class="skill-tag">Java / C++</span>
-                    <span class="skill-tag">HTML / CSS / JS</span>
+                    <span class="skill-tag">Python (Security Tools)</span> 
+                    <span class="skill-tag">Bash / Shell Scripting</span>
+                    <span class="skill-tag">SQL, MySQL</span> 
+                    <span class="skill-tag">Java / C++</span>
+                    <span class="skill-tag">HTML, CSS, JavaScript</span>
+                </div>
+                <div class="card">
+                    <h3>Operating Systems & Cloud</h3>
+                    <span class="skill-tag">Linux (Ubuntu, Kali, Parrot)</span>
+                    <span class="skill-tag">Windows</span>
+                    <span class="skill-tag">Oracle Cloud (OCI)</span>
                 </div>
             </div>
         </section>
 
         <section id="projects">
-            <h2 class="section-title">// PROJECTS</h2>
+            <h2 class="section-title">PROJECTS</h2>
             <div class="grid">
                 <div class="card">
-                    <h4>Intrusion Detection System (IDS)</h4>
-                    <p>Designed and deployed rule-based intrusion detection using Snort 3. Analyzed alerts to identify malicious activities.</p>
-                    <a href="https://github.com/AbdaullahAG/Intrusion-Detection-System-IDS-/tree/main/Snort3" class="btn">VIEW ON GITHUB</a>
+                    <h4>IDS using Snort 3</h4>
+                    <p>Designed and deployed rule-based intrusion detection. Analyzed alerts and logs.</p>
+                    <a href="https://github.com/AbdaullahAG/Intrusion-Detection-System-IDS-/tree/main/Snort3" class="btn">GitHub</a>
                 </div>
                 <div class="card">
-                    <h4>Website Vulnerability Scanner</h4>
-                    <p>Developed a Python-based scanner to identify common web vulnerabilities automatically.</p>
-                    <a href="#" class="btn">VIEW SOURCE</a>
+                    <h4>IPS using Snort 3</h4>
+                    <p>Implemented inline packet inspection and automated traffic blocking.</p>
+                    <a href="https://github.com/AbdaullahAG/Intrusion-PreventionSystem-IPS" class="btn">GitHub</a>
+                </div>
+                <div class="card">
+                    <h4>Vulnerability Scanner</h4>
+                    <p>Python-based scanner for common web vulnerabilities.</p>
                 </div>
                 <div class="card">
                     <h4>Smart Campus System</h4>
-                    <p>3-Tier Architecture implementing IoT, IPS/Firewall, IPv6, and Redundancy (HSRP/LACP).</p>
+                    <p>3-Tier Architecture, IoT Integration, HSRP, LACP, OSPF and IPv6.</p>
+                </div>
+                <div class="card">
+                    <h4>Medical Appointment (SQL)</h4>
+                    <a href="https://github.com//Medical_Appointment_System" class="btn">GitHub</a>
+                </div>
+                <div class="card">
+                    <h4>Library System (SQL)</h4>
+                    <a href="https://github.com//library-sql-project" class="btn">GitHub</a>
                 </div>
             </div>
         </section>
@@ -248,37 +231,38 @@
         <section id="extras">
             <div class="grid">
                 <div class="card">
-                    <h2 class="section-title">// CERTIFICATIONS</h2>
-                    <div class="cert-item">Oracle Cloud Infrastructure 2025 Architect Associate</div>
-                    <div class="cert-item">Oracle Cloud Infrastructure 2025 Foundations Associate</div>
-                    <div class="cert-item">Oracle Cloud Infrastructure 2025 AI Foundations</div>
-                    <div class="cert-item">Microsoft Copilot & AI Ethics </div>
+                    <h2 class="section-title">CERTIFICATIONS</h2>
+                    <div class="cert-item">Oracle Cloud 2025 Architect Associate</div>
+                    <div class="cert-item">Oracle Cloud 2025 Foundations Associate</div>
+                    <div class="cert-item">Oracle Cloud 2025 AI Foundations</div>
+                    <div class="cert-item">Microsoft Copilot & AI Ethics</div>
                 </div>
                 <div class="card">
-                    <h2 class="section-title">// COMPETITIONS</h2>
+                    <h2 class="section-title">COMPETITIONS</h2>
                     <p>🏆 <b>IEEE CTF 2025 Finalist</b></p>
-                    <p>🏆 <b>Huawei ICT Competition</b> (National Qualifier)</p>
-                    <hr style="border:0; border-top:1px solid #333; margin:15px 0;">
-                    <h2 class="section-title">// LANGUAGES</h2>
+                    <p>🏆 <b>Huawei ICT Competition</b></p>
+                    <hr>
+                    <h2 class="section-title">LANGUAGES</h2>
                     <div class="lang-item"><span>Arabic</span> <span>Native</span></div>
                     <div class="lang-item"><span>English</span> <span>Advanced</span></div>
                     <div class="lang-item"><span>Spanish</span> <span>Beginner</span></div>
                 </div>
             </div>
         </section>
+
     </div>
 
     <footer>
-        <p>&copy; 2026 Abdullah Abughallous | Cyber Portfolio</p>
+        <p>&copy; 2026 Abdullah Abughallous</p>
     </footer>
 
     <script>
         const text = document.getElementById('typing');
         const roles = [
-            "Initializing Security Protocols...",
+            "Computer Network System Student...",
             "Junior Cybersecurity / SOC Analyst...",
-            "Game Developer & Network Engineer...",
-            "Active CTF Player..."
+            "Game Developer...",
+            "CTF Player..."
         ];
         let i = 0, j = 0, isDeleting = false;
 
