@@ -1,54 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdullah Abughallous | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0d0d0f;
-            --card-bg: #16161a;
-            --primary: #00f2ff;
-            --secondary: #39ff14;
+            --bg: #050507;
+            --card-bg: rgba(22, 22, 26, 0.8);
+            --primary: #00f2ff; /* Cyan Neon */
+            --secondary: #39ff14; /* Matrix Green */
             --text: #e0e0e0;
+            --glow: rgba(0, 242, 255, 0.3);
         }
 
+        /* تأثير الخلفية السيبرانية */
         body {
             background-color: var(--bg);
+            background-image: 
+                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
             color: var(--text);
             font-family: 'Tajawal', sans-serif;
             margin: 0;
             line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        .container { max-width: 1100px; margin: auto; padding: 20px; }
+        /* تأثير خطوط المسح Scanlines */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 9999;
+            pointer-events: none;
+            background-size: 100% 3px, 3px 100%;
+        }
+
+        .container { max-width: 1100px; margin: auto; padding: 20px; position: relative; z-index: 2; }
         
         /* Header & Hero */
         header { border-bottom: 1px solid #333; padding: 20px 0; text-align: center; }
-        .hero { text-align: center; padding: 80px 20px; background: radial-gradient(circle at center, #1a1a2e 0%, #0d0d0f 100%); }
-        .hero h1 { font-size: 3rem; color: var(--primary); margin: 0; }
-        .terminal-text { font-family: 'Fira Code', monospace; color: var(--secondary); margin-top: 10px; height: 30px; }
+        .hero { 
+            text-align: center; 
+            padding: 80px 20px; 
+            background: radial-gradient(circle at center, rgba(0, 242, 255, 0.1) 0%, transparent 70%);
+            border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+        }
+        .hero h1 { 
+            font-size: 3.5rem; 
+            color: var(--primary); 
+            margin: 0; 
+            text-shadow: 0 0 15px var(--primary);
+            letter-spacing: 2px;
+        }
+        .terminal-text { 
+            font-family: 'Fira Code', monospace; 
+            color: var(--secondary); 
+            margin-top: 15px; 
+            height: 30px;
+            text-shadow: 0 0 5px var(--secondary);
+        }
 
         /* Sections */
         section { margin: 60px 0; }
-        .section-title { color: var(--primary); border-right: 4px solid var(--primary); padding-right: 15px; margin-bottom: 30px; }
+        .section-title { 
+            color: var(--primary); 
+            border-right: 4px solid var(--primary); 
+            padding-right: 15px; 
+            margin-bottom: 30px; 
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
 
         /* Grid Layouts */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card { background: var(--card-bg); padding: 25px; border-radius: 8px; border: 1px solid #222; transition: 0.3s; }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .card { 
+            background: var(--card-bg); 
+            padding: 25px; 
+            border-radius: 4px; 
+            border: 1px solid rgba(0, 242, 255, 0.1); 
+            transition: 0.4s; 
+            backdrop-filter: blur(5px);
+        }
+        .card:hover { 
+            border-color: var(--primary); 
+            transform: translateY(-5px); 
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+            background: rgba(22, 22, 26, 0.95);
+        }
 
         /* Specific Styles */
-        .skill-tag { display: inline-block; background: #222; color: var(--secondary); padding: 4px 10px; margin: 4px; font-size: 0.85rem; border-radius: 4px; font-family: 'Fira Code'; }
-        .cert-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #333; }
-        .lang-item { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .skill-tag { 
+            display: inline-block; 
+            background: rgba(57, 255, 20, 0.1); 
+            color: var(--secondary); 
+            padding: 4px 10px; 
+            margin: 4px; 
+            font-size: 0.85rem; 
+            border: 1px solid var(--secondary);
+            border-radius: 2px; 
+            font-family: 'Fira Code'; 
+        }
+        .cert-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #333; color: var(--primary); }
+        .lang-item { display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid #222; }
         
-        .contact-info { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
-        .contact-info a { color: var(--text); text-decoration: none; font-family: 'Fira Code'; font-size: 0.9rem; }
-        .contact-info a:hover { color: var(--primary); }
+        .contact-info { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 25px; }
+        .contact-info a { 
+            color: var(--text); 
+            text-decoration: none; 
+            font-family: 'Fira Code'; 
+            font-size: 0.9rem; 
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+        .contact-info a:hover { 
+            color: var(--primary); 
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            font-family: 'Fira Code';
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 15px var(--primary);
+        }
 
         footer { text-align: center; padding: 40px; border-top: 1px solid #222; font-size: 0.8rem; opacity: 0.6; }
+        
+        /* تأثير النبض للشبكة */
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
     </style>
 </head>
 <body>
@@ -57,8 +160,8 @@
         <h1>Abdullah Abughallous</h1>
         <div id="typing" class="terminal-text"></div>
         <div class="contact-info">
-            <a href="mailto:ABD.MOH9999@YAHOO.COM">📧ABD.MOH9999@YAHOO.COM</a>
-            <a href="tel:+962780979052">📞+962 7 8097 9052</a>
+            <a href="mailto:ABD.MOH9999@YAHOO.COM">📧 ABD.MOH9999@YAHOO.COM</a>
+            <a href="tel:+962780979052">📞 +962 7 8097 9052</a>
             <a href="https://github.com/AbdaullahAG">💻 GitHub</a>
             <a href="https://www.linkedin.com/in/abdaulah-abu-ghallous-937911317">🔗 LinkedIn</a>
         </div>
@@ -67,7 +170,7 @@
     <div class="container">
         
         <section id="about">
-            <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+            <h2 class="section-title">// PROFESSIONAL SUMMARY</h2>
             <p>Computer Networks and Cybersecurity student with hands-on experience in enterprise network design,
             traffic analysis, and IDS/IPS implementation using Snort 3. Active participant in national and international 
                 cybersecurity competitions with strong foundations in SOC operations, threat detection, and network troubleshooting.
@@ -75,7 +178,7 @@
         </section>
 
         <section id="experience">
-            <h2 class="section-title">EXPERIENCE</h2>
+            <h2 class="section-title">// EXPERIENCE</h2>
             <div class="grid">
                 <div class="card">
                     <h3>SHAFAQ GAME DEV TEAM</h3>
@@ -103,124 +206,86 @@
         </section>
 
         <section id="skills">
-            <h2 class="section-title"> SKILLS</h2>
+            <h2 class="section-title">// SKILLS</h2>
             <div class="grid">
                 <div class="card">
                     <h3>Networking & Security</h3>
-                    <span class="skill-tag">Routing & Switching (OSPF, EIGRP, BGP) </span> <span class="skill-tag">VLANs, Inter-VLAN Routing</span> 
-                    <span class="skill-tag">Network Troubleshooting</span> <span class="skill-tag">Traffic Analysis</span>
-                    <span class="skill-tag">IDS/IPS – rule-based detection & inline prevention</span>
-                    <span class="skill-tag">Wireshark, Nmap</span>
-                    <span class="skill-tag">Wireless Networks</span> 
-                    <span class="skill-tag">Network Simulation :GNS3 , CISCO PT , EVE-NG </span> 
+                    <span class="skill-tag">Routing & Switching</span> <span class="skill-tag">VLANs</span> 
+                    <span class="skill-tag">Troubleshooting</span> <span class="skill-tag">Traffic Analysis</span>
+                    <span class="skill-tag">Snort 3 IDS/IPS</span>
+                    <span class="skill-tag">Wireshark & Nmap</span>
+                    <span class="skill-tag">GNS3 / EVE-NG</span> 
 
                 </div>
                 <div class="card">
-                    <h3>Cybersecurity & SOC </h3>
-                    <span class="skill-tag">SOC Fundamentals & SIEM Concepts</span> <span class="skill-tag">Incident Response Lifecycle</span>
-                    <span class="skill-tag">Threat Detection & Threat Intelligence</span> <span class="skill-tag">OSINT</span>
-                    <span class="skill-tag">Digital Forensics</span> <span class="skill-tag">MITRE ATT&CK Awareness</span> 
+                    <h3>Cybersecurity & SOC</h3>
+                    <span class="skill-tag">SIEM Concepts</span> <span class="skill-tag">Incident Response</span>
+                    <span class="skill-tag">Threat Intel</span> <span class="skill-tag">OSINT</span>
+                    <span class="skill-tag">Forensics</span> <span class="skill-tag">MITRE ATT&CK</span> 
                 </div>
                 <div class="card">
                     <h3>Programming & Scripting</h3>
-                    <span class="skill-tag">Python (Security Tools, Automation)</span> <span class="skill-tag">Bash / Shell Scripting</span>
-                    <span class="skill-tag">SQL, MySQL</span> <span class="skill-tag">Java</span>
-                    <span class="skill-tag">C++ (Basic)</span> <span class="skill-tag">Web Scripting :HTML, CSS, JavaScript</span>
-                </div>
-                <div class="card">
-                    <h3>Operating Systems</h3>
-                    <span class="skill-tag">Windows</span> 
-                    <span class="skill-tag">Linux (Ubuntu, Kali, Parrot)</span> 
-                </div>
-                <div class="card">
-                    <h3>Cloud Platforms</h3>
-                    <span class="skill-tag">- Oracle Cloud Infrastructure </span> <span class="skill-tag">Compute, Networking, IAM, Object Storage</span>
+                    <span class="skill-tag">Python (Security Tools)</span> <span class="skill-tag">Bash Scripting</span>
+                    <span class="skill-tag">SQL / MySQL</span> <span class="skill-tag">Java / C++</span>
+                    <span class="skill-tag">HTML / CSS / JS</span>
                 </div>
             </div>
         </section>
 
         <section id="projects">
-            <h2 class="section-title">PROJECTS</h2>
+            <h2 class="section-title">// PROJECTS</h2>
             <div class="grid">
                 <div class="card">
-                    <h4>Intrusion Detection System (IDS) using Snort 3</h4>
-                    <p>Designed and deployed rule-based intrusion detection for network traffic and Analyzed alerts and logs to identify malicious activities.</p>
-                    <a href="https://github.com/AbdaullahAG/Intrusion-Detection-System-IDS-/tree/main/Snort3" class="btn">GitHub</a>
+                    <h4>Intrusion Detection System (IDS)</h4>
+                    <p>Designed and deployed rule-based intrusion detection using Snort 3. Analyzed alerts to identify malicious activities.</p>
+                    <a href="https://github.com/AbdaullahAG/Intrusion-Detection-System-IDS-/tree/main/Snort3" class="btn">VIEW ON GITHUB</a>
                 </div>
                 <div class="card">
-                    <h4>Intrusion Prevention System (IPS) using Snort 3</h4>
-                    <p>Implemented inline packet inspection and automated traffic blocking and Simulated attack scenarios and validated prevention rules.</p>
-                    <a href="https://github.com/AbdaullahAG/Intrusion-PreventionSystem-IPS" class="btn">GitHub</a>
-                </div>
-                <div class="card">
-                    <h4>Website Vulnerability Scanner (Python)</h4>
-                    <p>Developed a Python-based scanner to identify common web vulnerabilities.</p>
+                    <h4>Website Vulnerability Scanner</h4>
+                    <p>Developed a Python-based scanner to identify common web vulnerabilities automatically.</p>
+                    <a href="#" class="btn">VIEW SOURCE</a>
                 </div>
                 <div class="card">
                     <h4>Smart Campus System</h4>
-                      <p>Comprehensive Smart Campus Network implementing:</p>
-                    <ul>
-                        <li>3-Tier Hierarchical Architecture (Core/Distribution/Access).</li>
-                        <li>IoT Integration (RFID, Thermal Sensors, Smart Parking,auto lighting system,smart windo)</li>
-                        <li>IPS/Firewall for network protection.</li>
-                        <li>IPv6/IPv4.</li>
-                         <li>HSRP Redundancy & LACP and ospf</li>
-                    </ul>
+                    <p>3-Tier Architecture implementing IoT, IPS/Firewall, IPv6, and Redundancy (HSRP/LACP).</p>
                 </div>
-                <div class="card">
-                    <h4>Cisco Packet Tracer Project Portfolio</h4>
-                    <p>This repository features a collection of practical networking labs built using Cisco Packet Tracer, designed to reinforce core networking concepts through simulation, configuration, and troubleshooting.
-                    Each folder represents a focused scenario that aligns with CCNA-level learning and real-world application.</p>
-                </div>
-                   <div class="card">
-            <h4>Library Management System (SQL)</h4>
-            <p>Developed a library database management system using SQL for data storage and queries.</p>
-            <a href="https://github.com//library-sql-project" class="btn">GitHub</a>
-             </div>
-              <div class="card">
-            <h4>Medical Appointment System (SQL)</h4>
-            <p>Built a medical appointment management system using SQL to handle scheduling and patient data.</p>
-            <a href="https://github.com//Medical_Appointment_System" class="btn">GitHub</a>
-        </div>
             </div>
         </section>
 
         <section id="extras">
             <div class="grid">
                 <div class="card">
-                    <h2 class="section-title">CERTIFICATIONS</h2>
+                    <h2 class="section-title">// CERTIFICATIONS</h2>
                     <div class="cert-item">Oracle Cloud Infrastructure 2025 Architect Associate</div>
                     <div class="cert-item">Oracle Cloud Infrastructure 2025 Foundations Associate</div>
-                    <div class="cert-item">Oracle Cloud Infrastructure 2025 AI Foundations Associate]</div>
+                    <div class="cert-item">Oracle Cloud Infrastructure 2025 AI Foundations</div>
                     <div class="cert-item">Microsoft Copilot & AI Ethics </div>
                 </div>
                 <div class="card">
-                    <h2 class="section-title">COMPETITIONS & MEMBERSHIPS</h2>
-                    <p>🏆 <b>IEEE CTF 2025 Finalist</b> (OSINT, Forensics,Web)</p>
-                    <p>🏆 <b>Huawei ICT Competition</b> (National Qualifier) </p>
-                    <p>IEEE Student Branch – Active Member</p>
-
-                    <hr>
-                    <h2 class="section-title">LANGUAGES</h2>
-                    <div class="lang-item"><span>Arabic</span> <span>native</span></div>
-                    <div class="lang-item"><span>Endlish</span> <span>Advanced</span></div>
-                    <div class="lang-item"><span>Spanish</span> <span>Beginner </span></div>
+                    <h2 class="section-title">// COMPETITIONS</h2>
+                    <p>🏆 <b>IEEE CTF 2025 Finalist</b></p>
+                    <p>🏆 <b>Huawei ICT Competition</b> (National Qualifier)</p>
+                    <hr style="border:0; border-top:1px solid #333; margin:15px 0;">
+                    <h2 class="section-title">// LANGUAGES</h2>
+                    <div class="lang-item"><span>Arabic</span> <span>Native</span></div>
+                    <div class="lang-item"><span>English</span> <span>Advanced</span></div>
+                    <div class="lang-item"><span>Spanish</span> <span>Beginner</span></div>
                 </div>
             </div>
         </section>
-
     </div>
 
     <footer>
+        <p>&copy; 2026 Abdullah Abughallous | Cyber Portfolio</p>
     </footer>
 
     <script>
         const text = document.getElementById('typing');
         const roles = [
-            "Computer Network System Student...",
+            "Initializing Security Protocols...",
             "Junior Cybersecurity / SOC Analyst...",
-            "Game Developer...",
-            "CTF Player..."
+            "Game Developer & Network Engineer...",
+            "Active CTF Player..."
         ];
         let i = 0, j = 0, isDeleting = false;
 
