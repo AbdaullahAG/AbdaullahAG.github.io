@@ -1,62 +1,62 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdullah Abughallous | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <title>Abdaullah Abughallous | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0d0d0f;
-            --card-bg: #16161a;
+            --bg: #0a0a0c;
+            --card-bg: #111114;
             --primary: #00f2ff;
             --secondary: #39ff14;
             --text: #e0e0e0;
+            --border: #222;
         }
 
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             line-height: 1.6;
+            direction: ltr;
         }
 
         .container { max-width: 1100px; margin: auto; padding: 20px; }
         
-        /* Header & Hero */
-        header { border-bottom: 1px solid #333; padding: 20px 0; text-align: center; }
-        .hero { text-align: center; padding: 80px 20px; background: radial-gradient(circle at center, #1a1a2e 0%, #0d0d0f 100%); }
-        .hero h1 { font-size: 3rem; color: var(--primary); margin: 0; }
-        .terminal-text { font-family: 'Fira Code', monospace; color: var(--secondary); margin-top: 10px; height: 30px; }
+        header { border-bottom: 1px solid var(--border); padding: 20px 0; text-align: center; }
+        .hero { text-align: center; padding: 100px 20px; background: radial-gradient(circle at center, #111122 0%, #0a0a0c 100%); }
+        .hero h1 { font-size: 3.5rem; color: var(--primary); margin: 0; font-family: 'Fira Code'; }
+        .terminal-text { font-family: 'Fira Code', monospace; color: var(--secondary); margin-top: 15px; font-size: 1.2rem; min-height: 1.5em; }
 
-        /* Sections */
-        section { margin: 60px 0; }
-        .section-title { color: var(--primary); border-right: 4px solid var(--primary); padding-right: 15px; margin-bottom: 30px; }
+        section { margin: 80px 0; }
+        .section-title { color: var(--primary); border-left: 4px solid var(--primary); padding-left: 15px; margin-bottom: 30px; font-family: 'Fira Code'; }
 
-        /* Grid Layouts */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card { background: var(--card-bg); padding: 25px; border-radius: 8px; border: 1px solid #222; transition: 0.3s; }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .card { background: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid var(--border); transition: 0.4s ease; }
+        .card:hover { border-color: var(--primary); transform: translateY(-8px); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1); }
 
-        /* Specific Styles */
-        .skill-tag { display: inline-block; background: #222; color: var(--secondary); padding: 4px 10px; margin: 4px; font-size: 0.85rem; border-radius: 4px; font-family: 'Fira Code'; }
-        .cert-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #333; }
-        .lang-item { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .skill-tag { display: inline-block; background: #1a1a1e; color: var(--secondary); padding: 5px 12px; margin: 4px; font-size: 0.8rem; border-radius: 5px; font-family: 'Fira Code'; border: 1px solid #333; }
+        .contact-links { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 30px; }
+        .contact-links a { color: var(--text); text-decoration: none; font-family: 'Fira Code'; font-size: 0.9rem; transition: 0.3s; }
+        .contact-links a:hover { color: var(--primary); text-shadow: 0 0 8px var(--primary); }
+
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; font-size: 0.95rem; }
         
-        .contact-info { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
-        .contact-info a { color: var(--text); text-decoration: none; font-family: 'Fira Code'; font-size: 0.9rem; }
-        .contact-info a:hover { color: var(--primary); }
+        .badge { background: var(--primary); color: #000; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-size: 0.75rem; margin-bottom: 10px; display: inline-block; }
 
-        footer { text-align: center; padding: 40px; border-top: 1px solid #222; font-size: 0.8rem; opacity: 0.6; }
+        footer { text-align: center; padding: 60px; border-top: 1px solid var(--border); font-size: 0.85rem; opacity: 0.7; font-family: 'Fira Code'; }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <h1>عبد الله أبو غلوس</h1>
+        <h1>ABDAUALLAH ABUGHALOUS</h1>
         <div id="typing" class="terminal-text"></div>
-        <div class="contact-info">
+        <div class="contact-links">
             <a href="mailto:ABD.MOH9999@YAHOO.COM">📧 ABD.MOH9999@YAHOO.COM</a>
             <a href="tel:+962780979052">📞 +962 7 8097 9052</a>
             <a href="https://github.com/AbdaullahAG">💻 GitHub</a>
@@ -66,119 +66,103 @@
 
     <div class="container">
         
-        <section id="about">
-            <h2 class="section-title">الملخص المهني</h2>
-            <p>طالب هندسة أنظمة شبكات حاسوب [cite: 2, 16] طموح وموجه تقنياً، أمتلك خبرة قوية في تكوين الشبكات، أساسيات الأمن السيبراني، الاستخبارات مفتوحة المصدر (OSINT)، والتحقيق الرقمي[cite: 7]. شغوف بالذكاء الاصطناعي، الحوسبة السحابية، وتطوير الألعاب[cite: 8]. لدي خبرة عملية في بناء طوبولوجيا الشبكات على مستوى الشركات وتحليل حركة المرور[cite: 9, 10].</p>
+        <section id="background">
+            <h2 class="section-title">BACKGROUND</h2>
+            <div class="card">
+                <p>Motivated and technically driven Computer Network student with strong expertise in network configuration, cybersecurity fundamentals, OSINT and digital forensics[cite: 7]. Passionate about artificial intelligence, cloud computing and game development with hands-on experience across multidisciplinary technical environments[cite: 8]. Experienced in building enterprise-level network topologies, analyzing network traffic and competing in national and international CTF events[cite: 9, 10]. Skilled in designing secure solutions and troubleshooting complex systems[cite: 11].</p>
+            </div>
         </section>
 
         <section id="experience">
-            <h2 class="section-title">الخبرة والتعليم</h2>
+            <h2 class="section-title">EXPERIENCE & EDUCATION</h2>
             <div class="grid">
                 <div class="card">
-                    <h3>فريق شفق لتطوير الألعاب [cite: 13]</h3>
-                    <p><b>مطور ألعاب (2025 - الآن)</b> [cite: 14]</p>
+                    <span class="badge">2025 - Present</span>
+                    <h3>SHAFAQ GAME DEV TEAM</h3>
+                    <p><b>Game Developer (Remote)</b></p>
                     <ul>
-                        <li>تصميم أنظمة اللعب والميكانيكا والمستويات باستخدام Unreal Engine[cite: 23].</li>
-                        <li>التعاون مع الرسامين لبناء تجربة لعب متوافقة مع القصة[cite: 23].</li>
+                        <li>Designed gameplay systems, mechanics, and levels using Unreal Engine[cite: 23].</li>
+                        <li>Collaborated with artists and developers to build narrative-aligned gameplay[cite: 23].</li>
+                        <li>Strengthened problem-solving, team communication, and project coordination[cite: 24].</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <h3>عمل حر (Social Media) [cite: 25]</h3>
-                    <p><b>فريلانسر (2016 - 2024)</b> [cite: 26]</p>
-                    <ul>
-                        <li>إدارة حسابات التواصل الاجتماعي لمجتمعات الألعاب والرياضة والمصارعة[cite: 27].</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>التعليم الأكاديمي [cite: 15]</h3>
-                    <p><b>بكالوريوس هندسة أنظمة شبكات الحاسوب</b> [cite: 16]</p>
-                    <p>جامعة العلوم الإسلامية العالمية (WISE)، 2022 - حتى الآن[cite: 17].</p>
+                    <span class="badge">2022 - Now</span>
+                    <h3>EDUCATION</h3>
+                    <p><b>Bachelor of Computer Network System</b></p>
+                    <p>World Islamic Sciences and Education University (WISE)[cite: 16, 17].</p>
+                    <hr style="border:0; border-top:1px solid #333; margin:15px 0;">
+                    <p><b>Languages:</b></p>
+                    <p>• Arabic: Native [cite: 19]<br>• English: Advanced [cite: 20]<br>• Spanish: Beginner [cite: 22]</p>
                 </div>
             </div>
         </section>
 
         <section id="skills">
-            <h2 class="section-title">المهارات التقنية</h2>
+            <h2 class="section-title">TECHNICAL SKILLS</h2>
             <div class="grid">
                 <div class="card">
-                    <h3>البرمجة وقواعد البيانات [cite: 34]</h3>
-                    <span class="skill-tag">Python (Automation)</span> <span class="skill-tag">Java</span> 
-                    <span class="skill-tag">C++</span> <span class="skill-tag">Bash/Shell</span>
-                    <span class="skill-tag">SQL / MySQL</span> [cite: 35, 36]
+                    <h3>Networking</h3>
+                    <span class="skill-tag">Routing & Switching</span> <span class="skill-tag">VLANs</span> <span class="skill-tag">OSPF</span>
+                    <span class="skill-tag">EIGRP</span> <span class="skill-tag">STP/RSTP</span> <span class="skill-tag">DHCP/DNS/NAT</span>
+                    <span class="skill-tag">Subnetting & CIDR</span> <span class="skill-tag">Troubleshooting</span> [cite: 43, 44]
                 </div>
                 <div class="card">
-                    <h3>الشبكات (Networking) [cite: 43]</h3>
-                    <span class="skill-tag">Routing & Switching</span> <span class="skill-tag">VLANs</span>
-                    <span class="skill-tag">OSPF / EIGRP</span> <span class="skill-tag">STP/RSTP</span>
-                    <span class="skill-tag">DHCP/DNS/NAT</span> <span class="skill-tag">Subnetting & CIDR</span> [cite: 44]
+                    <h3>Cybersecurity</h3>
+                    <span class="skill-tag">SOC Fundamentals</span> <span class="skill-tag">Threat Detection</span> <span class="skill-tag">SIEM</span>
+                    <span class="skill-tag">OSINT</span> <span class="skill-tag">Digital Forensics</span> <span class="skill-tag">Vulnerability Analysis</span>
+                    <span class="skill-tag">Malware Analysis</span> <span class="skill-tag">MITRE ATT&CK</span> [cite: 45, 46, 47]
                 </div>
                 <div class="card">
-                    <h3>الأمن السيبراني [cite: 45]</h3>
-                    <span class="skill-tag">SOC Fundamentals</span> <span class="skill-tag">Threat Detection</span>
-                    <span class="skill-tag">SIEM Concepts</span> <span class="skill-tag">OSINT</span>
-                    <span class="skill-tag">Digital Forensics</span> <span class="skill-tag">Vulnerability Analysis</span> [cite: 46, 47]
+                    <h3>Tools & OS</h3>
+                    <span class="skill-tag">GNS3</span> <span class="skill-tag">Cisco Packet Tracer</span> <span class="skill-tag">Wireshark</span>
+                    <span class="skill-tag">Snort3 (IDS/IPS)</span> <span class="skill-tag">Nmap</span> <span class="skill-tag">Linux (Ubuntu, Kali, Parrot)</span> [cite: 39, 40, 48]
                 </div>
                 <div class="card">
-                    <h3>أدوات وأنظمة [cite: 48]</h3>
-                    <span class="skill-tag">GNS3</span> <span class="skill-tag">Cisco Packet Tracer</span>
-                    <span class="skill-tag">Wireshark</span> <span class="skill-tag">Snort3</span>
-                    <span class="skill-tag">Linux (Ubuntu, Kali, Parrot)</span> [cite: 40, 41, 49]
-                </div>
-                <div class="card">
-                    <h3>الذكاء الاصطناعي والسحابيات [cite: 53, 50]</h3>
-                    <span class="skill-tag">Generative AI</span> <span class="skill-tag">Machine Learning</span>
-                    <span class="skill-tag">Deep Learning</span> <span class="skill-tag">OCI (Compute, IAM, Storage)</span> [cite: 51, 54]
+                    <h3>Programming & AI</h3>
+                    <span class="skill-tag">Python (Automation)</span> <span class="skill-tag">Java</span> <span class="skill-tag">C++</span> <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Generative AI</span> <span class="skill-tag">Machine Learning</span> <span class="skill-tag">Data Structures</span> [cite: 34, 35, 52, 53]
                 </div>
             </div>
         </section>
 
         <section id="projects">
-            <h2 class="section-title">المشاريع التقنية</h2>
+            <h2 class="section-title">KEY PROJECTS</h2>
             <div class="grid">
                 <div class="card">
-                    <h4>نظام كشف ومنع التسلل (IDS/IPS) [cite: 59, 61]</h4>
-                    <p>استخدام Snort3 لبناء أنظمة حماية متقدمة[cite: 59].</p>
-                    <a href="https://github.com/AbdaullahAG/Intrusion-Detection-System-IDS-/tree/main/Snort3" class="btn">GitHub</a>
+                    <h4>Intrusion Detection System (IDS)</h4>
+                    <p>Developed using Snort3 for threat detection and rule management[cite: 59].</p>
+                    <a href="https://github.com/AbdaullahAG/Intrusion-Detection-System-IDS-/tree/main/Snort3" style="color:var(--primary)">View on GitHub</a>
                 </div>
                 <div class="card">
-                    <h4>Website Vulnerability Scanner [cite: 60]</h4>
-                    <p>أداة بلغة بايثون لفحص الثغرات الأمنية للمواقع[cite: 60].</p>
+                    <h4>Website Vulnerability Scanner</h4>
+                    <p>Python-based tool for automated security assessment of web applications[cite: 60].</p>
                 </div>
                 <div class="card">
-                    <h4>Student Grade Prediction [cite: 58]</h4>
-                    <p>مشروع ذكاء اصطناعي (Linear Regression) للتنبؤ بالدرجات[cite: 58].</p>
-                </div>
-                <div class="card">
-                    <h4>Medical Appointment System [cite: 57]</h4>
-                    <p>نظام إدارة المواعيد الطبية[cite: 57].</p>
-                </div>
-                <div class="card">
-                    <h4>Library Management System [cite: 56]</h4>
-                    <p>نظام إدارة مكتبة باستخدام SQL[cite: 56].</p>
-                </div>
-                <div class="card">
-                    <h4>Packet Tracer IoT Project [cite: 58]</h4>
-                    <p>مشروع متكامل يجمع بين الشبكات وإنترنت الأشياء[cite: 58].</p>
+                    <h4>Packet Tracer IoT Project</h4>
+                    <p>Comprehensive network topology integrating IoT devices and secure routing[cite: 58].</p>
                 </div>
             </div>
         </section>
 
-        <section id="extras">
+        <section id="achievements">
+            <h2 class="section-title">CERTIFICATIONS & ACHIEVEMENTS</h2>
             <div class="grid">
                 <div class="card">
-                    <h2 class="section-title">الشهادات [cite: 28]</h2>
-                    <div class="cert-item">Oracle Cloud Infrastructure 2025 AI Foundations [cite: 29]</div>
-                    <div class="cert-item">OCI 2025 Certified Architect Associate [cite: 29]</div>
-                    <div class="cert-item">Microsoft Copilot & AI Ethics [cite: 31, 32]</div>
+                    <h3>Certifications</h3>
+                    <ul>
+                        <li>Oracle Cloud Infrastructure 2025 AI Foundations [cite: 29]</li>
+                        <li>OCI 2025 Certified Architect Associate [cite: 29]</li>
+                        <li>Streamlining Work with Microsoft Copilot [cite: 31]</li>
+                    </ul>
                 </div>
                 <div class="card">
-                    <h2 class="section-title">الإنجازات واللغات [cite: 64, 18]</h2>
-                    <p>🏆 <b>IEEE CTF 2025 Finalist</b> (OSINT, Forensics) [cite: 65]</p>
-                    <p>🏆 <b>Huawei ICT Competition</b> (National Qualifier) [cite: 66]</p>
-                    <hr>
-                    <div class="lang-item"><span>العربية</span> <span>اللغة الأم [cite: 19]</span></div>
-                    <div class="lang-item"><span>الإنجليزية</span> <span>متقدم [cite: 20]</span></div>
-                    <div class="lang-item"><span>الإسبانية</span> <span>مبتدئ [cite: 22]</span></div>
+                    <h3>Achievements</h3>
+                    <ul>
+                        <li><b>IEEE CTF 2025 Finalist:</b> Specialized in OSINT and Forensics[cite: 65].</li>
+                        <li><b>Huawei ICT Competition:</b> National Level Qualifier (Only WISE representative)[cite: 66].</li>
+                        <li><b>IEEE Member:</b> Active student branch member[cite: 63].</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -186,17 +170,17 @@
     </div>
 
     <footer>
-        <p>عضو نشط في فرع IEEE الطلابي [cite: 63] | جميع الحقوق محفوظة لـ عبد الله أبو غلوس © 2025</p>
+        <p>> STATUS: PERSISTENT | USER: ABDAULLAH ABUGHALOUS | 2025</p>
     </footer>
 
     <script>
         const text = document.getElementById('typing');
         const roles = [
-            "Computer Network Student...",
-            "Cybersecurity Specialist...",
-            "Game Developer...",
-            "AI & Cloud Enthusiast...",
-            "CTF Player..."
+            "COMPUTER NETWORK STUDENT",
+            "CYBERSECURITY ANALYST",
+            "GAME DEVELOPER",
+            "OCI CERTIFIED ARCHITECT",
+            "IEEE CTF FINALIST"
         ];
         let i = 0, j = 0, isDeleting = false;
 
