@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdallah Abughallous | Portfolio</title>
+    <title>Abdallah Abughallous | Portfolio & Blog</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -39,6 +39,31 @@
             background-size: 100% 3px, 3px 100%;
         }
 
+        /* شريط التنقل السريع */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(5, 5, 7, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+        }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 5px var(--primary);
+        }
+
         .container { max-width: 1100px; margin: auto; padding: 20px; position: relative; z-index: 2; }
         
         header { border-bottom: 1px solid #333; padding: 20px 0; text-align: center; }
@@ -51,13 +76,25 @@
         .hero h1 { font-size: 3rem; color: var(--primary); margin: 0; text-shadow: 0 0 10px var(--primary); }
         .terminal-text { font-family: 'Fira Code', monospace; color: var(--secondary); margin-top: 10px; height: 30px; }
 
-        section { margin: 60px 0; }
+        section { margin: 60px 0; scroll-margin-top: 80px; }
         .section-title { 
             color: var(--primary); 
             border-right: 4px solid var(--primary); 
             padding-right: 15px; 
             margin-bottom: 30px; 
             text-transform: uppercase;
+        }
+
+        /* دعم الكتابة باللغة العربية داخل المقالات */
+        .rtl-content {
+            direction: rtl;
+            text-align: right;
+        }
+        .post-date {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 10px;
         }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
@@ -108,6 +145,15 @@
 </head>
 <body>
 
+    <!-- شريط الانتقال -->
+    <nav>
+        <a href="#about">// About</a>
+        <a href="#experience">// Experience</a>
+        <a href="#skills">// Skills</a>
+        <a href="#projects">// Projects</a>
+        <a href="#blog" style="color: var(--primary);">// BLOG 📝</a>
+    </nav>
+
     <section class="hero">
         <h1>Abdallah Abughallous</h1>
         <div id="typing" class="terminal-text"></div>
@@ -115,7 +161,7 @@
             <a href="mailto:ABD.MOH9999@YAHOO.COM">📧 ABD.MOH9999@YAHOO.COM</a>
             <a href="tel:+962780979052">📞 +962 7 8097 9052</a>
             <a href="https://github.com/AbdaullahAG">💻 GitHub</a>
-            <a href="linkedin.com/in/abdallah-abu-ghallous-937911317">🔗 LinkedIn</a>
+            <a href="https://linkedin.com/in/abdallah-abu-ghallous-937911317">🔗 LinkedIn</a>
         </div>
     </section>
 
@@ -129,6 +175,31 @@
             Passionate about Network Engineering, SOC Analysis, and Cloud Security, with practical exposure to Oracle Cloud Infrastructure and automation using Python and Interested in AI-powered Security Solutions and Cloud Technologies.</p>
         </section>
 
+        <!-- قسم المدونة الجديد -->
+        <section id="blog">
+            <h2 class="section-title">LATEST ARTICLES (المدونة)</h2>
+            <div class="grid">
+                
+                <!-- المقال الأول -->
+                <div class="card rtl-content">
+                    <div class="post-date">[ 2026-05-24 ]</div>
+                    <h3>مقدمة مبسطة إلى أنظمة كشف التسلل (Snort 3)</h3>
+                    <p>في هذا المقال أشارككم تجربتي العملية في إعداد وتشغيل Snort 3 لمراقبة الشبكة وتحليل البيانات وكيفية بناء قواعد مخصصة (Custom Rules) لحظر الهجمات السيبرانية...</p>
+                    <a href="blog/snort3-guide.html" class="btn" style="float: left;">اقرأ المقال كامل 🛡️</a>
+                    <div style="clear: both;"></div>
+                </div>
+
+                <!-- المقال الثاني (مثال جاهز للمستقبل) -->
+                <div class="card">
+                    <div class="post-date">[ 2026-06-01 ]</div>
+                    <h3>How ThreatLens v2.0 Speeds Up IOC Analysis</h3>
+                    <p>An in-depth look into my recent Python CLI tool project. Learn how connecting multiple Threat Intel APIs (VirusTotal, Shodan) can optimize your incident response workflow.</p>
+                    <a href="blog/threatlens-deep-dive.html" class="btn">Read Article 🚀</a>
+                </div>
+
+            </div>
+        </section>
+
         <section id="experience">
             <h2 class="section-title">EXPERIENCE</h2>
             <div class="grid">
@@ -136,7 +207,7 @@
                     <h3>SHAFAQ GAME DEV TEAM</h3>
                     <p><b> GAME DEVELOPER & MANAGER (2025 - 2026 )</b></p>
                     <ul>
-                        <li>Team Managment in the main Game Dev section and in Social Media.</li>
+                        <li>Team Management in the main Game Dev section and in Social Media.</li>
                         <li>Expertly designed and optimized immersive environments, strategic layouts, and atmospheric worlds using Unreal Engine.</li>
                         <li>Collaborated with artists and developers to build narrative-aligned gameplay.</li>
                         <li>Strengthened problem-solving, team communication, and project coordination.</li>
@@ -144,25 +215,26 @@
                 </div>
                 <div class="card">
                     <h3>National Cyber Security Center (NCSC) – Jordan</h3>
-                    <p><b>Traine (2026 - now)</b></p>
+                    <p><b>Trainer (2026 - now)</b></p>
                     <ul>
                         <li>Completing the official 200-hour national “Masar” cybersecurity field training program.</li>
                         <li>Gaining hands-on experience in real-world cybersecurity operations within a governmental environment.</li>
-                        <li>Working on practical tasks including [penetration testing / SOC / digital forensics / vulnerability assessment – replace with your actual areas].</li>
+                        <li>Working on practical tasks including [penetration testing / SOC / digital forensics / vulnerability assessment].</li>
                         <li>Delivering a final capstone project as program requirement.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-           <section id="experience">
+        <section id="education">
             <h2 class="section-title">EDUCATION</h2>
             <div class="grid">
                 <div class="card">
-                    <h3>BACHELOR OF COMPUTER NETWORK SYSTEM  </h3>
+                    <h3>BACHELOR OF COMPUTER NETWORK SYSTEM </h3>
                     <p>World Islamic Sciences and Education University <b>WISE</b>, (2022 – now).</p>
                 </div>
-           </section>
+            </div>
+        </section>
 
         <section id="skills">
             <h2 class="section-title"> SKILLS</h2>
@@ -212,7 +284,7 @@
                     <a href="https://github.com/AbdaullahAG/Intrusion-Detection-System-IDS-/tree/main/Snort3" class="btn">GitHub</a>
                     <a href="https://github.com/AbdaullahAG/Intrusion-PreventionSystem-IPS" class="btn">GitHub</a>
                 </div>
-                   <div class="card">
+                <div class="card">
                     <h4>Semantics llm security gateway</h4>
                     <p>SemGuard is an intelligent semantic security gateway that protects Large Language Models (LLMs) from advanced text-based attacks in Arabic and English</p>
                     <a href="https://github.com/AbdaullahAG/SemGuard" class="btn">GitHub</a>
@@ -228,7 +300,7 @@
                     <a href="https://github.com/AbdaullahAG/python-project/tree/main" class="btn">GitHub</a>
                 </div>
                 <div class="card">
-                    <h4>•	Enterprise Network Simulation (CCNA Labs) | Packet Trace</h4>
+                    <h4>• Enterprise Network Simulation (CCNA Labs) | Packet Trace</h4>
                     <p>Designed complex topologies simulating enterprise networks, configuring routing protocols (OSPF) and switching security.</p>
                     <a href="https://github.com/AbdaullahAG/Smart-Campus-System" class="btn">GitHub</a>
                     <a href="https://github.com/AbdaullahAG/Packet-Tracer-Project-CCNA-Labs-" class="btn">GitHub</a>
@@ -240,11 +312,11 @@
                 </div>
                 <div class="card">
                     <h4>Medical Appointment (SQL)</h4>
-                    <a href="https://github.com//Medical_Appointment_System" class="btn">GitHub</a>
+                    <a href="https://github.com/Medical_Appointment_System" class="btn">GitHub</a>
                 </div>
                 <div class="card">
                     <h4>Library System (SQL)</h4>
-                    <a href="https://github.com//library-sql-project" class="btn">GitHub</a>
+                    <a href="https://github.com/library-sql-project" class="btn">GitHub</a>
                 </div>
             </div>
         </section>
@@ -274,7 +346,8 @@
                 </div>
             </div>
         </section>
-                 <section id="volunter experience">
+
+        <section id="volunteer">
             <h2 class="section-title">VOLUNTEER EXPERIENCE</h2>
             <div class="grid">
                 <div class="card">
@@ -282,17 +355,19 @@
                     <p><b> Program Committee Member</b></p>
                     <ul>
                         <li>Coordinated logistics, technical tracks, and scheduling for official IEEE events and competitions.</li>
-                        <li>Collaborated with student leaders to enhance community engagement and support technical initiatives..</li>
+                        <li>Collaborated with student leaders to enhance community engagement and support technical initiatives.</li>
                     </ul>
                 </div>
-                                <div class="card">
+                <div class="card">
                     <h3>IEEE WISE </h3>
                     <p><b> Technical Instructor – Game Development Workshop</b></p>
                     <ul>
-                        <li>Designed the curriculum and delivered a hands-on Game Development training course for 25 students..</li>
+                        <li>Designed the curriculum and delivered a hands-on Game Development training course for 25 students.</li>
                         <li>Achieved an outstanding instructor satisfaction rating of 4.75/5.00 based on final student evaluations.</li>
                     </ul>
                 </div>
+            </div>
+        </section>
     </div>
  
     <footer>
