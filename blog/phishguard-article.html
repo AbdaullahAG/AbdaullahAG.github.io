@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SemGuard: Winning 1st Place at IJSPC 2026 | Abdallah Abughallous</title>
+    <title>How I Built a Phishing Detector Using Only Classical Algorithms | Abdallah Abughallous</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -49,19 +49,15 @@
             margin-bottom: 30px;
             font-size: 0.9rem;
             transition: 0.3s;
-            direction: ltr;
         }
         .back-link:hover { color: var(--primary); text-shadow: 0 0 5px var(--primary); }
 
-        /* تعديل الاتجاه للعربية داخل المقال فقط لراحة القراءة */
         .article-card {
             background: var(--card-bg);
             padding: 40px;
             border-radius: 8px;
             border: 1px solid rgba(0, 242, 255, 0.1);
             backdrop-filter: blur(5px);
-            direction: rtl;
-            text-align: right;
         }
 
         .post-meta {
@@ -69,33 +65,76 @@
             color: #888;
             font-size: 0.85rem;
             margin-bottom: 10px;
-            direction: ltr;
-            text-align: left;
         }
 
-        h1 { font-size: 2.3rem; color: var(--primary); margin-top: 0; text-shadow: 0 0 10px var(--primary); line-height: 1.4; }
+        h1 { font-size: 2.5rem; color: var(--primary); margin-top: 0; text-shadow: 0 0 10px var(--primary); line-height: 1.3; }
         h2 { color: var(--primary); border-bottom: 1px dashed rgba(0, 242, 255, 0.2); padding-bottom: 8px; margin-top: 40px; }
-        h3 { color: var(--secondary); font-family: 'Tajawal', sans-serif; font-weight: 700; }
+        h3 { color: var(--secondary); font-family: 'Fira Code', monospace; }
 
-        p, li { font-size: 1.1rem; color: #d0d0d0; }
-        ul { padding-right: 20px; padding-left: 0; }
+        p, li { font-size: 1.05rem; color: #d0d0d0; }
+        ul { padding-left: 20px; }
         li { margin-bottom: 10px; }
 
-        blockquote {
+        pre {
             background: rgba(10, 10, 14, 0.95);
             padding: 20px;
             border-radius: 6px;
-            border-right: 3px solid var(--secondary);
-            border-left: none;
-            font-size: 1.1rem;
-            margin: 30px 0;
+            border-left: 3px solid var(--secondary);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
             color: #f8f8f2;
         }
 
-        .highlight {
+        code {
+            font-family: 'Fira Code', monospace;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
             color: var(--primary);
-            font-weight: bold;
+            font-size: 0.9rem;
         }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            direction: ltr;
+            text-align: left;
+        }
+        th, td { padding: 12px; border: 1px solid rgba(0, 242, 255, 0.1); }
+        th { background: rgba(0, 242, 255, 0.1); color: var(--primary); }
+        tr:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
+
+        .pipeline-box {
+            background: #111;
+            border: 1px dashed var(--primary);
+            padding: 20px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: var(--primary);
+            overflow-x: auto;
+            white-space: pre;
+            margin: 20px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 20px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: 0.3s;
+            font-family: 'Fira Code', monospace;
+        }
+        .btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 10px var(--primary); }
 
         footer { text-align: center; padding: 40px; border-top: 1px solid #222; font-size: 0.8rem; opacity: 0.6; margin-top: 60px; }
     </style>
@@ -103,52 +142,214 @@
 <body>
 
     <div class="container">
+        <!-- رابط العودة للبورتفوليو الأساسي -->
         <a href="../index.html" class="back-link"><- // back to main portfolio</a>
 
         <article class="article-card">
-            <div class="post-meta">[ DATE: 2026-05-24 ] | [ CATEGORY: RESEARCH & AI SECURITY ]</div>
-            <h1>SemGuard: كيف حققت المركز الأول في مسابقة IJSPC 2026 لحماية الذكاء الاصطناعي؟</h1>
+            <div class="post-meta">[ DATE: 2026-05-24 ] | [ CATEGORY: CYBERSECURITY & ALGORITHMS ]</div>
+            <h1>How I Built a Phishing Detector Using Only Classical Algorithms — No ML Required</h1>
             
-            <p>بفضل الله وتوفيقه، تُوجت مشاركتي الأولى في مجال الأوراق البحثية بإنجاز استثنائي في <span class="highlight">مسابقة IJSPC 2026 للأوراق البحثية</span>، حيث نافست ورقتي البحثية "SemGuard" بين 110 أوراق بحثية من مختلف الجامعات، لتتأهل ضمن أفضل 33 ورقة، وتحصد الجوائز التالية:</p>
+            <p>Every day, millions of people fall victim to phishing attacks. The attacker doesn't hack your bank — they just register <code>paypa1.com</code>, build a fake login page, and wait. You type your password. They steal it.</p>
             
+            <p>I built <strong>PhishGuard</strong>: a phishing detection system that catches these attacks using nothing but classical algorithms from my Algorithms course. No machine learning. No training data. No internet connection required.</p>
+            
+            <p>Here's exactly how it works.</p>
+
+            <h2>The Problem With Existing Solutions</h2>
+            <p>When I started this project, I looked at how phishing is typically detected:</p>
             <ul>
-                <li>🥇 <strong style="color: var(--primary);">المركز الأول</strong> في تراك الذكاء الاصطناعي (AI Track).</li>
-                <li>🏆 التواجد ضمن <strong style="color: var(--primary);">أفضل 9 أوراق بحثية</strong> على مستوى المسابقة بأكملها (Top 9).</li>
-                <li>🏅 جائزة <strong style="color: var(--primary);">أفضل ورقة سفير</strong> (Best Ambassador Paper).</li>
+                <li><strong>Blacklists</strong> maintain a database of known phishing domains. The problem? They're always one step behind. A newly registered <code>g00gle.com</code> is invisible until someone reports it.</li>
+                <li><strong>Machine Learning</strong> models are accurate but require massive labeled datasets, significant compute, and constant retraining as attack patterns evolve.</li>
+            </ul>
+            <p>My question: a phishing domain is always visually similar to the real one. <code>paypa1</code> looks like <code>paypal</code>. <code>micosoft</code> looks like <code>microsoft</code>. Can we detect that similarity algorithmically — without any of the overhead? <strong>The answer is yes.</strong></p>
+
+            <h2>The Core Insight</h2>
+            <p>Phishing domains share a fundamental property: they must be recognizable to the victim. An attacker can't register <code>xkq92bz.com</code> and expect anyone to confuse it with PayPal. They need something close. That means phishing detection is, at its core, a <strong>string similarity problem</strong>.</p>
+            <p>If we can measure how similar a suspicious domain is to a database of trusted domains — and flag anything above a threshold — we have a working detector.</p>
+
+            <h2>The Three Algorithms</h2>
+            <p>PhishGuard uses three algorithms in sequence, each solving a different part of the problem.</p>
+
+            <h3>Algorithm 1 — LCS (Dynamic Programming)</h3>
+            <p>The Longest Common Subsequence algorithm finds the longest sequence of characters shared between two strings in the same order. It's a classic Dynamic Programming problem.</p>
+
+<pre><code class="language-python">def compute_lcs(X, Y):
+    m, n = len(X), len(Y)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if X[i-1] == Y[j-1]:
+                dp[i][j] = dp[i-1][j-1] + 1
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+    return dp[m][n]
+
+def similarity(X, Y):
+    return (compute_lcs(X, Y) / max(len(X), len(Y))) * 100
+</code></pre>
+
+            <p>The similarity score is the LCS length divided by the longer string's length — giving a percentage between 0 and 100.</p>
+            <p><strong>Example:</strong> <code>X = "google"</code>, <code>Y = "google"</code> (after normalizing <code>g00gle</code>) &rarr; <code>LCS = 6</code> &rarr; score = 100% &rarr; <strong>PHISHING</strong></p>
+            <p><strong>Complexity:</strong> $O(m \times n)$ time and space, where m and n are string lengths. Domain names are short (typically under 15 characters), so this is extremely fast in practice.</p>
+
+            <h3>Algorithm 2 — Greedy Selection</h3>
+            <p>Here's the problem: if our trusted database has 10,000 domains, running LCS against all of them for every query is expensive. That's $10,000 \times O(m \times n)$ operations per URL.</p>
+            <p>The Greedy algorithm solves this by pruning the database first using two cheap heuristics — no LCS involved:</p>
+            <ul>
+                <li><strong>Length proximity:</strong> if <code>|len(input) - len(domain)| > 4</code>, skip it. Typos rarely change domain length significantly.</li>
+                <li><strong>Character overlap:</strong> if the first characters don't match AND the Jaccard similarity of character sets is below 40%, skip it.</li>
             </ul>
 
-            <p>رغم أن الطموحات دائماً تتطلع للأعلى، إلا أنني سعيد جداً بهذه التجربة كبداية قوية في عالم البحوث العلمية، خاصة بعد تأهل أبحاثي في مسابقتين كبريين متتاليتين هما مسابقة <em>AI & Robotics</em> ومسابقة <em>IJSPC</em>.</p>
+<pre><code class="language-python">def greedy_select(hostname, domain_db, k=20):
+    candidates = []
+    for domain in domain_db:
+        if abs(len(hostname) - len(domain)) <= 4:
+            if hostname[0] == domain[0] or char_overlap(hostname, domain) >= 0.4:
+                candidates.append(domain)
+    return candidates[:20]
+</code></pre>
 
-            <h2>🤔 ما هي المشكلة؟</h2>
-            <p>نعيش اليوم في ثورة النماذج اللغوية الضخمة (LLMs) مثل ChatGPT وغيره، ولكن هناك فجوة أمنية مرعبة؛ فالحلول الأمنية الحالية تركز تقريباً بالكامل على اللغة الإنجليزية.</p>
-            
-            <blockquote>
-                <strong>أكثر من 400 مليون إنسان عربي</strong> يستخدمون أدوات الذكاء الاصطناعي يومياً دون أي طبقة حماية حقيقية تدعم لغتهم الأم، مما يجعلهم عرضة لهجمات الاختراق الدلالي (Prompt Injection) وتمرير المدخلات الخبيثة وتدليس البيانات. لقد كان المستخدم العربي مكشوفاً أمنياً بامتياز.
-            </blockquote>
+            <p>This reduces 10,000 domains to at most 20 candidates in $O(N)$ time. LCS then runs only on those 20. The expensive $O(m \times n)$ computation runs at most 20 times per query, making it effectively constant regardless of database size.</p>
 
-            <h2>🛡️ الحل: نظام SemGuard (بنيتُ الدرع الذي كان ناقصاً)</h2>
-            <p>من هنا ولدت فكرة <strong>SemGuard</strong>، وهو عبارة عن <span class="highlight">بوابة أمان دلالية (Semantic Security Gateway)</span> مخصصة لحماية النماذج اللغوية الكبيرة.</p>
-            
-            <p>ما يميز SemGuard ويجعله الأول من نوعه في الساحة تكنولوجياً:</p>
+            <h3>Algorithm 3 — Max-Heap Ranking</h3>
+            <p>After scoring all candidates, we need the top 3 most similar domains efficiently. A Max-Heap extracts the maximum element in $O(\log k)$ time. Python's <code>heapq</code> module is a Min-Heap by default, so we store negative scores to simulate Max-Heap behavior:</p>
+
+<pre><code class="language-python">import heapq
+
+def rank_results(candidates, hostname):
+    heap = []
+    for domain in candidates:
+        score = similarity(hostname, domain)
+        heapq.heappush(heap, (-score, domain))  # negate = max-heap trick
+    
+    top3 = []
+    for _ in range(min(3, len(heap))):
+        neg_score, domain = heapq.heappop(heap)
+        top3.append((-neg_score, domain))
+    return top3
+</code></pre>
+            <p><strong>Complexity:</strong> $O(k \log k)$ where $k \le 20$ — effectively constant.</p>
+
+            <h2>The Full Pipeline</h2>
+            <div class="pipeline-box">
+URL Input
+    ↓
+Hostname Extraction   →  strip protocol, www, path
+    ↓
+Greedy Filter         →  10,000 domains → 20 candidates    O(N)
+    ↓
+LCS Scoring           →  similarity % for each candidate   O(m×n) × 20
+    ↓
+Max-Heap Ranking      →  Top 3 results                     O(k log k)
+    ↓
+Verdict: PHISHING (≥75%) or SAFE
+            </div>
+            <p><strong>Total complexity:</strong> $O(N)$ — dominated by the linear Greedy scan.</p>
+
+            <h2>Handling Real-World Attack Variants</h2>
+            <p>Basic LCS isn't enough. Attackers use tricks that pure string comparison misses, like Leet-speak substitution (<code>g00gle</code>) or Homoglyph attacks (<code>аmazon.com</code> using Cyrillic 'а'). The solution is normalization before comparison:</p>
+
+<pre><code class="language-python">_LEET = str.maketrans("013456789", "oleasgtbg")
+
+def full_normalize(s):
+    # Converts homoglyphs to ASCII and replaces leet-speak numbers
+    return s.lower().translate(_LEET)
+</code></pre>
+
+            <h2>Test Results</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Input</th>
+                        <th>Attack Type</th>
+                        <th>Score</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>g00gle.com</td>
+                        <td>Leet-speak</td>
+                        <td>100%</td>
+                        <td>✅ PHISHING</td>
+                    </tr>
+                    <tr>
+                        <td>paypa1.com</td>
+                        <td>Digit substitution</td>
+                        <td>100%</td>
+                        <td>✅ PHISHING</td>
+                    </tr>
+                    <tr>
+                        <td>micosoft.com</td>
+                        <td>Missing letter</td>
+                        <td>88.9%</td>
+                        <td>✅ PHISHING</td>
+                    </tr>
+                    <tr>
+                        <td>pay-pal.com</td>
+                        <td>Hyphen insertion</td>
+                        <td>100%</td>
+                        <td>✅ PHISHING</td>
+                    </tr>
+                    <tr>
+                        <td>amazon.com</td>
+                        <td>Legitimate</td>
+                        <td>—</td>
+                        <td>✅ SAFE</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Optimizing the Bottleneck</h2>
+            <p>After profiling execution time, a clear bottleneck emerged: Greedy scan took <strong>4,328ms</strong> (99.8% of total time). The fix? <strong>An Inverted Bigram Index</strong>. Instead of scanning all N domains, we map every 2-character substring to the domains containing it at startup.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>DB Size</th>
+                        <th>Phase 2 (Greedy Scan)</th>
+                        <th>Phase 3 (Bigram Index)</th>
+                        <th>Speedup</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1,000</td>
+                        <td>5.52ms</td>
+                        <td>1.27ms</td>
+                        <td><strong>4.3x</strong></td>
+                    </tr>
+                    <tr>
+                        <td>5,000</td>
+                        <td>21.73ms</td>
+                        <td>4.21ms</td>
+                        <td><strong>5.2x</strong></td>
+                    </tr>
+                    <tr>
+                        <td>10,000</td>
+                        <td>43.97ms</td>
+                        <td>8.35ms</td>
+                        <td><strong>5.3x</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>What I Learned</h2>
             <ul>
-                <li><strong style="color: var(--secondary);">1. دعم ثلاثي فريد:</strong> يدعم اللغة العربية، الإنجليزية، والـ Encoding في آنٍ واحد دون التأثير على سرعة أو كفاءة النموذج لغوياً.</li>
-                <li><strong style="color: var(--secondary);">2. الشفافية الكاملة (Explainability):</strong> النظام لا يكتفي بحظر المدخلات الخبيثة فحسب، بل يقدم مبرراً وتفسيراً منطقياً وأمنياً كاملاً لكل قرار يتخذه، وهو ما نال إعجاب لجنة التحكيم المطلق.</li>
+                <li><strong>Algorithm selection matters more than implementation:</strong> A clever algorithm design beats micro-optimization every time.</li>
+                <li><strong>Profile before optimizing:</strong> I assumed LCS was the bottleneck. Profiling revealed Greedy was consuming 99.8% of time.</li>
+                <li><strong>Classical algorithms still solve real problems:</strong> You don't always need complex ML; a solid pipeline can run under 10ms offline and be fully explainable.</li>
             </ul>
 
-            <h2>📊 التقييم والمستقبل</h2>
-            <p>فخور جداً بالتقييمات العميقة والمراجعات القيمة التي تلقيتها من لجنة التحكيم المتميزة، وأتطلع بشغف لنشر الورقة البحثية رسمياً قريباً في مؤتمر <strong>AEECT 2026</strong>، حيث سأقوم بإتاحة الكود المصدري (Source Code) والداتا سيت (Dataset) بالكامل لخدمة مجتمع الذكاء الاصطناعي والأمن السيبراني فور صدور النشر الرسمي للمؤتمر.</p>
+            <h2>Limitations</h2>
+            <p>To be honest about what this system doesn't do yet: The 75% threshold was set manually, the database needs scaling to millions of records, and it currently performs string-only analysis without checking SSL certificates.</p>
 
-            <h2>💐 كلمات شكر وامتنان</h2>
-            <p>لا يسعني في ختام هذا الإنجاز إلا أن أتوجه بالشكر الجزيل لوالديّ العزيزين، فهما السبب الأول والدافع الحقيقي وراء كل نجاح أصل إليه بعد توفيق الله عز وجل.</p>
-            <p>كما أتقدم بخالص الشكر والتقدير للدكتورة <strong>سمية أبوفخر</strong> على جهودها الكبيرة وتوجيهاتها المستمرة طوال رحلة هذا البحث وتطويره.</p>
-            <p>والشكر موصول للقائمين على تنظيم مسابقة IJSPC، على جهودهم الرائعة في دعم الطلبة وتشجيع البحث العلمي والابتكار لإيجاد حلول حقيقية لمشاكل العصر الحالية.</p>
-
-            <p style="text-align: center; margin-top: 40px; font-weight: bold; font-size: 1.2rem; color: var(--primary); text-shadow: 0 0 5px var(--primary);">الحمد لله دائماً وأبداً.. والقادم أجمل بإذن الله! 🚀</p>
+        
         </article>
     </div>
 
     <footer>
-        <p>&copy; 2026 Abdullah Abughallous</p>
+        <p>&copy; 2026 Abdullah Abughallous | Cyber Security Portfolio</p>
     </footer>
 
 </body>
