@@ -4,123 +4,195 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SemGuard: المركز الأول في مسابقة IJSPC 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0f172a;
-            --text-color: #e2e8f0;
-            --accent-color: #38bdf8;
-            --card-bg: #1e293b;
-            --quote-border: #0284c7;
+            --bg: #050507;
+            --card-bg: rgba(22, 22, 26, 0.85);
+            --primary: #00f2ff;
+            --secondary: #39ff14;
+            --text: #e0e0e0;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.8;
+            background-color: var(--bg);
+            background-image: 
+                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text);
+            font-family: 'Tajawal', sans-serif;
             margin: 0;
-            padding: 0;
+            line-height: 1.8;
+            position: relative;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 255, 0, 0.02));
+            z-index: 9999;
+            pointer-events: none;
+            background-size: 100% 3px, 3px 100%;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 20px;
-        }
-
-        h1 {
-            color: var(--accent-color);
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-
-        .meta {
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
-
-        h3 {
-            color: var(--accent-color);
-            font-size: 1.5rem;
-            margin-top: 30px;
-            border-right: 4px solid var(--accent-color);
-            padding-right: 10px;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        ul li {
-            background-color: var(--card-bg);
-            margin-bottom: 10px;
-            padding: 12px 20px;
-            border-radius: 8px;
-            border-right: 4px solid var(--accent-color);
-        }
-
-        blockquote {
-            background-color: var(--card-bg);
-            border-right: 5px solid var(--quote-border);
-            margin: 30px 0;
+        /* شريط التنقل السريع */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
             padding: 20px;
-            font-style: italic;
-            border-radius: 0 8px 8px 0;
+            background: rgba(5, 5, 7, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+        }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 5px var(--primary);
         }
 
-        .highlight {
-            color: var(--accent-color);
+        .container { max-width: 850px; margin: auto; padding: 40px 20px; position: relative; z-index: 2; }
+        
+        header { 
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1); 
+            padding: 40px 0 20px 0; 
+            text-align: center; 
+            background: radial-gradient(circle at center, rgba(0, 242, 255, 0.05) 0%, transparent 70%);
+        }
+        header h1 { font-size: 2.3rem; color: var(--primary); margin: 0 0 15px 0; text-shadow: 0 0 10px var(--primary); }
+        
+        .post-date {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .rtl-content {
+            direction: rtl;
+            text-align: right;
+        }
+
+        h3 { 
+            color: var(--primary); 
+            border-right: 4px solid var(--primary); 
+            padding-right: 15px; 
+            margin-top: 40px;
+            margin-bottom: 20px; 
+            text-transform: uppercase;
+        }
+
+        ul, ol {
+            padding-right: 20px;
+            margin: 20px 0;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        .highlight-card {
+            background: var(--card-bg); 
+            padding: 20px; 
+            border-radius: 8px; 
+            border: 1px solid rgba(0, 242, 255, 0.1); 
+            backdrop-filter: blur(5px);
+            margin: 20px 0;
+        }
+
+        .skill-tag { 
+            display: inline-block; 
+            background: rgba(34, 34, 34, 0.8); 
+            color: var(--secondary); 
+            padding: 4px 12px; 
+            margin: 5px; 
+            font-size: 0.9rem; 
+            border-radius: 4px; 
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            font-family: 'Tajawal', sans-serif;
             font-weight: bold;
         }
 
-        footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #334155;
-            text-align: center;
-            color: #94a3b8;
-            font-size: 0.9rem;
+        blockquote {
+            background: rgba(0, 242, 255, 0.03);
+            border-right: 4px solid var(--secondary);
+            margin: 30px 0;
+            padding: 20px;
+            color: #b5b5b5;
+            border-radius: 4px 0 0 4px;
+            font-style: normal;
         }
 
-        /* تنسيق متجاوب للمشاهدة عبر الموبايل */
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            .container { padding: 20px 15px; }
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 242, 255, 0.3);
         }
+
+        .accent-text {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 20px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: 0.3s;
+            font-family: 'Fira Code', monospace;
+        }
+        .btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 10px var(--primary); }
+
+        footer { text-align: center; padding: 40px; border-top: 1px solid #222; font-size: 0.8rem; opacity: 0.6; margin-top: 60px; }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <nav>
+        <a href="../index.html#about">// Back to Portfolio</a>
+        <a href="../index.html#blog" style="color: var(--primary);">// BLOG 📝</a>
+    </nav>
+
+    <div class="container rtl-content">
         <header>
+            <div class="post-date">[ 2026-05-17 ] | #Cybersecurity #AI_Security</div>
             <h1>SemGuard: كيف حققت المركز الأول في مسابقة IJSPC 2026 لحماية الذكاء الاصطناعي؟</h1>
-            <div class="meta">تاريخ النشر: مايو 2026 | تصنيف: أبحاث وأمن سيبراني</div>
         </header>
 
         <article>
             <p>بفضل الله وتوفيقه، تُوجت مشاركتي الأولى في مجال الأوراق البحثية بإنجاز استثنائي في <span class="highlight">مسابقة IJSPC 2026 للأوراق البحثية</span>، حيث نافست ورقتي البحثية "SemGuard" بين 110 أوراق بحثية من مختلف الجامعات، لتتأهل ضمن أفضل 33 ورقة، وتحصد الجوائز التالية:</p>
             
-            <ul>
-                <li>🥇 <strong>المركز الأول</strong> في تراك الذكاء الاصطناعي (AI Track).</li>
-                <li>🏆 التواجد ضمن <strong>أفضل 9 أوراق بحثية</strong> على مستوى المسابقة بأكملها (Top 9).</li>
-                <li>🏅 جائزة <strong>أفضل ورقة سفير</strong> (Best Ambassador Paper).</li>
-            </ul>
+            <div class="highlight-card">
+                <div><span class="skill-tag">🥇 المركز الأول</span> في تراك الذكاء الاصطناعي (AI Track).</div>
+                <div style="margin-top: 10px;"><span class="skill-tag">🏆 Top 9</span> التواجد ضمن أفضل 9 أوراق بحثية على مستوى المسابقة بأكملها.</div>
+                <div style="margin-top: 10px;"><span class="skill-tag">🏅 Best Ambassador Paper</span> جائزة أفضل ورقة سفير.</div>
+            </div>
 
             <p>رغم أن الطموحات دائماً تتطلع للأعلى، إلا أنني سعيد جداً بهذه التجربة كبداية قوية في عالم البحوث العلمية، خاصة بعد تأهل أبحاثي في مسابقتين كبريين متتاليتين هما مسابقة <em>AI & Robotics</em> ومسابقة <em>IJSPC</em>.</p>
 
-            <h3> ما هي المشكلة؟</h3>
-            <p>نعيش اليوم في ثورة النماذج اللغوية الضخمة (LLMs) مثل ChatGPT وغيره، ولكن هناك فجوة أمنية مرعبة؛ فالحلول الأمنية الحالية تركز تقريباً بالكامل على اللغة الإنجليزية.</p>
+            <h3>ما هي المشكلة؟ (The Vulnerability)</h3>
+            <p>نعيش اليوم في ثورة النماذج اللغوية الضخمة (<span class="accent-text">LLMs</span>) مثل ChatGPT وغيره، ولكن هناك فجوة أمنية مرعبة؛ فالحلول الأمنية الحالية تركز تقريباً بالكامل على اللغة الإنجليزية.</p>
             
             <blockquote>
-                <strong>أكثر من 400 مليون إنسان عربي</strong> يستخدمون أدوات الذكاء الاصطناعي يومياً دون أي طبقة حماية حقيقية تدعم لغتهم الأم، مما يجعلهم عرضة لهجمات الاختراق الدلالي (Prompt Injection) وتمرير المدخلات الخبيثة وتدليس البيانات. لقد كان المستخدم العربي مكشوفاً أمنياً بامتياز.
+                <strong>أكثر من 400 مليون إنسان عربي</strong> يستخدمون أدوات الذكاء الاصطناعي يومياً دون أي طبقة حماية حقيقية تدعم لغتهم الأم، مما يجعلهم عرضة لهجمات الاختراق الدلالي (<span class="highlight">Prompt Injection</span>) وتمرير المدخلات الخبيثة وتدليس البيانات. لقد كان المستخدم العربي مكشوفاً أمنياً بامتياز.
             </blockquote>
 
             <h3>🛡️ الحل: نظام SemGuard (بنيتُ الدرع الذي كان ناقصاً)</h3>
@@ -128,23 +200,27 @@
             
             <p>ما يميز SemGuard ويجعله الأول من نوعه في الساحة:</p>
             <ol>
-                <li><strong>دعم ثلاثي فريد:</strong> يدعم اللغة العربية، الإنجليزية، والـ Encoding في آنٍ واحد دون التأثير على سرعة أو كفاءة النموذج.</li>
-                <li><strong>الشفافية الكاملة (Explainability):</strong> النظام لا يكتفي بحظر المدخلات الخبيثة فحسب، بل يقدم مبرراً وتفسيراً منطقياً وأمنياً كاملاً لكل قرار يتخذه، وهو ما نال إعجاب لجنة التحكيم.</li>
+                <li><strong class="highlight">دعم ثلاثي فريد:</strong> يدعم اللغة العربية، الإنجليزية، والـ Encoding في آنٍ واحد دون التأثير على سرعة أو كفاءة النموذج.</li>
+                <li><strong class="highlight">الشفافية الكاملة (Explainability):</strong> النظام لا يكتفي بحظر المدخلات الخبيثة فحسب، بل يقدم مبرراً وتفسيراً منطقياً وأمنياً كاملاً لكل قرار يتخذه، وهو ما نال إعجاب لجنة التحكيم.</li>
             </ol>
 
             <h3>📊 التقييم والمستقبل</h3>
-            <p>فخور جداً بالتقييمات العميقة والمراجعات القيمة التي تلقيتها من لجنة التحكيم المتميزة، وأتطلع بشغف لنشر الورقة البحثية رسمياً قريباً في مؤتمر <strong>AEECT 2026</strong>، حيث سأقوم بإتاحة الكود المصدري (Source Code) والداتا سيت (Dataset) بالكامل لخدمة مجتمع الذكاء الاصطناعي والأمن السيبراني فور صدور النشر الرسمي.</p>
+            <p>فخور جداً بالتقييمات العميقة والمراجعات القيمة التي تلقيتها من لجنة التحكيم المتميزة، وأتطلع بشغف لنشر الورقة البحثية رسمياً قريباً في مؤتمر <span class="accent-text">AEECT 2026</span>، حيث سأقوم بإتاحة الكود المصدري (Source Code) والداتا سيت (Dataset) بالكامل لخدمة مجتمع الذكاء الاصطناعي والأمن السيبراني فور صدور النشر الرسمي.</p>
 
             <h3>💐 كلمات شكر وامتنان</h3>
             <p>لا يسعني في ختام هذا الإنجاز إلا أن أتوجه بالشكر الجزيل لوالديّ العزيزين، فهما السبب الأول والدافع الحقيقي وراء كل نجاح أصل إليه بعد توفيق الله.</p>
-            <p>كما أتقدم بخالص الشكر والتقدير للدكتورة <strong>سمية أبوفخر</strong> على جهودها الكبيرة ودعمها المستمر طوال رحلة البحث.</p>
+            <p>كما أتقدم بخالص الشكر والتقدير للدكتورة <strong class="highlight">سمية أبوفخر</strong> على جهودها الكبيرة ودعمها المستمر طوال رحلة البحث.</p>
             <p>والشكر موصول للقائمين على تنظيم مسابقة IJSPC، جهودهم الرائعة في دعم الطلبة وتشجيع البحث العلمي والابتكار لإيجاد حلول حقيقية لمشاكل العصر.</p>
 
-            <p style="text-align: center; margin-top: 40px; font-weight: bold; font-size: 1.2rem;">الحمد لله دائماً وأبداً.. والقادم أجمل بإذن الله! 🚀</p>
+            <p style="text-align: center; margin-top: 50px; font-weight: bold; font-size: 1.3rem; color: var(--secondary); text-shadow: 0 0 5px rgba(57, 255, 20, 0.2);">الحمد لله دائماً وأبداً.. والقادم أجمل بإذن الله! 🚀</p>
+            
+            <div style="text-align: center;">
+                <a href="https://github.com/AbdaullahAG/SemGuard" class="btn"><// View on GitHub ></a>
+            </div>
         </article>
 
         <footer>
-            <p>© 2026 عبد الله - جميع الحقوق محفوظة لمدونتي الشخصية</p>
+            <p>&copy; 2026 Abdullah Abughallous | Cyber Security Portfolio</p>
         </footer>
     </div>
 
