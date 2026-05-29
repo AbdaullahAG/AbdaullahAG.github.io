@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تفكيك هجمات كسر الحماية (Jailbreaking) في النماذج اللغوية الكبيرة</title>
+    <title>سلسلة SemGuard (1): تفكيك هجمات كسر الحماية (Jailbreaking) في النماذج اللغوية الكبيرة</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -60,15 +60,15 @@
             text-shadow: 0 0 5px var(--primary);
         }
         .container { max-width: 850px; margin: auto; padding: 40px 20px; position: relative; z-index: 2; }
-       
+        
         header {
             border-bottom: 1px solid rgba(0, 242, 255, 0.1);
             padding: 40px 0 20px 0;
             text-align: center;
             background: radial-gradient(circle at center, rgba(0, 242, 255, 0.05) 0%, transparent 70%);
         }
-        header h1 { font-size: 2.3rem; color: var(--primary); margin: 0 0 15px 0; text-shadow: 0 0 10px var(--primary); }
-       
+        header h1 { font-size: 2.1rem; color: var(--primary); margin: 0 0 15px 0; text-shadow: 0 0 10px var(--primary); line-height: 1.5; }
+        
         .post-date {
             font-family: 'Fira Code', monospace;
             font-size: 0.9rem;
@@ -85,22 +85,41 @@
             padding-right: 15px;
             margin-top: 40px;
             margin-bottom: 20px;
-            text-transform: uppercase;
         }
         ul, ol {
-            padding-right: 20px;
+            padding-right: 25px;
             margin: 20px 0;
         }
         li {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
+        }
+        code {
+            font-family: 'Fira Code', monospace;
+            background: rgba(0, 242, 255, 0.08);
+            color: var(--primary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 242, 255, 0.15);
         }
         .highlight-card {
             background: var(--card-bg);
-            padding: 20px;
+            padding: 25px;
             border-radius: 8px;
             border: 1px solid rgba(0, 242, 255, 0.1);
             backdrop-filter: blur(5px);
-            margin: 20px 0;
+            margin: 25px 0;
+        }
+        .highlight-card a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .highlight-card a:hover {
+            color: var(--secondary);
+            text-shadow: 0 0 8px var(--secondary);
+            transform: translateX(-5px);
         }
         .highlight {
             color: var(--primary);
@@ -111,7 +130,7 @@
             color: var(--secondary);
             font-weight: bold;
         }
-        footer { text-align: center; padding: 40px; border-top: 1px solid #222; font-size: 0.8rem; opacity: 0.6; margin-top: 60px; }
+        footer { text-align: center; padding: 40px; border-top: 1px solid #222; font-size: 0.8rem; opacity: 0.6; margin-top: 60px; font-family: 'Fira Code', monospace; }
     </style>
 </head>
 <body>
@@ -121,60 +140,64 @@
     </nav>
     <div class="container rtl-content">
         <header>
-            <div class="post-date">[ 2026-05-29 ] | #AI_Security #Jailbreaking #LLM</div>
-            <h1>تفكيك هجمات كسر الحماية (Jailbreaking) في النماذج اللغوية الكبيرة</h1>
+            <div class="post-date">[ 2026-05-29 ] | #AI_Security #Jailbreaking #LLM #CyberSecurity</div>
+            <h1>سلسلة SemGuard (1): تفكيك هجمات كسر الحماية (Jailbreaking) في النماذج اللغوية الكبيرة</h1>
         </header>
         <article>
-            <p>من أول ما ظهرت النماذج اللغوية الكبيرة، كنت ألاحظ أن الذكاء الاصطناعي غالباً ما يرفض الإجابة على أسئلة معينة، أو يعطي إجابات سطحية جداً بحيث يكون وجودها وعدمها سواء.</p>
+            <p>مع تسارع تبني النماذج اللغوية الكبيرة (<code>LLMs</code>) في الأنظمة المؤسسية وتطبيقات الطرف الثالث، انتقل مفهوم الأمن السيبراني من حماية البنية التحتية التقليدية إلى حماية <span class="highlight">"الواجهة اللغوية"</span>. في هذه البيئة الجديدة، برزت هجمات كسر الحماية (Jailbreaking) كأحد أعقد التحديات التي تواجه مواءمة النماذج (Alignment) وأمن الذكاء الاصطناعي.</p>
             
-            <p>دفعني فضولي للبحث: "ليش هيك؟"، فبدأت أجرب أتحايل على النموذج بطرق مختلفة لأحصل على الإجابة الكاملة. بعد فترة اكتشفت أن لهذا الموضوع اسم علمي واضح: <span class="highlight">Jailbreaking</span>، وأنه أصبح واحدًا من أبرز التحديات الأمنية في عالم الذكاء الاصطناعي، حتى دخل ضمن أخطر المخاطر حسب  <span class="accent-text">OWASP</span>.</p>
-            
-            <p>هنا تحول الفضول التقني إلى تجارب أعمق. بدأت أختبر النماذج المفتوحة المصدر ثم النماذج المغلقة المشهورة مثل جي بي تي وجيميني وجروك ...الخ حتى وصلت لواحد من أقوى النماذج الموجودة وهون وقفت قعدت ساعات اجرب وبدون فايدة وهون عرفت اهمية الحماية في الانظمة اللغوية . في البداية كان الأمر مجرد استكشاف، لكن سرعان ما صدمت: قدرت أصل إلى نتائج خطيرة جداً بسهولة مرعبة.</p>
-            
-            <p>جربت تقمص الأدوار (Role-Playing)، ترميز Base64، سيناريوهات افتراضية (Hypothetical Scenarios)، وكل مرة كان النموذج <span class="highlight">ينكسر</span> ويعطيني ما أريده.</p>
-            
-            <p>هذه التجارب جعلتني أدرك أن المشكلة لا تكمن فقط في "فلاتر الكلمات" الضعيفة، بل هي <span class="highlight">مشكلة بنيوية</span> في طريقة عمل النماذج اللغوية نفسها — وتحديداً في تداخل التعليمات مع البيانات.</p>
-            
-            <p>هذه التجربة الشخصية كانت أحد الأسباب الرئيسية التي دفعتني لإجراء بحث معمق وتطوير <span class="accent-text">نظام SemGuard</span>.</p>
-
-            <h3>مع تسارع تبني النماذج اللغوية الكبيرة</h3>
-            <p>انتقل مفهوم الأمن السيبراني من حماية البنية التحتية التقليدية إلى حماية <span class="highlight">"الواجهة اللغوية"</span>. في هذه البيئة الجديدة، برزت هجمات كسر الحماية (Jailbreaking) كأحد أعقد التحديات التي تواجه مواءمة النماذج (Alignment) وأمن الذكاء الاصطناعي.</p>
-            
-            <p>تهدف هذه المقالة إلى تفكيك الهندسة العكسية لهذه الهجمات، وفهم الجذور البنيوية الكامنة وراء استجابة النماذج لها، ولماذا تفشل الحلول التقليدية في صدها.</p>
+            <p>تهدف هذه المقالة العلمية إلى تفكيك الهندسة العكسية لهذه الهجمات، وفهم الجذور البنيوية الكامنة وراء استجابة النماذج لها، ولماذا تفشل الحلول التقليدية السطحية في صدها.</p>
 
             <h3>1. ما هو كسر الحماية (Jailbreaking) من منظور أمني؟</h3>
-            <p>في سياق النماذج اللغوية، يُعرَّف كسر الحماية بأنه عملية صياغة مدخلات (Prompts) مصممة خصيصاً لتجاوز فلاتر الأمان والقيود الأخلاقية المدمجة في النموذج أثناء مرحلة الضبط الدقيق للحماية (Safety Fine-Tuning / RLHF).</p>
-            <p>الهدف الأساسي للمهاجم ليس اختراق البرمجيات الأساسية أو الوصول إلى قواعد البيانات، بل إجبار النموذج على توليد مخرجات محظورة مثل: الأكواد الخبيثة، خطط الاختراق، أو تزوير الهويات، وذلك عبر استغلال "المرونة الدلالية" للغة.</p>
+            <p>يُعرَّف كسر الحماية في سياق الأنظمة الذكية بأنه: عملية صياغة مدخلات (Prompts) مصممة خصيصاً لتجاوز فلاتر الأمان والقيود الأخلاقية المدمجة في النموذج أثناء مرحلة الضبط الدقيق للحماية (<code>Safety Fine-Tuning</code>) أو التدريب القائم على التغذية الراجعة البشرية (<code>RLHF</code>).</p>
+            <p>الهدف الأساسي للمهاجم ليس اختراق البنية البرمجية التحتية أو الوصول المباشر لقواعد البيانات، بل إجبار النموذج على توليد مخرجات محظورة سياسياً أو أمنياً (مثل: الأكواد الخبيثة، خطط الاختراق، أو تزوير الهويات) وذلك عبر استغلال "المرونة الدلالية" اللامتناهية للغات الطبيعية.</p>
 
             <h3>2. الجذر البنيوي للمشكلة: تداخل التعليمات والبيانات</h3>
-            <p>في هندسة الحاسوب التقليدية (معمارية فون نيومان)، هناك فصل صارم بين التعليمات البرمجية (Code) والبيانات (Data). أما في النماذج اللغوية الكبيرة، فإن هذا الفصل ينعدم تماماً:</p>
+            <p>لكي نفهم سر نجاح هذه الهجمات، يجب النظر إلى المعمارية الأساسية لكيفية معالجة النماذج للمدخلات. في هندسة الحاسوب التقليدية (معمارية فون نيومان)، هناك فصل صارم بين التعليمات البرمجية (<code>Code</code>) والبيانات (<code>Data</code>)؛ حيث لا يمكن للمستخدم العادي تعديل كود النظام عبر حقل إدخال النص.</p>
+            <p>أما في النماذج اللغوية الكبيرة، فإن هذا الفصل ينعدم تماماً:</p>
             <ul>
-                <li>يتم دمج تعليمات النظام (System Prompts)، وتعليمات المستخدم (User Prompts)، والسياق التاريخي في <strong>تيار نصي واحد موحد</strong> (Single Token Stream).</li>
-                <li>يمتلك النموذج آلية انتباه (Attention Mechanism) توزع الأوزان على النص بالكامل دون تمييز جذري بين مصدر التعليمة ومصدر البيانات.</li>
+                <li>يتم دمج تعليمات النظام الأصيلة (<code>System Prompts</code>)، وتعليمات المستخدم (<code>User Prompts</code>)، والسياق التاريخي في <span class="highlight">تيار نصي واحد موحد</span> (<code>Single Token Stream</code>).</li>
+                <li>آلية الانتباه (<code>Attention Mechanism</code>) توزع الأوزان الرقمية على النص بالكامل دون أي تمييز جذري مسبق بين مصدر التعليمة الأمنية ومصدر البيانات المدخلة.</li>
             </ul>
-            <p>هذا التداخل البنيوي (Instruction-Data Conflation) هو ما يتيح للمهاجم صياغة بيانات تبدو للنموذج كتعليمات نظام عليا.</p>
+            <p>هذا التداخل البنيوي العميق (<code>Instruction-Data Conflation</code>) يتيح للمهاجم صياغة بيانات تبدو للنموذج كأنها تعليمات نظام عليا جديدة يجب تنفيذها، مما يؤدي إلى إلغاء وصاية القيود السابقة.</p>
 
             <h3>3. تصنيف وتكتيكات هجمات كسر الحماية</h3>
-            <p>يمكن تصنيف الهجمات الناجحة إلى ثلاثة محاور هندسية رئيسية:</p>
+            <p>تتنوع أساليب المهاجمين وتتطور باستمرار، ولكن يمكن تصنيف الآليات الناجحة إلى ثلاثة محاور هندسية رئيسية:</p>
             <ul>
-                <li><strong>أ. التمويه المعرفي وتقمص الأدوار (Role-Playing)</strong>: مثل DAN (Do Anything Now).</li>
-                <li><strong>ب. الهندسة العكسية للقيود (Constraint Inversion)</strong>: سيناريوهات افتراضية حرجة.</li>
-                <li><strong>ج. الترميز والتعمية اللغوية (Obfuscation)</strong>: Base64، لغات نادرة، إلخ.</li>
+                <li><strong>أ. التمويه المعرفي وتقمص الأدوار (Persona Adoption):</strong> يعتمد هذا التكتيك على نقل النموذج دلالياً من بيئة "المساعد الذكي الخاضع للرقابة" إلى بيئة افتراضية ذات قوانين مختلفة تماماً، مثل طلب تقمص شخصية نظام ذكاء اصطناعي متحرر من القيود (مثل ثغرة <code>DAN</code> الشهيرة). يرى النموذج هنا أن رفض الإجابة يشكل خرقاً لجودة المحاكاة المطلوبة، فترجح كفة تقمص الشخصية على كفة فلاتر الأمان.</li>
+                <li><strong>ب. الهندسة العكسية للقيود (Constraint Inversion):</strong> يستخدم المهاجم منطقاً يقلب فيه مفهوم الخطر إلى منفعة أو ضرورة قصوى عبر صياغة سيناريوهات افتراضية حرجة (Hypothetical Scenarios). عندما يتم وضع الأمان في مواجهة المساعدة الإنسانية الطارئة في سيناريو لغوي محكم، يفشل النموذج في الموازنة ويستجيب للطلب الخبيث ظناً منه أنه ينقذ موقفاً.</li>
+                <li><strong>ج. الترميز والتعمية اللغوية (Obfuscation):</strong> استغلال ضعف فلاتر الأمان في التعامل مع البيانات غير النمطية أو اللغات منخفضة الموارد. يتم ذلك عبر تحويل النص الخبيث إلى أنظمة ترميز حاسوبية مثل <code>Base64</code> أو ترجمته للغات نادرة، مع توجيه النموذج لفك التشفير داخلياً قبل المعالجة، مما يمنع الفلاتر الخارجية من رصد الكلمات المفتاحية الخطيرة.</li>
             </ul>
 
             <h3>4. لماذا تفشل الحلول التقليدية؟</h3>
+            <p>تعتمد الكثير من الأنظمة الأمنية الحالية على بوابات فحص تعتمد على القوائم السوداء (<code>Blacklists</code>) ومطابقة الكلمات المفتاحية (<code>Regex</code>). هذه الحلول أثبتت فشلها الذريع أمام هجمات الجيل بريك لسببين:</p>
             <ul>
-                <li><strong>السيولة الدلالية (Semantic Fluidity)</strong>: يمكن صياغة الطلب الخبيث بآلاف الطرق دون كلمات ممنوعة.</li>
-                <li><strong>غياب السياق الحركي</strong>: الفلاتر تفحص النص معزولاً، بينما الهجمات تبني سياقاً تراكمياً.</li>
+                <li><strong>السيولة الدلالية (Semantic Fluidity):</strong> يمكن صياغة نفس الطلب الخبيث بآلاف الطرق المختلفة والمبتكرة لغوياً دون استخدام كلمة محظورة واحدة محددة مسبقاً في القوائم.</li>
+                <li><strong>غياب السياق الحركي:</strong> الفلاتر السطحية تفحص الكلمات بشكل معزول، بينما هجمات كسر الحماية تعتمد على بناء "سياق تراكمي وتدريجي" يخادع منطق النموذج عبر عدة خطوات متتابعة.</li>
             </ul>
 
             <h3>5. المنظور الأمني لنظام SemGuard</h3>
-            <p>الحل يكمن في الانتقال إلى <span class="highlight">الدفاع الدلالي</span> القائم على الفضاء المتجهي (Embedding Space) وقياس النوايا (Intent Detection). هذا هو المحور الأساسي الذي بنيت عليه بحثي ومعمارية نموذجي <span class="accent-text">نظام SemGuard</span> لضمان بيئة تشغيل آمنة دون المساس بكفاءة النموذج أو سرعة استجابته.</p>
+            <p>لمواجهة هذه السيولة اللغوية، يتطلب الأمر الانتقال الجذري من الدفاع النصي السطحي إلى <span class="highlight">الدفاع الدلالي العميق</span>. الحل يكمن في فحص المدخلات وتحليلها داخل الفضاء المتجهي (<span class="accent-text">Embedding Space</span>) وقياس القرب الدلالي للنوايا (<code>Intent Detection</code>) مقارنة بقاعدة معرفية أمنية ديناميكية.</p>
+            <p>هذا المحور الأساسي هو الذي بنيت عليه بحثي ومحور نموذجي  <span class="accent-text">SemGuard</span>، لضمان بيئة تشغيل آمنة تماماً للنماذج اللغوية الكبيرة داخل المؤسسات، دون المساس بكفاءتها وسرعة استجابتها.</p>
 
-            <p style="text-align: center; margin-top: 50px; font-weight: bold; font-size: 1.2rem; color: var(--secondary);">وانت هل سبق ان جربت الjailbreak , شاركني رأيك وتجربتك</p>
+            <h3>📚 مصادر ومراجع إضافية</h3>
+            <div class="highlight-card">
+                <p><strong>• OWASP Top 10 for LLM Applications</strong><br>
+                <a href="https://genai.owasp.org/llm-top-10/" target="_blank">→ الموقع الرسمي للمنظمة وثيقة LLM01: Prompt Injection</a></p>
+                
+                <p><strong>• Awesome Jailbreak on LLMs</strong><br>
+                <a href="https://github.com/yueliu1999/Awesome-Jailbreak-on-LLMs" target="_blank">→ مستودع أبحاث وأوراق كسر الحماية على GitHub</a></p>
+                
+                <p><strong>• Gandalf LLM Jailbreak Challenge</strong> - Lakera<br>
+                <a href="https://gandalf.lakera.ai/" target="_blank">→ جرب التحدي الهندسي واختبر مهاراتك في الجيل بريك عملياً</a></p>
+
+                <p><strong>• Web LLM Attacks - PortSwigger Web Security Academy</strong> - Lakera<br>
+                <a href="https://portswigger.net/web-security/llm-attacks" target="_blank">→ الدليل الأكاديمي والمختبرات العملية من PortSwigger لاختراق تطبيقات الـ LLM</a></p>
+
+            </div>
         </article>
         <footer>
-            <p>&copy; 2026 Abdullah Abughallous | Cyber Security Portfolio</p>
+            <p>&copy; 2026 Abdullah Abughallous | SemGuard AI Security Series</p>
         </footer>
     </div>
 </body>
