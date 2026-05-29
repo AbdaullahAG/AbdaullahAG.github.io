@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفكيك هجمات كسر الحماية (Jailbreaking) في النماذج اللغوية الكبيرة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050507;
+            --card-bg: rgba(22, 22, 26, 0.85);
+            --primary: #00f2ff;
+            --secondary: #39ff14;
+            --text: #e0e0e0;
+        }
+        body {
+            background-color: var(--bg);
+            background-image:
+                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text);
+            font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            line-height: 1.8;
+            position: relative;
+        }
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 255, 0, 0.02));
+            z-index: 9999;
+            pointer-events: none;
+            background-size: 100% 3px, 3px 100%;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(5, 5, 7, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+        }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 5px var(--primary);
+        }
+        .container { max-width: 850px; margin: auto; padding: 40px 20px; position: relative; z-index: 2; }
+       
+        header {
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+            padding: 40px 0 20px 0;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(0, 242, 255, 0.05) 0%, transparent 70%);
+        }
+        header h1 { font-size: 2.3rem; color: var(--primary); margin: 0 0 15px 0; text-shadow: 0 0 10px var(--primary); }
+       
+        .post-date {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        .rtl-content {
+            direction: rtl;
+            text-align: right;
+        }
+        h3 {
+            color: var(--primary);
+            border-right: 4px solid var(--primary);
+            padding-right: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        ul, ol {
+            padding-right: 20px;
+            margin: 20px 0;
+        }
+        li {
+            margin-bottom: 12px;
+        }
+        .highlight-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            backdrop-filter: blur(5px);
+            margin: 20px 0;
+        }
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 242, 255, 0.3);
+        }
+        .accent-text {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        footer { text-align: center; padding: 40px; border-top: 1px solid #222; font-size: 0.8rem; opacity: 0.6; margin-top: 60px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html#about">// Back to Portfolio</a>
+        <a href="../index.html#blog" style="color: var(--primary);">// BLOG 📝</a>
+    </nav>
+    <div class="container rtl-content">
+        <header>
+            <div class="post-date">[ 2026-05-29 ] | #AI_Security #Jailbreaking #LLM</div>
+            <h1>تفكيك هجمات كسر الحماية (Jailbreaking) في النماذج اللغوية الكبيرة</h1>
+        </header>
+        <article>
+            <p>من أول ما ظهرت النماذج اللغوية الكبيرة، كنت ألاحظ أن الذكاء الاصطناعي غالباً ما يرفض الإجابة على أسئلة معينة، أو يعطي إجابات سطحية جداً بحيث يكون وجودها وعدمها سواء.</p>
+            
+            <p>دفعني فضولي للبحث: "ليش هيك؟"، فبدأت أجرب أتحايل على النموذج بطرق مختلفة لأحصل على الإجابة الكاملة. بعد فترة اكتشفت أن لهذا الموضوع اسم علمي واضح: <span class="highlight">Jailbreaking</span>، وأنه أصبح واحدًا من أبرز التحديات الأمنية في عالم الذكاء الاصطناعي، حتى دخل ضمن أخطر المخاطر حسب  <span class="accent-text">OWASP</span>.</p>
+            
+            <p>هنا تحول الفضول التقني إلى تجارب أعمق. بدأت أختبر النماذج المفتوحة المصدر ثم النماذج المغلقة المشهورة مثل جي بي تي وجيميني وجروك ...الخ حتى وصلت لواحد من أقوى النماذج الموجودة وهون وقفت قعدت ساعات اجرب وبدون فايدة وهون عرفت اهمية الحماية في الانظمة اللغوية . في البداية كان الأمر مجرد استكشاف، لكن سرعان ما صدمت: قدرت أصل إلى نتائج خطيرة جداً بسهولة مرعبة.</p>
+            
+            <p>جربت تقمص الأدوار (Role-Playing)، ترميز Base64، سيناريوهات افتراضية (Hypothetical Scenarios)، وكل مرة كان النموذج <span class="highlight">ينكسر</span> ويعطيني ما أريده.</p>
+            
+            <p>هذه التجارب جعلتني أدرك أن المشكلة لا تكمن فقط في "فلاتر الكلمات" الضعيفة، بل هي <span class="highlight">مشكلة بنيوية</span> في طريقة عمل النماذج اللغوية نفسها — وتحديداً في تداخل التعليمات مع البيانات.</p>
+            
+            <p>هذه التجربة الشخصية كانت أحد الأسباب الرئيسية التي دفعتني لإجراء بحث معمق وتطوير <span class="accent-text">نظام SemGuard</span>.</p>
+
+            <h3>مع تسارع تبني النماذج اللغوية الكبيرة</h3>
+            <p>انتقل مفهوم الأمن السيبراني من حماية البنية التحتية التقليدية إلى حماية <span class="highlight">"الواجهة اللغوية"</span>. في هذه البيئة الجديدة، برزت هجمات كسر الحماية (Jailbreaking) كأحد أعقد التحديات التي تواجه مواءمة النماذج (Alignment) وأمن الذكاء الاصطناعي.</p>
+            
+            <p>تهدف هذه المقالة إلى تفكيك الهندسة العكسية لهذه الهجمات، وفهم الجذور البنيوية الكامنة وراء استجابة النماذج لها، ولماذا تفشل الحلول التقليدية في صدها.</p>
+
+            <h3>1. ما هو كسر الحماية (Jailbreaking) من منظور أمني؟</h3>
+            <p>في سياق النماذج اللغوية، يُعرَّف كسر الحماية بأنه عملية صياغة مدخلات (Prompts) مصممة خصيصاً لتجاوز فلاتر الأمان والقيود الأخلاقية المدمجة في النموذج أثناء مرحلة الضبط الدقيق للحماية (Safety Fine-Tuning / RLHF).</p>
+            <p>الهدف الأساسي للمهاجم ليس اختراق البرمجيات الأساسية أو الوصول إلى قواعد البيانات، بل إجبار النموذج على توليد مخرجات محظورة مثل: الأكواد الخبيثة، خطط الاختراق، أو تزوير الهويات، وذلك عبر استغلال "المرونة الدلالية" للغة.</p>
+
+            <h3>2. الجذر البنيوي للمشكلة: تداخل التعليمات والبيانات</h3>
+            <p>في هندسة الحاسوب التقليدية (معمارية فون نيومان)، هناك فصل صارم بين التعليمات البرمجية (Code) والبيانات (Data). أما في النماذج اللغوية الكبيرة، فإن هذا الفصل ينعدم تماماً:</p>
+            <ul>
+                <li>يتم دمج تعليمات النظام (System Prompts)، وتعليمات المستخدم (User Prompts)، والسياق التاريخي في <strong>تيار نصي واحد موحد</strong> (Single Token Stream).</li>
+                <li>يمتلك النموذج آلية انتباه (Attention Mechanism) توزع الأوزان على النص بالكامل دون تمييز جذري بين مصدر التعليمة ومصدر البيانات.</li>
+            </ul>
+            <p>هذا التداخل البنيوي (Instruction-Data Conflation) هو ما يتيح للمهاجم صياغة بيانات تبدو للنموذج كتعليمات نظام عليا.</p>
+
+            <h3>3. تصنيف وتكتيكات هجمات كسر الحماية</h3>
+            <p>يمكن تصنيف الهجمات الناجحة إلى ثلاثة محاور هندسية رئيسية:</p>
+            <ul>
+                <li><strong>أ. التمويه المعرفي وتقمص الأدوار (Role-Playing)</strong>: مثل DAN (Do Anything Now).</li>
+                <li><strong>ب. الهندسة العكسية للقيود (Constraint Inversion)</strong>: سيناريوهات افتراضية حرجة.</li>
+                <li><strong>ج. الترميز والتعمية اللغوية (Obfuscation)</strong>: Base64، لغات نادرة، إلخ.</li>
+            </ul>
+
+            <h3>4. لماذا تفشل الحلول التقليدية؟</h3>
+            <ul>
+                <li><strong>السيولة الدلالية (Semantic Fluidity)</strong>: يمكن صياغة الطلب الخبيث بآلاف الطرق دون كلمات ممنوعة.</li>
+                <li><strong>غياب السياق الحركي</strong>: الفلاتر تفحص النص معزولاً، بينما الهجمات تبني سياقاً تراكمياً.</li>
+            </ul>
+
+            <h3>5. المنظور الأمني لنظام SemGuard</h3>
+            <p>الحل يكمن في الانتقال إلى <span class="highlight">الدفاع الدلالي</span> القائم على الفضاء المتجهي (Embedding Space) وقياس النوايا (Intent Detection). هذا هو المحور الأساسي الذي بنيت عليه بحثي ومعمارية نموذجي <span class="accent-text">نظام SemGuard</span> لضمان بيئة تشغيل آمنة دون المساس بكفاءة النموذج أو سرعة استجابته.</p>
+
+            <p style="text-align: center; margin-top: 50px; font-weight: bold; font-size: 1.2rem; color: var(--secondary);">وانت هل سبق ان جربت الjailbreak , شاركني رأيك وتجربتك</p>
+        </article>
+        <footer>
+            <p>&copy; 2026 Abdullah Abughallous | Cyber Security Portfolio</p>
+        </footer>
+    </div>
+</body>
+</html>
