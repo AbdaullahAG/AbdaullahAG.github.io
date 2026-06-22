@@ -51,6 +51,7 @@
             top: 0;
             z-index: 100;
             border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+            flex-wrap: wrap; /* لتجنب المشاكل في الشاشات الصغيرة */
         }
         nav a {
             color: var(--text);
@@ -108,6 +109,10 @@
         }
         .card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
 
+        /* ستايل خاص بكروت الرايت أب للتمييز البصري */
+        .writeup-card { border-left: 2px solid var(--secondary); }
+        .writeup-card:hover { border-color: var(--secondary); box-shadow: 0 0 15px rgba(57, 255, 20, 0.2); }
+
         .skill-tag { 
             display: inline-block; 
             background: rgba(34, 34, 34, 0.8); 
@@ -139,6 +144,9 @@
             transition: 0.3s;
         }
         .btn:hover { background: var(--primary); color: #000; }
+        
+        .btn-secondary { border-color: var(--secondary); color: var(--secondary); }
+        .btn-secondary:hover { background: var(--secondary); color: #000; }
 
         footer { text-align: center; padding: 40px; border-top: 1px solid #222; font-size: 0.8rem; opacity: 0.6; }
     </style>
@@ -151,6 +159,7 @@
         <a href="#experience">// Experience</a>
         <a href="#skills">// Skills</a>
         <a href="#projects">// Projects</a>
+        <a href="#writeups" style="color: var(--secondary); text-shadow: 0 0 5px var(--secondary);">// WRITE-UPS 🛡️</a>
         <a href="#blog" style="color: var(--primary);">// BLOG 📝</a>
     </nav>
 
@@ -169,39 +178,50 @@
         
         <section id="about">
             <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
-            <p>Computer Networks and Cybersecurity student with hands-on experience in enterprise network design,
-            traffic analysis, and IDS/IPS implementation using Snort 3. Active participant in national and international 
-            cybersecurity competitions with strong foundations in SOC operations, threat detection, and network troubleshooting.
-            Passionate about Network Engineering, SOC Analysis, and Cloud Security, with practical exposure to Oracle Cloud Infrastructure and automation using Python and Interested in AI-powered Security Solutions and Cloud Technologies.</p>
+            <p>Final-year Computer Networks & Cybersecurity student with hands-on experience in network administration, penetration testing, SOC
+             analysis, and IDS/IPS deployment. Trainee at Jordan's National Cyber Security Center (NCSC) and author of SemGuard—an
+             multilingual LLM security gateway. Highly focused on AI and LLM security, with a strong interest in cyber defense and adversarial
+             machine learning research.
+              </p>
         </section>
 
-        <!-- قسم المدونة الجديد -->
-        <section id="blog">
-            <h2 class="section-title">LATEST ARTICLES </h2>
+        <!-- قسم الرايت أب -->
+        <section id="writeups">
+            <h2 class="section-title" style="color: var(--secondary); border-right-color: var(--secondary);">SECURITY WRITE-UPS & RESEARCH</h2>
             <div class="grid">
                 
-                <!-- المقال الأول -->
-                <div class="card">
-              <div class="post-date">[ 2026-05-30 ]</div>
-             <h3>سلسلة SemGuard (1): تفكيك هجمات كسر الحماية (Jailbreaking)</h3>
-              <p>كيف يتلاعب المهاجمون بعقول النماذج اللغوية؟ في أولى مقالات السلسلة، نفكك الهندسة العكسية خلف هجمات الـ Jailbreaking والجذور البنيوية التي تجعل الحلول الأمنية التقليدية تفشل في صدها.</p>
-               <a href="blog/Jailbreaking.html" class="btn">اقرأ المقال / Read Article</a>
-               </div>
+                <!-- الرايت أب الخاص بالمشروع الأخير -->
+                <div class="card writeup-card">
+                    <div class="post-date">[ 2026-06-20 ]</div>
+                    <h3>AI Red Team vs Blue Team Lab: Autonomous Closed-Loop</h3>
+                    <p>A deep technical breakdown of building a fully autonomous security pipeline. How I engineered two AI agents (GPT-4o & gpt-5.2) to attack, analyze, patch code, and re-test a vulnerable application in under 2 minutes with zero human intervention.</p>
+                    <a href="writeups/ai-red-blue-lab.html" class="btn btn-secondary">Read Technical Write-up</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- قسم المدونة (كما كان) -->
+        <section id="blog">
+            <h2 class="section-title">LATEST ARTICLES</h2>
+            <div class="grid">
                 
                 <div class="card rtl-content">
-                    <div class="post-date">[ 2026-05-24 ]</div>
-                    <h3>How I Built a Phishing Detector Using Only Classical Algorithms — No ML Required</h3>
-                    <p>I built PhishGuard: a phishing detection system that catches these attacks using nothing but classical algorithms from my Algorithms course.
-                    No machine learning. No training data. No internet connection required.</p>
-                    <a href="blog/phishguard-article.html" class="btn" style="float: left;"> Read the full article </a>
+                    <div class="post-date">[ 2026-05-30 ]</div>
+                    <h3>سلسلة SemGuard (1): تفكيك هجمات كسر الحماية (Jailbreaking)</h3>
+                    <p>كيف يتلاعب المهاجمون بعقول النماذج اللغوية؟ في أولى مقالات السلسلة، نفكك الهندسة العكسية خلف هجمات الـ Jailbreaking والجذور البنيوية التي تجعل الحلول الأمنية التقليدية تفشل في صدها.</p>
+                    <a href="blog/Jailbreaking.html" class="btn" style="float: left;">اقرأ المقال</a>
                     <div style="clear: both;"></div>
                 </div>
-             <div class="card">
-           <div class="post-date">[ 2026-05-17 ]</div>
-          <h3>SemGuard: Winning 1st Place at IJSPC 2026 for LLM Security</h3>
-          <p>كيف حققت المركز الأول في مسابقة IJSPC 2026؟ تعرف على SemGuard، أول بوابة أمان دلالية (Semantic Gateway) مصممة لحماية النماذج اللغوية الكبيرة ودعم اللغة العربية.</p>
-          <a href="blog/semguard-ijspc.html" class="btn">اقرأ المقال / Read Article</a>
-          </div>
+                
+                <div class="card">
+                    <div class="post-date">[ 2026-05-24 ]</div>
+                    <h3>How I Built a Phishing Detector Using Only Classical Algorithms</h3>
+                    <p>I built PhishGuard: a phishing detection system that catches these attacks using nothing but classical algorithms from my Algorithms course.
+                    No machine learning. No training data. No internet connection required.</p>
+                    <a href="blog/phishguard-article.html" class="btn">Read Article</a>
+                </div>
+                
             </div>
         </section>
 
@@ -210,7 +230,7 @@
             <div class="grid">
                 <div class="card">
                     <h3>SHAFAQ GAME DEV TEAM</h3>
-                    <p><b> GAME DEVELOPER & MANAGER (2025 - 2026 )</b></p>
+                    <p><b> GAME DEVELOPER & MANAGER (2025 - 2026)</b></p>
                     <ul>
                         <li>Team Management in the main Game Dev section and in Social Media.</li>
                         <li>Expertly designed and optimized immersive environments, strategic layouts, and atmospheric worlds using Unreal Engine.</li>
@@ -220,11 +240,11 @@
                 </div>
                 <div class="card">
                     <h3>National Cyber Security Center (NCSC) – Jordan</h3>
-                    <p><b>Trainer (Mar-2026 - May-2026)</b></p>
+                    <p><b>Trainee (Mar-2026 - May-2026)</b></p>
                     <ul>
                         <li>Completing the official 200-hour national “Masar” cybersecurity field training program.</li>
                         <li>Gaining hands-on experience in real-world cybersecurity operations within a governmental environment.</li>
-                        <li>Working on practical tasks including [penetration testing / SOC / digital forensics / vulnerability assessment].</li>
+                        <li>Working on practical tasks including penetration testing, SOC operations, digital forensics, and vulnerability assessment.</li>
                         <li>Delivering a final capstone project as program requirement.</li>
                     </ul>
                 </div>
@@ -286,12 +306,12 @@
                 <div class="card">
                     <h4>Network Intrusion Detection System (NIDS) Implementation</h4>
                     <p>Deployed Snort 3 to monitor network traffic, creating custom rules to detect and block attacks using IPS/IDS .</p>
-                    <a href="https://github.com/AbdaullahAG/Intrusion-Detection-System-IDS-/tree/main/Snort3" class="btn">GitHub</a>
-                    <a href="https://github.com/AbdaullahAG/Intrusion-PreventionSystem-IPS" class="btn">GitHub</a>
+                    <a href="https://github.com/AbdaullahAG/Intrusion-Detection-System-IDS-/tree/main/Snort3" class="btn">GitHub (IDS)</a>
+                    <a href="https://github.com/AbdaullahAG/Intrusion-PreventionSystem-IPS" class="btn">GitHub (IPS)</a>
                 </div>
                 <div class="card">
-                    <h4>Semantics llm security gateway</h4>
-                    <p>SemGuard is an intelligent semantic security gateway that protects Large Language Models (LLMs) from advanced text-based attacks in Arabic and English</p>
+                    <h4>Semantics LLM Security Gateway</h4>
+                    <p>SemGuard is an intelligent semantic security gateway that protects Large Language Models (LLMs) from advanced text-based attacks in Arabic and English.</p>
                     <a href="https://github.com/AbdaullahAG/SemGuard" class="btn">GitHub</a>
                 </div>
                 <div class="card">
@@ -305,14 +325,14 @@
                     <a href="https://github.com/AbdaullahAG/python-project/tree/main" class="btn">GitHub</a>
                 </div>
                 <div class="card">
-                    <h4>• Enterprise Network Simulation (CCNA Labs) | Packet Trace</h4>
+                    <h4>Enterprise Network Simulation (CCNA Labs)</h4>
                     <p>Designed complex topologies simulating enterprise networks, configuring routing protocols (OSPF) and switching security.</p>
                     <a href="https://github.com/AbdaullahAG/Smart-Campus-System" class="btn">GitHub</a>
                     <a href="https://github.com/AbdaullahAG/Packet-Tracer-Project-CCNA-Labs-" class="btn">GitHub</a>
                 </div>
                 <div class="card">
                     <h4>Red/Blue Team Security Lab</h4>
-                    <p>Built a Red/Blue Team lab simulating real-world attack and defense.Performed black-box penetration testing, achieved RCE via reverse shell,reconstructed attack timeline using Splunk SIEM, and remediated all vulnerabilities at code level.</p>
+                    <p>Built a Red/Blue Team lab simulating real-world attack and defense. Performed black-box penetration testing, achieved RCE, and remediated all vulnerabilities at code level.</p>
                     <a href="https://github.com/AbdaullahAG/red-blue-team-lab" class="btn">GitHub</a>
                 </div>
                 <div class="card">
