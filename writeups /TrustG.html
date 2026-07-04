@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrustGuard AI: Multi-Agent Privacy Policy Analyzer - Hackathon Write-up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050507;
+            --card-bg: rgba(22, 22, 26, 0.85);
+            --primary: #00f2ff;
+            --secondary: #39ff14;
+            --text: #e0e0e0;
+        }
+        body {
+            background-color: var(--bg);
+            background-image:
+                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.8;
+            position: relative;
+        }
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 255, 0, 0.02));
+            z-index: 9999;
+            pointer-events: none;
+            background-size: 100% 3px, 3px 100%;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(5, 5, 7, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+        }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 5px var(--primary);
+        }
+        .container { max-width: 850px; margin: auto; padding: 40px 20px; position: relative; z-index: 2; }
+        
+        header {
+            border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+            padding: 40px 0 20px 0;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(0, 242, 255, 0.05) 0%, transparent 70%);
+        }
+        header h1 { font-size: 2.1rem; color: var(--primary); margin: 0 0 15px 0; text-shadow: 0 0 10px var(--primary); line-height: 1.5; }
+        
+        .post-date {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        .ltr-content {
+            direction: ltr;
+            text-align: left;
+        }
+        h3 {
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        ul, ol {
+            padding-left: 25px;
+            margin: 20px 0;
+        }
+        li {
+            margin-bottom: 14px;
+        }
+        code {
+            font-family: 'Fira Code', monospace;
+            background: rgba(0, 242, 255, 0.08);
+            color: var(--primary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 242, 255, 0.15);
+        }
+        pre code {
+            display: block;
+            padding: 15px;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+        .highlight-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            backdrop-filter: blur(5px);
+            margin: 25px 0;
+        }
+        .highlight-card a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .highlight-card a:hover {
+            color: var(--secondary);
+            text-shadow: 0 0 8px var(--secondary);
+            transform: translateX(5px);
+        }
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 242, 255, 0.3);
+        }
+        .accent-text {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        footer { text-align: center; padding: 40px; border-top: 1px solid #222; font-size: 0.8rem; opacity: 0.6; margin-top: 60px; font-family: 'Fira Code', monospace; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html#about">// Back to Portfolio</a>
+        <a href="../index.html#writeups" style="color: var(--primary);">// WRITE-UPS</a>
+    </nav>
+    <div class="container ltr-content">
+        <header>
+            <div class="post-date">[ 2026-07-04 ] | #Microsoft_Foundry #AI_Agents #Hackathon #LLMs</div>
+            <h1>No one reads privacy policies. TrustGuard AI does.</h1>
+            <p style="color: #aaa; font-size: 1.1rem; margin-top: 10px;">Building a Multi-Agent System for the Microsoft Agents League Hackathon</p>
+        </header>
+        <article>
+            <p>We all know the story. You sign up for a new app. A huge wall of legal text appears. Without thinking, you scroll down and click <span class="highlight">"I Accept"</span>. As developers, we know this hides massive data collection. But we just do not have time to read 40 pages of text.</p>
+            
+            <p>I built a solution for the <strong>Microsoft Agents League Hackathon</strong> (Reasoning Agents Track) in collaboration with <strong>Microsoft Foundry</strong>.</p>
+
+            <p>Meet <span class="accent-text">TrustGuard AI</span>. It is a multi-agent system. It does not just summarize policies. It uses logic to find real risks. It catches hidden tricks. It compares site safety to big tech companies.</p>
+
+            <h3>1. Logic vs. Summaries</h3>
+            <p>Most AI legal tools only <strong>summarize</strong>. But making a bad rule shorter does not make it safe. It is still a bad rule.</p>
+            <p>I wanted the AI to <span class="highlight">reason</span>. I used <code>Azure AI Foundry (GPT-5.4)</code> to build a pipeline. TrustGuard acts like a factory line. Each agent has one job. It passes context to the next agent to build a final risk report.</p>
+
+            <h3>2. The 6-Agent Pipeline</h3>
+            <p>The system relies on 6 specialized agents:</p>
+            <ul>
+                <li><strong>Extractor:</strong> Reads and sorts every rule (data collection, sharing, and user rights).</li>
+                <li><strong>Legal Reasoner:</strong> Finds real-world risks. (For example: What happens to you if this company gets hacked?).</li>
+                <li><strong>Dark Patterns Detector:</strong> Finds hidden tricks. It looks for forced consent and unclear words.</li>
+                <li><strong>Readability Analyzer:</strong> Checks how hard the text is to read. It uses Flesch-Kincaid and AI scoring.</li>
+                <li><strong>Rights Auditor:</strong> Checks 7 basic user rights (access, delete, etc.). It scores how easy it is to use them.</li>
+                <li><strong>Comparator (Policy DNA™):</strong> Compares the site to 8 big platforms.</li>
+            </ul>
+
+            <h3>3. Key Features</h3>
+            <ul>
+                <li><span class="accent-text">Policy DNA™:</span> It gives a clear risk score. Instead of random numbers, it says: "This site is 23% riskier than TikTok".</li>
+                <li><span class="accent-text">Change Tracker:</span> Companies change rules quietly. I built a tracker using <code>SHA-256</code>. It spots hidden updates between your visits.</li>
+                <li><span class="accent-text">Global Compliance:</span> It checks 6 major laws at the same time (GDPR, CCPA, PDPA, PIPEDA, LGPD, DPDPA).</li>
+            </ul>
+
+            <h3>4. Architecture & Data Flow</h3>
+            <p>This is how data moves through the system:</p>
+            
+            <pre><code>User Input (URL or raw text)
+        │
+        ▼
+┌───────────────────────────────────────────────────────┐
+│                  TrustGuard Pipeline                  │
+│                                                       │
+│  [Agent 1]        [Agent 2]        [Agent 3]          │
+│  Extractor   →   Legal Reasoner  → Dark Patterns      │
+│                                                       │
+│  [Agent 4]        [Agent 5]        [Agent 6]          │
+│  Readability  →   Rights Auditor → Comparator         │
+│                                                       │
+│  + Change Tracker (SHA-256 diff between visits)       │
+└───────────────────────────────────────────────────────┘
+        │
+        ▼
+  Tabbed Interactive Dashboard + PDF Report Export</code></pre>
+
+            <div class="highlight-card">
+                <p><strong>Tech Stack:</strong></p>
+                <ul>
+                    <li><strong>AI & LLM:</strong> Azure AI Foundry · GPT-5.4</li>
+                    <li><strong>Backend:</strong> Python · Flask · <code>fpdf2</code></li>
+                    <li><strong>Frontend:</strong> Vanilla JS · HTML/CSS</li>
+                    <li><strong>Processing:</strong> <code>BeautifulSoup4</code> · <code>requests</code> · Local Flesch-Kincaid logic</li>
+                </ul>
+            </div>
+
+            <h3>5. Source Code</h3>
+            <p>Building a pipeline with many agents was a fun challenge. Managing the context window and passing data between agents took a lot of work. The project is open-source for personal use under the <code>PolyForm Noncommercial</code> license.</p>
+
+            <div class="highlight-card">
+                <p><strong>Source Code</strong><br>
+                <a href="https://github.com/YOUR_USERNAME/trustguard-ai" target="_blank">→ View on GitHub</a></p>
+                
+                <p><strong>Demo Video</strong><br>
+                <a href="LINK_TO_YOUR_VIDEO" target="_blank">→ Watch the pipeline in action</a></p>
+            </div>
+            
+            <p>I would love to hear your thoughts. Feel free to reach out on LinkedIn or GitHub if you have built similar AI systems.</p>
+        </article>
+        <footer>
+            <p>&copy; 2026 | TrustGuard AI - Built for Microsoft Foundry Hackathon</p>
+        </footer>
+    </div>
+</body>
+</html>
