@@ -75,6 +75,7 @@
             border-bottom: 1px solid rgba(0, 242, 255, 0.2);
         }
         .hero h1 { font-size: 3rem; color: var(--primary); margin: 0; text-shadow: 0 0 10px var(--primary); }
+        .hero .subtitle { font-family: 'Fira Code', monospace; color: #888; font-size: 0.95rem; margin-top: 12px; letter-spacing: 0.5px; }
         .terminal-text { font-family: 'Fira Code', monospace; color: var(--secondary); margin-top: 10px; height: 30px; }
 
         section { margin: 60px 0; scroll-margin-top: 80px; }
@@ -112,6 +113,16 @@
         /* ستايل خاص بكروت الرايت أب للتمييز البصري */
         .writeup-card { border-left: 2px solid var(--secondary); }
         .writeup-card:hover { border-color: var(--secondary); box-shadow: 0 0 15px rgba(57, 255, 20, 0.2); }
+
+        /* ستايل خاص بكرت النشر العلمي */
+        .pub-card { border-left: 2px solid var(--primary); }
+        .pub-card:hover { border-color: var(--primary); box-shadow: 0 0 15px rgba(0, 242, 255, 0.25); }
+        .pub-meta { font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--secondary); margin-bottom: 10px; }
+        .pub-authors { font-size: 0.9rem; color: #aaa; margin-bottom: 10px; }
+        .pub-stats { display: flex; gap: 10px; flex-wrap: wrap; margin: 15px 0; }
+        .stat-box { background: rgba(0,0,0,0.4); border: 1px solid rgba(0,242,255,0.2); border-radius: 6px; padding: 10px 14px; text-align: center; min-width: 90px; }
+        .stat-box .num { font-family: 'Fira Code', monospace; color: var(--primary); font-size: 1.3rem; display: block; }
+        .stat-box .label { font-size: 0.7rem; color: #888; text-transform: uppercase; }
 
         .skill-tag { 
             display: inline-block; 
@@ -156,6 +167,7 @@
     <!-- شريط الانتقال -->
     <nav>
         <a href="#about">// About</a>
+        <a href="#publications" style="color: var(--primary); text-shadow: 0 0 5px var(--primary);">// Research 📄</a>
         <a href="#experience">// Experience</a>
         <a href="#skills">// Skills</a>
         <a href="#projects">// Projects</a>
@@ -165,9 +177,10 @@
 
     <section class="hero">
         <h1>Abdallah Abughallous</h1>
+        <div class="subtitle">Cybersecurity Engineer · AI Security Researcher · IEEE Author · Open-Source Developer</div>
         <div id="typing" class="terminal-text"></div>
         <div class="contact-info">
-            <a href="mailto:ABD.MOH9999@YAHOO.COM">📧 ABD.MOH9999@YAHOO.COM</a>
+            <a href="mailto:abd.moh9999@yahoo.com">📧 abd.moh9999@yahoo.com</a>
             <a href="tel:+962780979052">📞 +962 7 8097 9052</a>
             <a href="https://github.com/AbdaullahAG">💻 GitHub</a>
             <a href="https://linkedin.com/in/abdallah-abu-ghallous-937911317">🔗 LinkedIn</a> 
@@ -178,11 +191,36 @@
         
         <section id="about">
             <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
-            <p>Final-year Computer Networks & Cybersecurity student with hands-on experience in network administration, penetration testing, SOC
-             analysis, and IDS/IPS deployment. Trainee at Jordan's National Cyber Security Center (NCSC) and author of SemGuard—an
-             multilingual LLM security gateway. Highly focused on AI and LLM security, with a strong interest in cyber defense and adversarial
-             machine learning research.
-              </p>
+            <p>Computer Networks & Cybersecurity graduate with hands-on experience in network security, penetration testing, SOC
+            analysis, IDS/IPS deployment, and AI-powered security solutions. Former trainee at Jordan's National Cyber Security
+            Center (NCSC) and author of the IEEE paper <b>"SemGuard: A Triple-Anchor Semantic Security Gateway for Multilingual
+            Prompt Attack Detection in Large Language Models"</b> (IEEE AEECT 2026, IEEE Xplore indexing forthcoming). Passionate
+            about AI/LLM security, cyber defense, and adversarial machine learning research.</p>
+        </section>
+
+        <!-- قسم النشر العلمي / الأبحاث -->
+        <section id="publications">
+            <h2 class="section-title">PUBLICATIONS & RESEARCH</h2>
+            <div class="grid">
+                <div class="card pub-card">
+                    <div class="pub-meta">[ IEEE AEECT 2026 ] · IEEE Xplore indexing forthcoming</div>
+                    <h3>SemGuard: A Triple-Anchor Semantic Security Gateway for Multilingual Prompt Attack Detection in Large Language Models</h3>
+                    <div class="pub-authors">Authors: Abdullah M. Abughallous, Dr. Somia Abufakher</div>
+                    <p>Introduced the first Triple-Anchor Semantic Threat Modeling framework for explainable, multilingual LLM
+                    prompt-attack detection, covering Arabic, Arabizi, and English. Built the first formally validated Arabic
+                    LLM Security Dataset (807 samples across 7 threat categories) using GPT-4o, Grok-4, and Llama 3.3 70B as
+                    independent judges, achieving a Fleiss' κ of 0.839.</p>
+                    <div class="pub-stats">
+                        <div class="stat-box"><span class="num">0.989</span><span class="label">Mean F1</span></div>
+                        <div class="stat-box"><span class="num">0.991</span><span class="label">Recall</span></div>
+                        <div class="stat-box"><span class="num">0.992</span><span class="label">F1 (Arabic)</span></div>
+                        <div class="stat-box"><span class="num">807</span><span class="label">Dataset Samples</span></div>
+                    </div>
+                    <p style="font-size:0.85rem; color:#888;">Keywords: LLM Security · Prompt Injection · AI Security · Arabic NLP · Explainable AI</p>
+                    <a href="https://huggingface.co" class="btn">View on Hugging Face</a>
+                    <a href="https://github.com/AbdaullahAG/SemGuard" class="btn btn-secondary">GitHub (Coming Soon)</a>
+                </div>
+            </div>
         </section>
 
         <!-- قسم الرايت أب -->
@@ -247,12 +285,13 @@
                 </div>
                 <div class="card">
                     <h3>National Cyber Security Center (NCSC) – Jordan</h3>
-                    <p><b>Trainee (Mar-2026 - May-2026)</b></p>
+                    <p><b>Cybersecurity Trainee (Mar-2026 - May-2026)</b></p>
                     <ul>
-                        <li>Completing the official 200-hour national “Masar” cybersecurity field training program.</li>
-                        <li>Gaining hands-on experience in real-world cybersecurity operations within a governmental environment.</li>
-                        <li>Working on practical tasks including penetration testing, SOC operations, digital forensics, and vulnerability assessment.</li>
-                        <li>Delivering a final capstone project as program requirement.</li>
+                        <li>Enrolled in the 200-hour national "Masar" cybersecurity field training program.</li>
+                        <li>Gained hands-on experience in real-world cybersecurity operations within a governmental environment.</li>
+                        <li>Hands-on: penetration testing, SOC monitoring, digital forensics, and vulnerability assessment.</li>
+                        <li>Conducted Red/Blue/GRC exercises in controlled governmental lab environments.</li>
+                        <li>Delivered a final capstone project containing a Red/Blue Team lab simulating real-world attack and defense.</li>
                     </ul>
                 </div>
             </div>
@@ -262,8 +301,8 @@
             <h2 class="section-title">EDUCATION</h2>
             <div class="grid">
                 <div class="card">
-                    <h3>BACHELOR OF COMPUTER NETWORK SYSTEM </h3>
-                    <p>World Islamic Sciences and Education University <b>WISE</b>, (2022 – now).</p>
+                    <h3>B.Sc. COMPUTER NETWORK SYSTEMS </h3>
+                    <p>World Islamic Sciences and Education University <b>(WISE)</b>, Jordan — (2022 – 2026).</p>
                 </div>
             </div>
         </section>
@@ -272,46 +311,52 @@
             <h2 class="section-title"> SKILLS</h2>
             <div class="grid">
                 <div class="card">
-                    <h3>Networking & Security</h3>
-                    <span class="skill-tag">Routing & Switching (OSPF, EIGRP, BGP)</span> 
-                    <span class="skill-tag">VLANs, Inter-VLAN Routing</span> 
-                    <span class="skill-tag">Network Troubleshooting</span> 
-                    <span class="skill-tag">Traffic Analysis</span>
+                    <h3>Security</h3>
+                    <span class="skill-tag">Penetration Testing</span>
+                    <span class="skill-tag">SOC Analysis</span>
                     <span class="skill-tag">IDS/IPS (Snort 3)</span>
-                    <span class="skill-tag">Wireshark, Nmap</span>
-                    <span class="skill-tag">GNS3, CISCO PT, EVE-NG</span> 
-                </div>
-                <div class="card">
-                    <h3>Cybersecurity & SOC</h3>
-                    <span class="skill-tag">SOC & SIEM Concepts</span> 
-                    <span class="skill-tag">Incident Response</span>
-                    <span class="skill-tag">Threat Intelligence</span> 
+                    <span class="skill-tag">MITRE ATT&CK</span>
                     <span class="skill-tag">OSINT</span>
-                    <span class="skill-tag">Digital Forensics</span> 
-                    <span class="skill-tag">MITRE ATT&CK Awareness</span> 
+                    <span class="skill-tag">Digital Forensics</span>
+                    <span class="skill-tag">Wireshark, Nmap</span>
+                    <span class="skill-tag">Threat Intelligence</span>
                 </div>
                 <div class="card">
-                    <h3>Programming & Scripting</h3>
-                    <span class="skill-tag">Python (Security Tools)</span> 
+                    <h3>Networking</h3>
+                    <span class="skill-tag">OSPF, EIGRP, BGP</span>
+                    <span class="skill-tag">VLANs, STP, QoS</span>
+                    <span class="skill-tag">TCP/IP, DHCP, DNS</span>
+                    <span class="skill-tag">GNS3, EVE-NG</span>
+                    <span class="skill-tag">CISCO Packet Tracer</span>
+                </div>
+                <div class="card">
+                    <h3>Programming</h3>
+                    <span class="skill-tag">Python</span>
                     <span class="skill-tag">Bash / Shell Scripting</span>
-                    <span class="skill-tag">SQL, MySQL</span> 
+                    <span class="skill-tag">SQL / MySQL</span>
+                    <span class="skill-tag">Flask, FastAPI</span>
+                    <span class="skill-tag">UI/UX Design</span>
                     <span class="skill-tag">Java / C++</span>
                     <span class="skill-tag">HTML, CSS, JavaScript</span>
                 </div>
                 <div class="card">
-                    <h3>Operating Systems & Cloud</h3>
-                    <span class="skill-tag">Linux (Ubuntu, Kali, Parrot)</span>
-                    <span class="skill-tag">Windows Server </span>
+                    <h3>Cloud & Operating Systems</h3>
                     <span class="skill-tag">Oracle Cloud (OCI)</span>
                     <span class="skill-tag">MS Azure</span>
+                    <span class="skill-tag">Linux (Kali, Ubuntu, Parrot)</span>
+                    <span class="skill-tag">Windows Server</span>
+                    <span class="skill-tag">Splunk SIEM</span>
                 </div>
-                   <div class="card">
-                    <h3>AI</h3>
-                    <span class="skill-tag">AI SECURITY Researcher </span>
-                    <span class="skill-tag">LLM Security Researcher </span>
-                    <span class="skill-tag">AI Agent </span>
-                    <span class="skill-tag">Multi Agent </span>
-                    <span class="skill-tag">Machine Learning </span>
+                <div class="card">
+                    <h3>AI & Machine Learning</h3>
+                    <span class="skill-tag">AI Security</span>
+                    <span class="skill-tag">LLM Security</span>
+                    <span class="skill-tag">Prompt Injection Detection</span>
+                    <span class="skill-tag">AI Agents / Multi-Agent Systems</span>
+                    <span class="skill-tag">Prompt Engineering</span>
+                    <span class="skill-tag">Explainable AI (XAI)</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Scientific Research</span>
                 </div>
             </div>
         </section>
@@ -320,6 +365,12 @@
             <h2 class="section-title">PROJECTS</h2>
             <div class="grid">
                 <div class="card">
+                    <h4>SemGuard — Multilingual LLM Security Gateway</h4>
+                    <p>First-of-its-kind semantic security gateway protecting LLMs against prompt attacks across Arabic, Arabizi, and English, built on a Triple-Anchor Semantic Threat Modeling framework. Companion research accepted at IEEE AEECT 2026.</p>
+                    <a href="https://huggingface.co" class="btn">Hugging Face</a>
+                    <a href="https://github.com/AbdaullahAG/SemGuard" class="btn">GitHub (Coming Soon)</a>
+                </div>
+                <div class="card">
                     <h4>Autonomous-Ai-Red-Blue-Lab</h4>
                     <p>An autonomous, closed-loop multi-agent security lab using AutoGen, GPT-4o, and gpt-5.2 for automated Red Team exploitation and self-healing Blue Team code patching.</p>
                     <a href="https://github.com/AbdaullahAG/autonomous-ai-red-blue-lab" class="btn">GitHub</a>
@@ -327,22 +378,22 @@
                 <div class="card">
                     <h4>Trustguard_AI</h4>
                     <p>AI-powered privacy policy analyzer built for Microsoft's Agents League Hackathon 2026 (Reasoning Agents track). 6 specialized AI agents extract, reason, detect dark patterns, score readability, audit user rights, and benchmark policies against TikTok, Facebook & more — covering GDPR/CCPA/PDPA/PIPEDA/LGPD/DPDPA. Built with Flask + Microsoft Foundry.</p>
-                    <a href="https://github.com/AbdaullahAG/red-blue-team-lab" class="btn">GitHub</a>
+                    <a href="https://github.com/AbdaullahAG/Trustguard_AI" class="btn">GitHub</a>
                 </div>
                 <div class="card"> 
                     <h4>Red/Blue Team Security Lab</h4>
-                    <p>Built a Red/Blue Team lab simulating real-world attack and defense. Performed black-box penetration testing, achieved RCE, and remediated all vulnerabilities at code level.</p>
-                    <a href="https://github.com/AbdaullahAG/Trustguard_AI" class="btn">GitHub</a>
+                    <p>Full attack/defense lifecycle across a 3-VM lab: exploited and patched SQLi, XSS, OS Command Injection, and File Upload vulnerabilities. Deployed Splunk HEC for real-time log forwarding, custom detection queries, and incident response.</p>
+                    <a href="https://github.com/AbdaullahAG/red-blue-team-lab" class="btn">GitHub</a>
                 </div>
                 <div class="card">
-                    <h4>Semantics LLM Security Gateway (Accepted For AEECT Conference)</h4>
-                    <p>SemGuard is an intelligent semantic security gateway that protects Large Language Models (LLMs) from advanced text-based attacks in Arabic and English.</p>
-                    <a href="https://github.com/AbdaullahAG/SemGuard" class="btn">GitHub(Coming soon)</a>
-                </div>
-                <div class="card">
-                    <h4>ThreatLens v2.0 — CLI tool </h4>
-                    <p>Python CLI tool for rapid IOC analysis (IPs, Domains, CVEs) using 6 free Threat Intel APIs. Outputs: Color-coded Excel, JSON, CSV. Uses: VT, Shodan, AbuseIPDB.</p>
+                    <h4>ThreatLens v2.0 — Multi-Source Threat Intel CLI</h4>
+                    <p>Officially featured in the "Awesome OSINT" repository (27.5K+ stars) as a recognized threat intelligence tool. Automates IOC enrichment (IP / Domain / Hash / CVE) across 6 APIs — AbuseIPDB, VirusTotal, Shodan, OTX, URLScan, NVD — with color-coded Excel, JSON, and CSV reports.</p>
                     <a href="https://github.com/AbdaullahAG/Threat_Intel_Project" class="btn">GitHub</a>
+                </div>
+                <div class="card">
+                    <h4>Rased — Crown Prince Award Participant</h4>
+                    <p>Developed the core computer vision system for "Rased," an automated road infrastructure monitoring app submitted for the Crown Prince Award. Trained a custom YOLOv11 model to detect road issues (e.g., potholes) and converted it to TFLite for real-time, low-resource mobile inference.</p>
+                    <a href="https://github.com/AbdaullahAG" class="btn">GitHub</a>
                 </div>
                 <div class="card">
                     <h4>Vulnerability Scanner</h4>
@@ -356,13 +407,13 @@
                     <a href="https://github.com/AbdaullahAG/Packet-Tracer-Project-CCNA-Labs-" class="btn">GitHub</a>
                 </div>
                   <div class="card">
-                    <h4>Network Intrusion Detection System (NIDS) Implementation</h4>
-                    <p>Deployed Snort 3 to monitor network traffic, creating custom rules to detect and block attacks using IPS/IDS .</p>
+                    <h4>Network Intrusion Detection System (NIDS/NIPS) — Snort 3</h4>
+                    <p>Deployed Snort 3 to monitor live network traffic with custom rules detecting and blocking real attack patterns.</p>
                     <a href="https://github.com/AbdaullahAG/Intrusion-Detection-System-IDS-/tree/main/Snort3" class="btn">GitHub (IDS)</a>
                     <a href="https://github.com/AbdaullahAG/Intrusion-PreventionSystem-IPS" class="btn">GitHub (IPS)</a>
                 </div>
                 <div class="card">
-                    <h4>Medical Appointment (SQL)</h4>
+                    <h4>Medical Appointment System (SQL)</h4>
                     <a href="https://github.com/Medical_Appointment_System" class="btn">GitHub</a>
                 </div>
                 <div class="card">
@@ -376,25 +427,38 @@
             <div class="grid">
                 <div class="card">
                     <h2 class="section-title">CERTIFICATIONS</h2>
+                    <div class="cert-item">Cybersecurity Defense Analyst Pathway Exam (CDAP)</div>
                     <div class="cert-item">Masar Training Program 2026 (National Cyber Security Center NCSC)</div>
-                    <div class="cert-item">Oracle Cloud 2025 Architect Associate</div>
-                    <div class="cert-item">Oracle Cloud 2025 Foundations Associate</div>
-                    <div class="cert-item">Oracle Cloud 2025 AI Foundations</div>
-                    <div class="cert-item">Fortinet Certified Fundamentals Cybersecurity 2026 (FCF) </div>
+                    <div class="cert-item">Oracle Cloud Architect Associate 2025 (OCI)</div>
+                    <div class="cert-item">Oracle Cloud Foundations Associate 2025 (OCI)</div>
+                    <div class="cert-item">Oracle Cloud AI Foundations Associate 2025 (OCI)</div>
+                    <div class="cert-item">Fortinet Certified Fundamentals Cybersecurity 2026 (FCF)</div>
+                    <div class="cert-item">Fortinet Certified Associate Cybersecurity 2026 (FCA)</div>
+                    <div class="cert-item">CCNA Curriculum Completed</div>
                     <div class="cert-item">Aspire Leaders Program 2026</div>
-                    <div class="cert-item">Fortinet Certified Associate Cybersecurity 2026 (FCA) </div>
                 </div>
                 <div class="card">
-                    <h2 class="section-title">COMPETITIONS</h2>
-                    <p>🏆 <b>IEEE CTF 2025 Finalist</b></p>
-                    <p>🏆 <b>Huawei ICT Competition National Final </b></p>
-                    <p>🏆 <b>IJSPC 1st place in AI Track & Best Paper Ambassador Award </b></p>
-                    <p>🏆 <b>AAU AI&ROBOTIC top 60 final from +300 </b></p>
+                    <h2 class="section-title">ACHIEVEMENTS</h2>
+                    <p>🏆 <b>IEEE CTF 2025 Finalist</b> (OSINT · Forensics · Web)</p>
+                    <p>🏆 <b>Huawei ICT Competition</b> — National Qualifier, sole university representative</p>
+                    <p>🏆 <b>IEEE IJSPC</b> — 1st Place in AI Track & Best Research Paper Ambassador Award</p>
+                    <p>🏆 <b>AAU AI & Robotics</b> — Top 60 of 300+ finalists</p>
+                    <p>📄 <b>IEEE AEECT 2026</b> — Author of an IEEE Conference Paper</p>
                     <hr>
                     <h2 class="section-title">LANGUAGES</h2>
                     <div class="lang-item"><span>Arabic</span> <span>Native</span></div>
                     <div class="lang-item"><span>English</span> <span>Advanced</span></div>
                     <div class="lang-item"><span>Spanish</span> <span>Beginner</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="memberships">
+            <h2 class="section-title">MEMBERSHIPS</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>IEEE Member</h3>
+                    <p>IEEE Young Professionals (YP) & IEEE Student Branch Alumni.</p>
                 </div>
             </div>
         </section>
@@ -422,7 +486,8 @@
                     <h3>IEEE Jordan Section </h3>
                     <p><b> IJSPC 2026 Ambassador - IEEE WISE Student Branch </b></p>
                     <ul>
-                        <li>Promoted the competition across academic communities,Mentored and guided students on scientific research methodologies, academic writing, and effective research tools.</li>
+                        <li>Promoted the competition across academic communities, significantly increasing student participation.</li>
+                        <li>Mentored and guided students on scientific research methodologies, academic writing, and effective research tools.</li>
                         <li>Curated and shared educational content, research topics, and resources to support students in developing their research papers.</li>
                     </ul>
                 </div>
@@ -439,7 +504,8 @@
         const roles = [
             "Computer Networks & Cybersecurity Graduate...",
             "AI & LLM Security Researcher...",
-            "Game Dev Hobbyist ...",
+            "IEEE Published Author...",
+            "Game Dev Hobbyist...",
             "CTF Player..."
         ];
         let i = 0, j = 0, isDeleting = false;
