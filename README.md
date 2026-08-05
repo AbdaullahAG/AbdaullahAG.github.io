@@ -6,6 +6,6 @@ Live site: https://abdaullahag.github.io
 
 ## Technologies Used
 - HTML5 & CSS3
-- Hosted on GitHub Pages
+- Hosted on GitHub Pages 
 
 Feel free to explore the projects and get in touch!
