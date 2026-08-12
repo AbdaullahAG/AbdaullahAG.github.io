@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdallah Abughallous | Portfolio & Blog</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        :root { 
+        :root {
             --bg: #050507;
             --card-bg: rgba(22, 22, 26, 0.85);
             --primary: #00f2ff;
@@ -16,7 +18,7 @@
 
         body {
             background-color: var(--bg);
-            background-image: 
+            background-image:
                 linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
             background-size: 30px 30px;
@@ -31,15 +33,18 @@
             content: " ";
             display: block;
             position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background:
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
             z-index: 9999;
             pointer-events: none;
             background-size: 100% 3px, 3px 100%;
         }
 
-        /* شريط التنقل السريع */
         nav {
             display: flex;
             justify-content: center;
@@ -51,8 +56,9 @@
             top: 0;
             z-index: 100;
             border-bottom: 1px solid rgba(0, 242, 255, 0.1);
-            flex-wrap: wrap; /* لتجنب المشاكل في الشاشات الصغيرة */
+            flex-wrap: wrap;
         }
+
         nav a {
             color: var(--text);
             text-decoration: none;
@@ -60,38 +66,77 @@
             font-size: 0.9rem;
             transition: 0.3s;
         }
+
         nav a:hover {
             color: var(--primary);
             text-shadow: 0 0 5px var(--primary);
         }
 
-        .container { max-width: 1100px; margin: auto; padding: 20px; position: relative; z-index: 2; }
-        
-        header { border-bottom: 1px solid #333; padding: 20px 0; text-align: center; }
-        .hero { 
-            text-align: center; 
-            padding: 80px 20px; 
-            background: radial-gradient(circle at center, rgba(0, 242, 255, 0.1) 0%, transparent 70%);
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            border-bottom: 1px solid #333;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: radial-gradient(
+                circle at center,
+                rgba(0, 242, 255, 0.1) 0%,
+                transparent 70%
+            );
             border-bottom: 1px solid rgba(0, 242, 255, 0.2);
         }
-        .hero h1 { font-size: 3rem; color: var(--primary); margin: 0; text-shadow: 0 0 10px var(--primary); }
-        .hero .subtitle { font-family: 'Fira Code', monospace; color: #888; font-size: 0.95rem; margin-top: 12px; letter-spacing: 0.5px; }
-        .terminal-text { font-family: 'Fira Code', monospace; color: var(--secondary); margin-top: 10px; height: 30px; }
 
-        section { margin: 60px 0; scroll-margin-top: 80px; }
-        .section-title { 
-            color: var(--primary); 
-            border-right: 4px solid var(--primary); 
-            padding-right: 15px; 
-            margin-bottom: 30px; 
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin: 0;
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .hero .subtitle {
+            font-family: 'Fira Code', monospace;
+            color: #888;
+            font-size: 0.95rem;
+            margin-top: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .terminal-text {
+            font-family: 'Fira Code', monospace;
+            color: var(--secondary);
+            margin-top: 10px;
+            height: 30px;
+        }
+
+        section {
+            margin: 60px 0;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            color: var(--primary);
+            border-right: 4px solid var(--primary);
+            padding-right: 15px;
+            margin-bottom: 30px;
             text-transform: uppercase;
         }
 
-        /* دعم الكتابة باللغة العربية داخل المقالات */
         .rtl-content {
             direction: rtl;
             text-align: right;
         }
+
         .post-date {
             font-family: 'Fira Code', monospace;
             font-size: 0.8rem;
@@ -99,53 +144,152 @@
             margin-bottom: 10px;
         }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card { 
-            background: var(--card-bg); 
-            padding: 25px; 
-            border-radius: 8px; 
-            border: 1px solid rgba(0, 242, 255, 0.1); 
-            transition: 0.3s; 
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 242, 255, 0.1);
+            transition: 0.3s;
             backdrop-filter: blur(5px);
         }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
 
-        /* ستايل خاص بكروت الرايت أب للتمييز البصري */
-        .writeup-card { border-left: 2px solid var(--secondary); }
-        .writeup-card:hover { border-color: var(--secondary); box-shadow: 0 0 15px rgba(57, 255, 20, 0.2); }
-
-        /* ستايل خاص بكرت النشر العلمي */
-        .pub-card { border-left: 2px solid var(--primary); }
-        .pub-card:hover { border-color: var(--primary); box-shadow: 0 0 15px rgba(0, 242, 255, 0.25); }
-        .pub-meta { font-family: 'Fira Code', monospace; font-size: 0.8rem; color: var(--secondary); margin-bottom: 10px; }
-        .pub-authors { font-size: 0.9rem; color: #aaa; margin-bottom: 10px; }
-        .pub-stats { display: flex; gap: 10px; flex-wrap: wrap; margin: 15px 0; }
-        .stat-box { background: rgba(0,0,0,0.4); border: 1px solid rgba(0,242,255,0.2); border-radius: 6px; padding: 10px 14px; text-align: center; min-width: 90px; }
-        .stat-box .num { font-family: 'Fira Code', monospace; color: var(--primary); font-size: 1.3rem; display: block; }
-        .stat-box .label { font-size: 0.7rem; color: #888; text-transform: uppercase; }
-
-        .skill-tag { 
-            display: inline-block; 
-            background: rgba(34, 34, 34, 0.8); 
-            color: var(--secondary); 
-            padding: 4px 10px; 
-            margin: 4px; 
-            font-size: 0.85rem; 
-            border-radius: 4px; 
-            border: 1px solid rgba(57, 255, 20, 0.3);
-            font-family: 'Fira Code'; 
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
         }
-        
-        .cert-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed #333; color: var(--primary); }
-        .lang-item { display: flex; justify-content: space-between; margin-bottom: 10px; }
-        
-        .contact-info { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
-        .contact-info a { color: var(--text); text-decoration: none; font-family: 'Fira Code'; font-size: 0.9rem; }
-        .contact-info a:hover { color: var(--primary); text-shadow: 0 0 5px var(--primary); }
+
+        .writeup-card {
+            border-left: 2px solid var(--secondary);
+        }
+
+        .writeup-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+        }
+
+        .pub-card {
+            border-left: 2px solid var(--primary);
+        }
+
+        .pub-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.25);
+        }
+
+        .pub-meta {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .pub-authors {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+
+        .pub-stats {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+
+        .stat-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 6px;
+            padding: 10px 14px;
+            text-align: center;
+            min-width: 90px;
+        }
+
+        .stat-box .num {
+            font-family: 'Fira Code', monospace;
+            color: var(--primary);
+            font-size: 1.3rem;
+            display: block;
+        }
+
+        .stat-box .label {
+            font-size: 0.7rem;
+            color: #888;
+            text-transform: uppercase;
+        }
+
+        .opensource-card {
+            border-left: 2px solid var(--secondary);
+        }
+
+        .opensource-card:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.25);
+        }
+
+        .oss-meta {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: rgba(34, 34, 34, 0.8);
+            color: var(--secondary);
+            padding: 4px 10px;
+            margin: 4px;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            font-family: 'Fira Code';
+        }
+
+        .cert-item {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #333;
+            color: var(--primary);
+        }
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-info a {
+            color: var(--text);
+            text-decoration: none;
+            font-family: 'Fira Code';
+            font-size: 0.9rem;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 5px var(--primary);
+        }
 
         .btn {
             display: inline-block;
             margin-top: 10px;
+            margin-right: 5px;
             padding: 5px 15px;
             border: 1px solid var(--primary);
             color: var(--primary);
@@ -154,163 +298,468 @@
             border-radius: 4px;
             transition: 0.3s;
         }
-        .btn:hover { background: var(--primary); color: #000; }
-        
-        .btn-secondary { border-color: var(--secondary); color: var(--secondary); }
-        .btn-secondary:hover { background: var(--secondary); color: #000; }
 
-        footer { text-align: center; padding: 40px; border-top: 1px solid #222; font-size: 0.8rem; opacity: 0.6; }
+        .btn:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .btn-secondary {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: #000;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
     </style>
 </head>
+
 <body>
 
-    <!-- شريط الانتقال -->
+    <!-- Navigation -->
     <nav>
         <a href="#about">// About</a>
-        <a href="#publications" style="color: var(--primary); text-shadow: 0 0 5px var(--primary);">// Research 📄</a>
+        <a href="#publications" style="color: var(--primary); text-shadow: 0 0 5px var(--primary);">
+            // Research 📄
+        </a>
         <a href="#experience">// Experience</a>
+        <a href="#opensource" style="color: var(--secondary); text-shadow: 0 0 5px var(--secondary);">
+            // Open Source
+        </a>
         <a href="#skills">// Skills</a>
         <a href="#projects">// Projects</a>
-        <a href="#writeups" style="color: var(--secondary); text-shadow: 0 0 5px var(--secondary);">// WRITE-UPS 🛡️</a>
-        <a href="#blog" style="color: var(--primary);">// BLOG 📝</a>
+        <a href="#writeups" style="color: var(--secondary); text-shadow: 0 0 5px var(--secondary);">
+            // WRITE-UPS 🛡️
+        </a>
+        <a href="#blog" style="color: var(--primary);">
+            // BLOG 📝
+        </a>
     </nav>
 
+    <!-- Hero -->
     <section class="hero">
         <h1>Abdallah Abughallous</h1>
         <div id="typing" class="terminal-text"></div>
+
         <div class="contact-info">
-            <a href="mailto:abd.moh9999@yahoo.com">📧 abd.moh9999@yahoo.com</a>
-            <a href="https://scholar.google.com/citations?hl=ar&user=bECChWcAAAAJ&view_op=list_works&citft=1&email_for_op=abdallah.m.abughallous%40gmail.com&gmla=AO4B3jumRMOKsXs_U1lifuusDGXaeIe9B9HwMOgAop05IatXBzWIGegr761kk51SoOrCd7XLqFDpsdV4We2QYPDdMkjXLq-RFPPP8884NcTBSpQNO8VTyINI8nP1HlJ_zK11eV12GZKIaa1L7n_tw6qetdNudSvZFux81UmavB-SitpwKYYbvX21VaNBPXVLC3TjOYcboIXzGdMDHRukiO9GG2HTDoeO2EKbp8Wj25P5_X_EFzi8kdhijezEt76KaPiwFM_SaB0E3NJ4OrLllCwxgVNCHZuAiQ">🎓 Google Scholar</a>
-            <a href="https://github.com/AbdaullahAG">💻 GitHub</a>
-            <a href="https://linkedin.com/in/abdallah-abu-ghallous-937911317">🔗 LinkedIn</a> 
+            <a href="mailto:abd.moh9999@yahoo.com">
+                📧 abd.moh9999@yahoo.com
+            </a>
+
+            <a href="https://scholar.google.com/citations?hl=ar&user=bECChWcAAAAJ">
+                🎓 Google Scholar
+            </a>
+
+            <a href="https://github.com/AbdaullahAG">
+                💻 GitHub
+            </a>
+
+            <a href="https://linkedin.com/in/abdallah-abu-ghallous-937911317">
+                🔗 LinkedIn
+            </a>
         </div>
     </section>
 
     <div class="container">
-        
+
+        <!-- About -->
         <section id="about">
             <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
-            <p>Computer Networks & Cybersecurity graduate with hands-on experience in network security, penetration testing, SOC 
-            analysis, IDS/IPS deployment, and AI-powered security solutions. Former trainee at Jordan's National Cyber Security
-            Center (NCSC) and author of the IEEE paper <b>"SemGuard: A Triple-Anchor Semantic Security Gateway for Multilingual
-            Prompt Attack Detection in Large Language Models"</b> (IEEE AEECT 2026, IEEE Xplore indexing forthcoming). Passionate
-            about AI/LLM security, cyber defense, and adversarial machine learning research.</p>
+
+            <p>
+                Computer Networks & Cybersecurity graduate with hands-on experience in
+                network security, penetration testing, SOC analysis, IDS/IPS deployment,
+                and AI-powered security solutions. Former trainee at Jordan's National
+                Cyber Security Center (NCSC) and author of the IEEE paper
+                <b>
+                    "SemGuard: A Triple-Anchor Semantic Security Gateway for Multilingual
+                    Prompt Attack Detection in Large Language Models"
+                </b>
+                (IEEE AEECT 2026, IEEE Xplore indexing forthcoming).
+                Passionate about AI/LLM security, cyber defense, and adversarial
+                machine learning research.
+            </p>
         </section>
 
-        <!-- قسم النشر العلمي / الأبحاث -->
+        <!-- Publications -->
         <section id="publications">
             <h2 class="section-title">PUBLICATIONS & RESEARCH</h2>
+
             <div class="grid">
                 <div class="card pub-card">
-                    <div class="pub-meta">[ IEEE AEECT 2026 ] · IEEE Xplore indexing forthcoming</div>
-                    <h3>SemGuard: A Triple-Anchor Semantic Security Gateway for Multilingual Prompt Attack Detection in Large Language Models</h3>
-                    <div class="pub-authors">Authors: Abdullah M. Abughallous, Dr. Somia Abufakher</div>
-                    <p>Introduced the first Triple-Anchor Semantic Threat Modeling framework for explainable, multilingual LLM
-                    prompt-attack detection, covering Arabic, Arabizi, and English. Built the first formally validated Arabic
-                    LLM Security Dataset (807 samples across 7 threat categories) using GPT-4o, Grok-4, and Llama 3.3 70B as
-                    independent judges, achieving a Fleiss' κ of 0.839.</p>
-                    <div class="pub-stats">
-                        <div class="stat-box"><span class="num">0.989</span><span class="label">Mean F1</span></div>
-                        <div class="stat-box"><span class="num">0.991</span><span class="label">Recall</span></div>
-                        <div class="stat-box"><span class="num">0.992</span><span class="label">F1 (Arabic)</span></div>
-                        <div class="stat-box"><span class="num">807</span><span class="label">Dataset Samples</span></div>
+
+                    <div class="pub-meta">
+                        [ IEEE AEECT 2026 ] · IEEE Xplore indexing forthcoming
                     </div>
-                    <p style="font-size:0.85rem; color:#888;">Keywords: LLM Security · Prompt Injection · AI Security · Arabic NLP · Explainable AI</p>
-                    <a href="https://huggingface.co" class="btn">View on Hugging Face</a>
-                    <a href="https://github.com/AbdaullahAG/SemGuard" class="btn btn-secondary">GitHub (Coming Soon)</a>
+
+                    <h3>
+                        SemGuard: A Triple-Anchor Semantic Security Gateway for
+                        Multilingual Prompt Attack Detection in Large Language Models
+                    </h3>
+
+                    <div class="pub-authors">
+                        Authors: Abdullah M. Abughallous, Dr. Somia Abufakher
+                    </div>
+
+                    <p>
+                        Introduced the first Triple-Anchor Semantic Threat Modeling
+                        framework for explainable, multilingual LLM prompt-attack
+                        detection, covering Arabic, Arabizi, and English. Built the
+                        first formally validated Arabic LLM Security Dataset
+                        (807 samples across 7 threat categories) using GPT-4o,
+                        Grok-4, and Llama 3.3 70B as independent judges, achieving
+                        a Fleiss' κ of 0.839.
+                    </p>
+
+                    <div class="pub-stats">
+                        <div class="stat-box">
+                            <span class="num">0.989</span>
+                            <span class="label">Mean F1</span>
+                        </div>
+
+                        <div class="stat-box">
+                            <span class="num">0.991</span>
+                            <span class="label">Recall</span>
+                        </div>
+
+                        <div class="stat-box">
+                            <span class="num">0.992</span>
+                            <span class="label">F1 (Arabic)</span>
+                        </div>
+
+                        <div class="stat-box">
+                            <span class="num">807</span>
+                            <span class="label">Dataset Samples</span>
+                        </div>
+                    </div>
+
+                    <p style="font-size:0.85rem; color:#888;">
+                        Keywords: LLM Security · Prompt Injection · AI Security ·
+                        Arabic NLP · Explainable AI
+                    </p>
+
+                    <a href="https://huggingface.co" class="btn">
+                        View on Hugging Face
+                    </a>
+
+                    <a href="https://github.com/AbdaullahAG/SemGuard"
+                       class="btn btn-secondary">
+                        GitHub
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- قسم الرايت أب -->
+        <!-- Security Write-ups -->
         <section id="writeups">
-            <h2 class="section-title" style="color: var(--secondary); border-right-color: var(--secondary);">SECURITY WRITE-UPS & RESEARCH</h2>
+            <h2 class="section-title"
+                style="color: var(--secondary); border-right-color: var(--secondary);">
+                SECURITY WRITE-UPS
+            </h2>
+
             <div class="grid">
-                
-                <!-- الرايت أب الخاص بالمشروع الأخير -->
+
                 <div class="card writeup-card">
                     <div class="post-date">[ 2026-06-20 ]</div>
-                    <h3>AI Red Team vs Blue Team Lab: Autonomous Closed-Loop</h3>
-                    <p>A deep technical breakdown of building a fully autonomous security pipeline. How I engineered two AI agents (GPT-4o & gpt-5.2) to attack, analyze, patch code, and re-test a vulnerable application in under 2 minutes with zero human intervention.</p>
-                    <a href="blog/ai-red-blue-lab.html" class="btn btn-secondary">Read Technical Write-up</a>
+
+                    <h3>
+                        AI Red Team vs Blue Team Lab: Autonomous Closed-Loop
+                    </h3>
+
+                    <p>
+                        A deep technical breakdown of building a fully autonomous
+                        security pipeline. How I engineered two AI agents
+                        (GPT-4o & GPT-5.2) to attack, analyze, patch code,
+                        and re-test a vulnerable application in under 2 minutes
+                        with zero human intervention.
+                    </p>
+
+                    <a href="blog/ai-red-blue-lab.html"
+                       class="btn btn-secondary">
+                        Read Technical Write-up
+                    </a>
                 </div>
-                
-                   <div class="card writeup-card">
+
+                <div class="card writeup-card">
                     <div class="post-date">[ 2026-07-04 ]</div>
+
                     <h3>TrustGuard AI</h3>
-                    <p>AI-powered privacy policy analyzer built for Microsoft's Agents League Hackathon 2026 (Reasoning Agents track). 6 specialized AI agents extract, reason, detect dark patterns, score readability, audit user rights, and benchmark policies against TikTok, Facebook & more — covering GDPR/CCPA/PDPA/PIPEDA/LGPD/DPDPA. Built with Flask + Microsoft Foundry.</p>
-                    <a href="blog/TrustG.html" class="btn btn-secondary">Read Technical Write-up</a> 
+
+                    <p>
+                        AI-powered privacy policy analyzer built for Microsoft's
+                        Agents League Hackathon 2026 (Reasoning Agents track).
+                        Six specialized AI agents extract, reason, detect dark
+                        patterns, score readability, audit user rights, and
+                        benchmark policies against TikTok, Facebook & more —
+                        covering GDPR/CCPA/PDPA/PIPEDA/LGPD/DPDPA.
+                        Built with Flask + Microsoft Foundry.
+                    </p>
+
+                    <a href="blog/TrustG.html"
+                       class="btn btn-secondary">
+                        Read Technical Write-up
+                    </a>
                 </div>
 
             </div>
         </section>
 
-        <!-- قسم المدونة (كما كان) -->
+        <!-- Blog -->
         <section id="blog">
             <h2 class="section-title">LATEST ARTICLES</h2>
+
             <div class="grid">
-                
+
                 <div class="card rtl-content">
                     <div class="post-date">[ 2026-05-30 ]</div>
-                    <h3>سلسلة SemGuard (1): تفكيك هجمات كسر الحماية (Jailbreaking)</h3>
-                    <p>كيف يتلاعب المهاجمون بعقول النماذج اللغوية؟ في أولى مقالات السلسلة، نفكك الهندسة العكسية خلف هجمات الـ Jailbreaking والجذور البنيوية التي تجعل الحلول الأمنية التقليدية تفشل في صدها.</p>
-                    <a href="blog/Jailbreaking.html" class="btn" style="float: left;">اقرأ المقال</a>
+
+                    <h3>
+                        سلسلة SemGuard (1): تفكيك هجمات كسر الحماية (Jailbreaking)
+                    </h3>
+
+                    <p>
+                        كيف يتلاعب المهاجمون بعقول النماذج اللغوية؟
+                        في أولى مقالات السلسلة، نفكك الهندسة العكسية خلف هجمات
+                        الـ Jailbreaking والجذور البنيوية التي تجعل الحلول الأمنية
+                        التقليدية تفشل في صدها.
+                    </p>
+
+                    <a href="blog/Jailbreaking.html"
+                       class="btn"
+                       style="float: left;">
+                        اقرأ المقال
+                    </a>
+
                     <div style="clear: both;"></div>
                 </div>
-                
+
                 <div class="card">
                     <div class="post-date">[ 2026-05-24 ]</div>
-                    <h3>How I Built a Phishing Detector Using Only Classical Algorithms</h3>
-                    <p>I built PhishGuard: a phishing detection system that catches these attacks using nothing but classical algorithms from my Algorithms course.
-                    No machine learning. No training data. No internet connection required.</p>
-                    <a href="blog/phishguard-article.html" class="btn">Read Article</a>
+
+                    <h3>
+                        How I Built a Phishing Detector Using Only Classical Algorithms
+                    </h3>
+
+                    <p>
+                        I built PhishGuard: a phishing detection system that catches
+                        these attacks using nothing but classical algorithms from
+                        my Algorithms course. No machine learning. No training data.
+                        No internet connection required.
+                    </p>
+
+                    <a href="blog/phishguard-article.html" class="btn">
+                        Read Article
+                    </a>
                 </div>
-                
+
             </div>
         </section>
 
+        <!-- Experience -->
         <section id="experience">
             <h2 class="section-title">EXPERIENCE</h2>
+
             <div class="grid">
+
                 <div class="card">
                     <h3>SHAFAQ GAME DEV TEAM</h3>
-                    <p><b> GAME DEVELOPER & MANAGER (2025 - 2026)</b></p>
+
+                    <p>
+                        <b>GAME DEVELOPER & MANAGER (2025 - 2026)</b>
+                    </p>
+
                     <ul>
-                        <li>Team Management in the main Game Dev section and in Social Media.</li>
-                        <li>Expertly designed and optimized immersive environments, strategic layouts, and atmospheric worlds using Unreal Engine.</li>
-                        <li>Collaborated with artists and developers to build narrative-aligned gameplay.</li>
-                        <li>Strengthened problem-solving, team communication, and project coordination.</li>
+                        <li>
+                            Team Management in the main Game Dev section and
+                            in Social Media.
+                        </li>
+
+                        <li>
+                            Expertly designed and optimized immersive environments,
+                            strategic layouts, and atmospheric worlds using
+                            Unreal Engine.
+                        </li>
+
+                        <li>
+                            Collaborated with artists and developers to build
+                            narrative-aligned gameplay.
+                        </li>
+
+                        <li>
+                            Strengthened problem-solving, team communication,
+                            and project coordination.
+                        </li>
                     </ul>
                 </div>
+
                 <div class="card">
-                    <h3>National Cyber Security Center (NCSC) – Jordan</h3>
-                    <p><b>Cybersecurity Trainee (Mar-2026 - May-2026)</b></p>
+                    <h3>
+                        National Cyber Security Center (NCSC) – Jordan
+                    </h3>
+
+                    <p>
+                        <b>Cybersecurity Trainee (Mar-2026 - May-2026)</b>
+                    </p>
+
                     <ul>
-                        <li>Enrolled in the 200-hour national "Masar" cybersecurity field training program.</li>
-                        <li>Gained hands-on experience in real-world cybersecurity operations within a governmental environment.</li>
-                        <li>Hands-on: penetration testing, SOC monitoring, digital forensics, and vulnerability assessment.</li>
-                        <li>Conducted Red/Blue/GRC exercises in controlled governmental lab environments.</li>
-                        <li>Delivered a final capstone project containing a Red/Blue Team lab simulating real-world attack and defense.</li>
+                        <li>
+                            Enrolled in the 200-hour national "Masar"
+                            cybersecurity field training program.
+                        </li>
+
+                        <li>
+                            Gained hands-on experience in real-world cybersecurity
+                            operations within a governmental environment.
+                        </li>
+
+                        <li>
+                            Hands-on: penetration testing, SOC monitoring,
+                            digital forensics, and vulnerability assessment.
+                        </li>
+
+                        <li>
+                            Conducted Red/Blue/GRC exercises in controlled
+                            governmental lab environments.
+                        </li>
+
+                        <li>
+                            Delivered a final capstone project containing a
+                            Red/Blue Team lab simulating real-world attack
+                            and defense.
+                        </li>
                     </ul>
                 </div>
+
             </div>
         </section>
 
+        <!-- Open Source -->
+<!-- Open Source -->
+<section id="opensource">
+
+    <h2 class="section-title">
+        OPEN-SOURCE CONTRIBUTIONS
+    </h2>
+
+    <div class="grid">
+
+        <!-- OWASP FIASSE -->
+        <div class="card opensource-card">
+
+            <div class="oss-meta">
+                [ OWASP FIASSE · 2026 ] · MERGED PR #30
+            </div>
+
+            <h3>
+                OWASP FIASSE — Contributor
+            </h3>
+
+            <p>
+                Contributed a merged pull request to the OWASP FIASSE
+                project, adding 10 contrasting Python "With/Without"
+                code examples covering SSEM attributes across
+                Maintainability, Trustworthiness, and Reliability.
+            </p>
+
+            <p>
+                Translated SSEM security principles into practical
+                secure/insecure implementation examples and closed
+                OWASP FIASSE Issue #14.
+            </p>
+
+            <a href="https://github.com/OWASP/FIASSE/pull/30"
+               class="btn">
+                View Merged PR
+            </a>
+
+            <a href="https://github.com/OWASP/FIASSE"
+               class="btn btn-secondary">
+                OWASP FIASSE
+            </a>
+
+        </div>
+
+
+        <!-- Awesome Lists -->
+        <div class="card opensource-card">
+
+            <div class="oss-meta">
+                [ GLOBAL AWESOME LISTS · 2026 ]
+            </div>
+
+            <h3>
+                Open-Source Projects Featured in Global Awesome Lists
+            </h3>
+
+            <p>
+                📊 <strong>SemGuard</strong> — Creator of the first Arabic
+                LLM Security Dataset, featured in the global
+                <strong>Awesome AI Security</strong> list.
+            </p>
+
+            <a href="https://github.com/ottosulin/awesome-ai-security#semguard"
+               class="btn">
+                View Awesome List
+            </a>
+
+            <p>
+                🔎 <strong>ThreatLens</strong> — Creator of an open-source
+                threat intelligence CLI, officially featured in the global
+                <strong>Awesome OSINT</strong> repository
+                (27.5K+ ⭐).
+            </p>
+
+            <a href="https://github.com/jivoi/awesome-osint"
+               class="btn btn-secondary">
+                View Awesome OSINT
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- Education -->
         <section id="education">
+
             <h2 class="section-title">EDUCATION</h2>
+
             <div class="grid">
+
                 <div class="card">
-                    <h3>B.Sc. COMPUTER NETWORK SYSTEMS </h3>
-                    <p>World Islamic Sciences and Education University <b>(WISE)</b>, Jordan — (2022 – 2026).</p>
+                    <h3>B.Sc. COMPUTER NETWORK SYSTEMS</h3>
+
+                    <p>
+                        World Islamic Sciences and Education University
+                        <b>(WISE)</b>, Jordan — (2022 – 2026).
+                    </p>
                 </div>
+
             </div>
+
         </section>
 
+        <!-- Skills -->
         <section id="skills">
-            <h2 class="section-title"> SKILLS</h2>
+
+            <h2 class="section-title">SKILLS</h2>
+
             <div class="grid">
+
                 <div class="card">
                     <h3>Security</h3>
+
                     <span class="skill-tag">Penetration Testing</span>
                     <span class="skill-tag">SOC Analysis</span>
                     <span class="skill-tag">IDS/IPS (Snort 3)</span>
@@ -320,16 +769,20 @@
                     <span class="skill-tag">Wireshark, Nmap</span>
                     <span class="skill-tag">Threat Intelligence</span>
                 </div>
+
                 <div class="card">
                     <h3>Networking</h3>
+
                     <span class="skill-tag">OSPF, EIGRP, BGP</span>
                     <span class="skill-tag">VLANs, STP, QoS</span>
                     <span class="skill-tag">TCP/IP, DHCP, DNS</span>
                     <span class="skill-tag">GNS3, EVE-NG</span>
                     <span class="skill-tag">CISCO Packet Tracer</span>
                 </div>
+
                 <div class="card">
                     <h3>Programming</h3>
+
                     <span class="skill-tag">Python</span>
                     <span class="skill-tag">Bash / Shell Scripting</span>
                     <span class="skill-tag">SQL / MySQL</span>
@@ -338,16 +791,20 @@
                     <span class="skill-tag">Java / C++</span>
                     <span class="skill-tag">HTML, CSS, JavaScript</span>
                 </div>
+
                 <div class="card">
                     <h3>Cloud & Operating Systems</h3>
+
                     <span class="skill-tag">Oracle Cloud (OCI)</span>
                     <span class="skill-tag">MS Azure</span>
                     <span class="skill-tag">Linux (Kali, Ubuntu, Parrot)</span>
                     <span class="skill-tag">Windows Server</span>
                     <span class="skill-tag">Splunk SIEM</span>
                 </div>
+
                 <div class="card">
                     <h3>AI & Machine Learning</h3>
+
                     <span class="skill-tag">AI Security</span>
                     <span class="skill-tag">LLM Security</span>
                     <span class="skill-tag">Prompt Injection Detection</span>
@@ -357,160 +814,432 @@
                     <span class="skill-tag">Machine Learning</span>
                     <span class="skill-tag">Scientific Research</span>
                 </div>
+
             </div>
+
         </section>
 
+        <!-- Projects -->
         <section id="projects">
+
             <h2 class="section-title">PROJECTS</h2>
+
             <div class="grid">
+
                 <div class="card">
                     <h4>SemGuard — Multilingual LLM Security Gateway</h4>
-                    <p>First-of-its-kind semantic security gateway protecting LLMs against prompt attacks across Arabic, Arabizi, and English, built on a Triple-Anchor Semantic Threat Modeling framework. Companion research accepted at IEEE AEECT 2026.</p>
-                    <a href="https://huggingface.co" class="btn">Hugging Face</a>
-                    <a href="https://github.com/AbdaullahAG/SemGuard" class="btn">GitHub</a>
+
+                    <p>
+                        First-of-its-kind semantic security gateway protecting
+                        LLMs against prompt attacks across Arabic, Arabizi,
+                        and English, built on a Triple-Anchor Semantic Threat
+                        Modeling framework. Companion research accepted at
+                        IEEE AEECT 2026.
+                    </p>
+
+                    <a href="https://huggingface.co" class="btn">
+                        Hugging Face
+                    </a>
+
+                    <a href="https://github.com/AbdaullahAG/SemGuard"
+                       class="btn">
+                        GitHub
+                    </a>
                 </div>
+
                 <div class="card">
                     <h4>Autonomous-Ai-Red-Blue-Lab</h4>
-                    <p>An autonomous, closed-loop multi-agent security lab using AutoGen, GPT-4o, and gpt-5.2 for automated Red Team exploitation and self-healing Blue Team code patching.</p>
-                    <a href="https://github.com/AbdaullahAG/autonomous-ai-red-blue-lab" class="btn">GitHub</a>
-                </div> 
+
+                    <p>
+                        An autonomous, closed-loop multi-agent security lab using
+                        AutoGen, GPT-4o, and GPT-5.2 for automated Red Team
+                        exploitation and self-healing Blue Team code patching.
+                    </p>
+
+                    <a href="https://github.com/AbdaullahAG/autonomous-ai-red-blue-lab"
+                       class="btn">
+                        GitHub
+                    </a>
+                </div>
+
                 <div class="card">
                     <h4>Trustguard_AI</h4>
-                    <p>AI-powered privacy policy analyzer built for Microsoft's Agents League Hackathon 2026 (Reasoning Agents track). 6 specialized AI agents extract, reason, detect dark patterns, score readability, audit user rights, and benchmark policies against TikTok, Facebook & more — covering GDPR/CCPA/PDPA/PIPEDA/LGPD/DPDPA. Built with Flask + Microsoft Foundry.</p>
-                    <a href="https://github.com/AbdaullahAG/Trustguard_AI" class="btn">GitHub</a>
+
+                    <p>
+                        AI-powered privacy policy analyzer built for Microsoft's
+                        Agents League Hackathon 2026 (Reasoning Agents track).
+                        Six specialized AI agents extract, reason, detect dark
+                        patterns, score readability, audit user rights, and
+                        benchmark policies against TikTok, Facebook & more —
+                        covering GDPR/CCPA/PDPA/PIPEDA/LGPD/DPDPA.
+                        Built with Flask + Microsoft Foundry.
+                    </p>
+
+                    <a href="https://github.com/AbdaullahAG/Trustguard_AI"
+                       class="btn">
+                        GitHub
+                    </a>
                 </div>
-                <div class="card"> 
+
+                <div class="card">
                     <h4>Red/Blue Team Security Lab</h4>
-                    <p>Full attack/defense lifecycle across a 3-VM lab: exploited and patched SQLi, XSS, OS Command Injection, and File Upload vulnerabilities. Deployed Splunk HEC for real-time log forwarding, custom detection queries, and incident response.</p>
-                    <a href="https://github.com/AbdaullahAG/red-blue-team-lab" class="btn">GitHub</a>
+
+                    <p>
+                        Full attack/defense lifecycle across a 3-VM lab:
+                        exploited and patched SQLi, XSS, OS Command Injection,
+                        and File Upload vulnerabilities. Deployed Splunk HEC
+                        for real-time log forwarding, custom detection queries,
+                        and incident response.
+                    </p>
+
+                    <a href="https://github.com/AbdaullahAG/red-blue-team-lab"
+                       class="btn">
+                        GitHub
+                    </a>
                 </div>
+
                 <div class="card">
                     <h4>ThreatLens v2.0 — Multi-Source Threat Intel CLI</h4>
-                    <p>Officially featured in the "Awesome OSINT" repository (27.5K+ stars) as a recognized threat intelligence tool. Automates IOC enrichment (IP / Domain / Hash / CVE) across 6 APIs — AbuseIPDB, VirusTotal, Shodan, OTX, URLScan, NVD — with color-coded Excel, JSON, and CSV reports.</p>
-                    <a href="https://github.com/AbdaullahAG/Threat_Intel_Project" class="btn">GitHub</a>
+
+                    <p>
+                        Officially featured in the "Awesome OSINT" repository
+                        (27.5K+ stars) as a recognized threat intelligence tool.
+                        Automates IOC enrichment (IP / Domain / Hash / CVE)
+                        across 6 APIs — AbuseIPDB, VirusTotal, Shodan, OTX,
+                        URLScan, NVD — with color-coded Excel, JSON, and CSV
+                        reports.
+                    </p>
+
+                    <a href="https://github.com/AbdaullahAG/Threat_Intel_Project"
+                       class="btn">
+                        GitHub
+                    </a>
                 </div>
+
                 <div class="card">
                     <h4>Rased — Crown Prince Award Participant</h4>
-                    <p>Developed the core computer vision system for "Rased," an automated road infrastructure monitoring app submitted for the Crown Prince Award. Trained a custom YOLOv11 model to detect road issues (e.g., potholes) and converted it to TFLite for real-time, low-resource mobile inference.</p>
-                    <a href="https://github.com/AbdaullahAG" class="btn">GitHub</a>
+
+                    <p>
+                        Developed the core computer vision system for "Rased,"
+                        an automated road infrastructure monitoring app submitted
+                        for the Crown Prince Award. Trained a custom YOLOv11 model
+                        to detect road issues (e.g., potholes) and converted it
+                        to TFLite for real-time, low-resource mobile inference.
+                    </p>
+
+                    <a href="https://github.com/AbdaullahAG"
+                       class="btn">
+                        GitHub
+                    </a>
                 </div>
+
                 <div class="card">
                     <h4>Vulnerability Scanner</h4>
-                    <p>Python-based scanner for common web vulnerabilities.</p>
-                    <a href="https://github.com/AbdaullahAG/python-project/tree/main" class="btn">GitHub</a>
+
+                    <p>
+                        Python-based scanner for common web vulnerabilities.
+                    </p>
+
+                    <a href="https://github.com/AbdaullahAG/python-project/tree/main"
+                       class="btn">
+                        GitHub
+                    </a>
                 </div>
+
                 <div class="card">
                     <h4>Enterprise Network Simulation (CCNA Labs)</h4>
-                    <p>Designed complex topologies simulating enterprise networks, configuring routing protocols (OSPF) and switching security.</p>
-                    <a href="https://github.com/AbdaullahAG/Smart-Campus-System" class="btn">GitHub</a>
-                    <a href="https://github.com/AbdaullahAG/Packet-Tracer-Project-CCNA-Labs-" class="btn">GitHub</a>
+
+                    <p>
+                        Designed complex topologies simulating enterprise
+                        networks, configuring routing protocols (OSPF)
+                        and switching security.
+                    </p>
+
+                    <a href="https://github.com/AbdaullahAG/Smart-Campus-System"
+                       class="btn">
+                        Smart Campus
+                    </a>
+
+                    <a href="https://github.com/AbdaullahAG/Packet-Tracer-Project-CCNA-Labs-"
+                       class="btn">
+                        CCNA Labs
+                    </a>
                 </div>
-                  <div class="card">
-                    <h4>Network Intrusion Detection System (NIDS/NIPS) — Snort 3</h4>
-                    <p>Deployed Snort 3 to monitor live network traffic with custom rules detecting and blocking real attack patterns.</p>
-                    <a href="https://github.com/AbdaullahAG/Intrusion-Detection-System-IDS-/tree/main/Snort3" class="btn">GitHub (IDS)</a>
-                    <a href="https://github.com/AbdaullahAG/Intrusion-PreventionSystem-IPS" class="btn">GitHub (IPS)</a>
+
+                <div class="card">
+                    <h4>
+                        Network Intrusion Detection System (NIDS/NIPS) — Snort 3
+                    </h4>
+
+                    <p>
+                        Deployed Snort 3 to monitor live network traffic with
+                        custom rules detecting and blocking real attack patterns.
+                    </p>
+
+                    <a href="https://github.com/AbdaullahAG/Intrusion-Detection-System-IDS-/tree/main/Snort3"
+                       class="btn">
+                        GitHub (IDS)
+                    </a>
+
+                    <a href="https://github.com/AbdaullahAG/Intrusion-PreventionSystem-IPS"
+                       class="btn">
+                        GitHub (IPS)
+                    </a>
                 </div>
+
                 <div class="card">
                     <h4>Medical Appointment System (SQL)</h4>
-                    <a href="https://github.com/Medical_Appointment_System" class="btn">GitHub</a>
+
+                    <a href="https://github.com/Medical_Appointment_System"
+                       class="btn">
+                        GitHub
+                    </a>
                 </div>
+
                 <div class="card">
                     <h4>Library System (SQL)</h4>
-                    <a href="https://github.com/library-sql-project" class="btn">GitHub</a>
+
+                    <a href="https://github.com/library-sql-project"
+                       class="btn">
+                        GitHub
+                    </a>
                 </div>
+
             </div>
         </section>
 
+        <!-- Certifications & Achievements -->
         <section id="extras">
+
             <div class="grid">
+
                 <div class="card">
+
                     <h2 class="section-title">CERTIFICATIONS</h2>
-                    <div class="cert-item">Cybersecurity Defense Analyst Pathway Exam (CDAP)</div>
-                    <div class="cert-item">Masar Training Program 2026 (National Cyber Security Center NCSC)</div>
-                    <div class="cert-item">Oracle Cloud Architect Associate 2025 (OCI)</div>
-                    <div class="cert-item">Oracle Cloud Foundations Associate 2025 (OCI)</div>
-                    <div class="cert-item">Oracle Cloud AI Foundations Associate 2025 (OCI)</div>
-                    <div class="cert-item">Fortinet Certified Fundamentals Cybersecurity 2026 (FCF)</div>
-                    <div class="cert-item">Fortinet Certified Associate Cybersecurity 2026 (FCA)</div>
-                    <div class="cert-item">CCNA Curriculum Completed</div>
-                    <div class="cert-item">Aspire Leaders Program 2026</div>
+
+                    <div class="cert-item">
+                        Cybersecurity Defense Analyst Pathway Exam (CDAP)
+                    </div>
+
+                    <div class="cert-item">
+                        Masar Training Program 2026 (National Cyber Security Center NCSC)
+                    </div>
+
+                    <div class="cert-item">
+                        Oracle Cloud Architect Associate 2025 (OCI)
+                    </div>
+
+                    <div class="cert-item">
+                        Oracle Cloud Foundations Associate 2025 (OCI)
+                    </div>
+
+                    <div class="cert-item">
+                        Oracle Cloud AI Foundations Associate 2025 (OCI)
+                    </div>
+
+                    <div class="cert-item">
+                        Fortinet Certified Fundamentals Cybersecurity 2026 (FCF)
+                    </div>
+
+                    <div class="cert-item">
+                        Fortinet Certified Associate Cybersecurity 2026 (FCA)
+                    </div>
+
+                    <div class="cert-item">
+                        CCNA Curriculum Completed
+                    </div>
+
+                    <div class="cert-item">
+                        Aspire Leaders Program 2026
+                    </div>
+
                 </div>
+
                 <div class="card">
+
                     <h2 class="section-title">ACHIEVEMENTS</h2>
-                    <p>🏆 <b>IEEE CTF 2025 Finalist</b> (OSINT · Forensics · Web)</p>
-                    <p>🏆 <b>Huawei ICT Competition</b> — National Qualifier, sole university representative</p>
-                    <p>🏆 <b>IEEE IJSPC</b> — 1st Place in AI Track & Best Research Paper Ambassador Award</p>
-                    <p>🏆 <b>AAU AI & Robotics</b> — Top 60 of 300+ finalists</p>
-                    <p>📄 <b>IEEE AEECT 2026</b> — Author of an IEEE Conference Paper</p>
+
+                    <p>
+                        🏆 <b>IEEE CTF 2025 Finalist</b>
+                        (OSINT · Forensics · Web)
+                    </p>
+
+                    <p>
+                        🏆 <b>Huawei ICT Competition</b>
+                        — National Qualifier, sole university representative
+                    </p>
+
+                    <p>
+                        🏆 <b>IEEE IJSPC</b>
+                        — 1st Place in AI Track & Best Research Paper Ambassador Award
+                    </p>
+
+                    <p>
+                        🏆 <b>AAU AI & Robotics</b>
+                        — Top 60 of 300+ finalists
+                    </p>
+
+                    <p>
+                        📄 <b>IEEE AEECT 2026</b>
+                        — Author of an IEEE Conference Paper
+                    </p>
+
                     <hr>
+
                     <h2 class="section-title">LANGUAGES</h2>
-                    <div class="lang-item"><span>Arabic</span> <span>Native</span></div>
-                    <div class="lang-item"><span>English</span> <span>Advanced</span></div>
-                    <div class="lang-item"><span>Spanish</span> <span>Beginner</span></div>
+
+                    <div class="lang-item">
+                        <span>Arabic</span>
+                        <span>Native</span>
+                    </div>
+
+                    <div class="lang-item">
+                        <span>English</span>
+                        <span>Advanced</span>
+                    </div>
+
+                    <div class="lang-item">
+                        <span>Spanish</span>
+                        <span>Beginner</span>
+                    </div>
+
                 </div>
+
             </div>
+
         </section>
 
+        <!-- Memberships -->
         <section id="memberships">
+
             <h2 class="section-title">MEMBERSHIPS</h2>
+
             <div class="grid">
+
                 <div class="card">
+
                     <h3>IEEE Member</h3>
-                    <p>IEEE Young Professionals (YP) & IEEE Student Branch Alumni.</p>
+
+                    <p>
+                        IEEE Young Professionals (YP) &
+                        IEEE Student Branch Alumni.
+                    </p>
+
                 </div>
+
             </div>
+
         </section>
 
+        <!-- Volunteer Experience -->
         <section id="volunteer">
+
             <h2 class="section-title">VOLUNTEER EXPERIENCE</h2>
+
             <div class="grid">
+
                 <div class="card">
-                    <h3>IEEE WISE </h3>
-                    <p><b> Program Committee Member</b></p>
+
+                    <h3>IEEE WISE</h3>
+
+                    <p>
+                        <b>Program Committee Member</b>
+                    </p>
+
                     <ul>
-                        <li>Coordinated logistics, technical tracks, and scheduling for official IEEE events and competitions.</li>
-                        <li>Collaborated with student leaders to enhance community engagement and support technical initiatives.</li>
+                        <li>
+                            Coordinated logistics, technical tracks, and
+                            scheduling for official IEEE events and competitions.
+                        </li>
+
+                        <li>
+                            Collaborated with student leaders to enhance
+                            community engagement and support technical initiatives.
+                        </li>
                     </ul>
+
                 </div>
+
                 <div class="card">
-                    <h3>IEEE WISE </h3>
-                    <p><b> Technical Instructor – Game Development Workshop</b></p>
+
+                    <h3>IEEE WISE</h3>
+
+                    <p>
+                        <b>Technical Instructor – Game Development Workshop</b>
+                    </p>
+
                     <ul>
-                        <li>Designed the curriculum and delivered a hands-on Game Development training course for 25 students.</li>
-                        <li>Achieved an outstanding instructor satisfaction rating of 4.75/5.00 based on final student evaluations.</li>
+                        <li>
+                            Designed the curriculum and delivered a hands-on
+                            Game Development training course for 25 students.
+                        </li>
+
+                        <li>
+                            Achieved an outstanding instructor satisfaction
+                            rating of 4.75/5.00 based on final student evaluations.
+                        </li>
                     </ul>
+
                 </div>
-                    <div class="card">
-                    <h3>IEEE Jordan Section </h3>
-                    <p><b> IJSPC 2026 Ambassador - IEEE WISE Student Branch </b></p>
+
+                <div class="card">
+
+                    <h3>IEEE Jordan Section</h3>
+
+                    <p>
+                        <b>IJSPC 2026 Ambassador - IEEE WISE Student Branch</b>
+                    </p>
+
                     <ul>
-                        <li>Promoted the competition across academic communities, significantly increasing student participation.</li>
-                        <li>Mentored and guided students on scientific research methodologies, academic writing, and effective research tools.</li>
-                        <li>Curated and shared educational content, research topics, and resources to support students in developing their research papers.</li>
+                        <li>
+                            Promoted the competition across academic communities,
+                            significantly increasing student participation.
+                        </li>
+
+                        <li>
+                            Mentored and guided students on scientific research
+                            methodologies, academic writing, and effective
+                            research tools.
+                        </li>
+
+                        <li>
+                            Curated and shared educational content, research
+                            topics, and resources to support students in
+                            developing their research papers.
+                        </li>
                     </ul>
+
                 </div>
+
             </div>
+
         </section>
+
     </div>
- 
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Abdullah Abughallous</p>
+        <p>&copy; 2026 Abdallah Abughallous</p>
     </footer>
 
     <script>
         const text = document.getElementById('typing');
+
         const roles = [
             "Cybersecurity Engineer...",
             "AI & LLM Security Researcher...",
             "IEEE Author...",
-            "Game Dev Hobbyist...",
-            "Open-Source Developer..." 
+            "OWASP Contributor...",
+            "Game Dev Hobbyist..."
         ];
-        let i = 0, j = 0, isDeleting = false;
+
+        let i = 0;
+        let j = 0;
+        let isDeleting = false;
 
         function typeEffect() {
             let current = roles[i];
+
             if (isDeleting) {
                 text.textContent = "> " + current.substring(0, j - 1);
                 j--;
@@ -527,10 +1256,16 @@
                 i = (i + 1) % roles.length;
                 setTimeout(typeEffect, 500);
             } else {
-                setTimeout(typeEffect, isDeleting ? 50 : 100);
+                setTimeout(
+                    typeEffect,
+                    isDeleting ? 50 : 100
+                );
             }
         }
+
         typeEffect();
     </script>
+
 </body>
 </html>
+```
