@@ -4,7 +4,7 @@
     <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=00F0FF&center=true&vcenter=true&width=600&height=45&lines=Abdallah+Abu+Ghallous;Cybersecurity+Engineer;AI+%26+LLM+Security+Researcher;IEEE+AEECT+2026+Author" alt="Typing SVG" />
   </a>
 
-  <!-- Badges -->
+  <!-- Badges --> 
   <p>
     <a href="https://abdaullahag.github.io/">
       <img src="https://img.shields.io/badge/🌐_Portfolio-Live_Site-00F0FF?style=for-the-badge" alt="Portfolio" />
