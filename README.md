@@ -5,7 +5,7 @@
   </a>
 
   <!-- Badges --> 
-  <p>
+  <p> 
     <a href="https://abdaullahag.github.io/">
       <img src="https://img.shields.io/badge/🌐_Portfolio-Live_Site-00F0FF?style=for-the-badge" alt="Portfolio" />
     </a>
