@@ -4,6 +4,7 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdallah Abughallous | Portfolio & Blog</title>  
+    <meta name="description" content="Abdallah Abughallous — Cybersecurity Engineer & AI/LLM Security Researcher. IEEE-published author (SemGuard), OWASP GenAI Security Project section lead, creator of ThreatLens and tawfeer-llm.">
 
    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
  
@@ -67,9 +68,14 @@
             transition: 0.3s;
         }
 
-        nav a:hover {
+        nav a:hover, nav a:focus-visible {
             color: var(--primary);
             text-shadow: 0 0 5px var(--primary);
+        }
+
+        a:focus-visible, .btn:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
         }
 
         .container {
@@ -321,6 +327,11 @@
             font-size: 0.8rem;
             opacity: 0.6;
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            .card { transition: none; }
+            .card:hover { transform: none; }
+        }
     </style>
 </head>
 
@@ -385,7 +396,6 @@
         </section>
 
         <!-- Publications -->
-<!-- Publications -->
         <section id="publications">
             <h2 class="section-title">PUBLICATIONS & RESEARCH</h2>
 
@@ -537,7 +547,7 @@
                         strict per-agent scope boundaries, and append-only hash-chained logging across a real, closed-loop Red/Blue AI agent security pipeline.
                         Across 10 non-simulated iterations on a vulnerable Flask/SQLite application, the system achieved a 70% valid patch rate and a 30% containment trigger rate.
                         Notably, the study revealed an emergent finding where automated patching silently broke legitimate app features,
-                        proving that traceability alone requires complementary attestation-style validation gates.   .
+                        proving that traceability alone requires complementary attestation-style validation gates.
                     </p>
 
                      <div class="pub-stats">
@@ -697,7 +707,7 @@
                     <ul>
                         <li>
                             Leading Section 14 (Worked Examples) for the Agentic Identity Maturity Model (AIMM),
-                            managing a team of international contributors to build production-grade security deployment scenarios.
+                            managing a 3-person international contributor team to build production-grade security deployment scenarios.
                         </li>
 
                         <li>
@@ -726,8 +736,9 @@
                         </li>
 
                         <li>
-                            Gained hands-on experience in real-world cybersecurity
-                            operations within a governmental environment.
+                            Worked through 30+ hands-on labs across Red Team,
+                            Blue Team, and GRC tracks in a governmental
+                            operations environment.
                         </li>
 
                         <li>
@@ -781,7 +792,6 @@
         </section>
 
         <!-- Open Source -->
-<!-- Open Source -->
 <section id="opensource">
 
     <h2 class="section-title">
@@ -826,6 +836,40 @@
 
         </div>
 
+        <!-- PyRIT (Microsoft) -->
+        <div class="card opensource-card">
+
+            <div class="oss-meta">
+                [ MICROSOFT PYRIT · 2026 ] · MERGED PR #2468
+            </div>
+
+            <h3>
+                Microsoft PyRIT — Contributor
+            </h3>
+
+            <p>
+                Added a SemGuard Arabic Security Dataset loader (807 validated
+                Arabic/Arabizi/English prompt-attack examples across 7 threat
+                categories) to Microsoft's GenAI red-teaming framework
+                (4.5K★, 892 forks).
+            </p>
+
+            <p>
+                Addressed multiple rounds of maintainer review across 12 commits,
+                landing with 14 passing unit tests.
+            </p>
+
+            <a href="https://github.com/microsoft/PyRIT/pull/2468"
+               class="btn">
+                View Merged PR
+            </a>
+
+            <a href="https://github.com/microsoft/PyRIT"
+               class="btn btn-secondary">
+                PyRIT
+            </a>
+
+        </div>
 
         <!-- Awesome Lists -->
         <div class="card opensource-card">
@@ -850,10 +894,9 @@
             </a>
 
             <p>
-                🔎 <strong>ThreatLens</strong> — Creator of an open-source
-                threat intelligence CLI, officially featured in the global
-                <strong>Awesome OSINT</strong> repository
-                (27.5K+ ⭐).
+                🔎 <strong>ThreatLens</strong> — Creator of a threat-intel &
+                vulnerability-triage CLI, officially featured in the
+                community's <strong>Awesome OSINT</strong> list.
             </p>
 
             <a href="https://github.com/jivoi/awesome-osint"
@@ -989,11 +1032,31 @@
 
                     <p>
                         An autonomous, closed-loop multi-agent security lab using
-                        AutoGen, GPT-4o, and GPT-5.2 for automated Red Team
-                        exploitation and self-healing Blue Team code patching.
+                        Azure AI Foundry for automated Red Team exploitation
+                        and self-healing Blue Team code patching, with SPIFFE-style
+                        agent identity and a SHA-256 hash-chained audit log
+                        (companion preprint above: <i>Traceable Autonomy</i>).
                     </p>
 
                     <a href="https://github.com/AbdaullahAG/autonomous-ai-red-blue-lab"
+                       class="btn">
+                        GitHub
+                    </a>
+                </div>
+
+                <div class="card">
+                    <h4>tawfeer-llm (ar-tokenwise)</h4>
+
+                    <p>
+                        Published Python package that conservatively normalizes
+                        Arabic text for LLM pipelines and reports measured —
+                        not estimated — token/cost savings against real
+                        tokenizer and provider APIs, benchmarked on FLORES-200
+                        and TyDiQA-GoldP, with RAG-aware chunking and
+                        dialect-signal detection.
+                    </p>
+
+                    <a href="https://github.com/AbdaullahAG/tawfeer-llm"
                        class="btn">
                         GitHub
                     </a>
@@ -1019,7 +1082,7 @@
                 </div>
 
                 <div class="card">
-                    <h4>Red/Blue Team Security Lab</h4>
+                    <h4>Red/Blue Team Security Lab — NCSC Capstone</h4>
 
                     <p>
                         Full attack/defense lifecycle across a 3-VM lab:
@@ -1036,18 +1099,19 @@
                 </div>
 
                 <div class="card">
-                    <h4>ThreatLens v2.0 — Multi-Source Threat Intel CLI</h4>
+                    <h4>ThreatLens — Threat Intel & Vulnerability Triage CLI</h4>
 
                     <p>
-                        Officially featured in the "Awesome OSINT" repository
-                        (27.5K+ stars) as a recognized threat intelligence tool.
-                        Automates IOC enrichment (IP / Domain / Hash / CVE)
-                        across 6 APIs — AbuseIPDB, VirusTotal, Shodan, OTX,
-                        URLScan, NVD — with color-coded Excel, JSON, and CSV
-                        reports.
+                        Unifies 8 OSINT/vulnerability feeds — AbuseIPDB, VirusTotal,
+                        Shodan, OTX, URLScan, NVD, CISA KEV, EPSS. Generates
+                        auditable Patch/Isolate/Monitor/Not-affected decision
+                        cards from CVE + asset-criticality data, exports to
+                        Splunk/Elastic/Sentinel, and produces SHA-256
+                        chain-of-custody evidence packs. 155 passing tests + CI.
+                        Officially featured in "Awesome OSINT."
                     </p>
 
-                    <a href="https://github.com/AbdaullahAG/Threat_Intel_Project"
+                    <a href="https://github.com/AbdaullahAG/ThreatLens"
                        class="btn">
                         GitHub
                     </a>
@@ -1127,7 +1191,7 @@
                 <div class="card">
                     <h4>Medical Appointment System (SQL)</h4>
 
-                    <a href="https://github.com/Medical_Appointment_System"
+                    <a href="https://github.com/AbdaullahAG/Medical_Appointment_System"
                        class="btn">
                         GitHub
                     </a>
@@ -1136,7 +1200,7 @@
                 <div class="card">
                     <h4>Library System (SQL)</h4>
 
-                    <a href="https://github.com/library-sql-project"
+                    <a href="https://github.com/AbdaullahAG/library-sql-project"
                        class="btn">
                         GitHub
                     </a>
@@ -1370,39 +1434,44 @@
             "Game Dev Hobbyist..."
         ];
 
-        let i = 0;
-        let j = 0;
-        let isDeleting = false;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        function typeEffect() {
-            let current = roles[i];
+        if (prefersReducedMotion) {
+            text.textContent = "> " + roles[0];
+        } else {
+            let i = 0;
+            let j = 0;
+            let isDeleting = false;
 
-            if (isDeleting) {
-                text.textContent = "> " + current.substring(0, j - 1);
-                j--;
-            } else {
-                text.textContent = "> " + current.substring(0, j + 1);
-                j++;
+            function typeEffect() {
+                let current = roles[i];
+
+                if (isDeleting) {
+                    text.textContent = "> " + current.substring(0, j - 1);
+                    j--;
+                } else {
+                    text.textContent = "> " + current.substring(0, j + 1);
+                    j++;
+                }
+
+                if (!isDeleting && j === current.length) {
+                    isDeleting = true;
+                    setTimeout(typeEffect, 2000);
+                } else if (isDeleting && j === 0) {
+                    isDeleting = false;
+                    i = (i + 1) % roles.length;
+                    setTimeout(typeEffect, 500);
+                } else {
+                    setTimeout(
+                        typeEffect,
+                        isDeleting ? 50 : 100
+                    );
+                }
             }
 
-            if (!isDeleting && j === current.length) {
-                isDeleting = true;
-                setTimeout(typeEffect, 2000);
-            } else if (isDeleting && j === 0) {
-                isDeleting = false;
-                i = (i + 1) % roles.length;
-                setTimeout(typeEffect, 500);
-            } else {
-                setTimeout(
-                    typeEffect,
-                    isDeleting ? 50 : 100
-                );
-            }
+            typeEffect();
         }
-
-        typeEffect();
     </script>
 
 </body>
 </html>
-```
