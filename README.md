@@ -1,61 +1,38 @@
 <div align="center">
-  <!-- Typing SVG Animation -->
   <a href="https://abdaullahag.github.io/">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=00F0FF&center=true&vcenter=true&width=600&height=45&lines=Abdallah+Abu+Ghallous;Cybersecurity+Engineer;AI+%26+LLM+Security+Researcher;IEEE+AEECT+2026+Author" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=5CE1E6&center=true&vCenter=true&width=640&height=45&lines=Abdallah+Abughallous;Security+Engineer+%26+Researcher;AI+Solutions+%26+Agentic+Systems;OWASP+Amman+Chapter+Leader" alt="Abdallah Abughallous" />
   </a>
 
-  <!-- Badges --> 
-  <p> 
-    <a href="https://abdaullahag.github.io/">
-      <img src="https://img.shields.io/badge/🌐_Portfolio-Live_Site-00F0FF?style=for-the-badge" alt="Portfolio" />
-    </a>
-    <a href="https://github.com/AbdaullahAG">
-      <img src="https://img.shields.io/github/followers/AbdaullahAG?label=Followers&style=for-the-badge&color=181717&logo=github" alt="GitHub Followers" />
-    </a>
-    <a href="https://huggingface.co/AG31625874">
-      <img src="https://img.shields.io/badge/🤗_HuggingFace-Profile-FFD21E?style=for-the-badge" alt="Hugging Face" />
-    </a>
+  <p>
+    <a href="https://abdaullahag.github.io/"><img src="https://img.shields.io/badge/Portfolio-Live_Site-5CE1E6?style=for-the-badge" alt="Portfolio" /></a>
+    <a href="https://scholar.google.com/citations?hl=ar&user=bECChWcAAAAJ"><img src="https://img.shields.io/badge/Google_Scholar-3_papers-4285F4?style=for-the-badge&logo=googlescholar&logoColor=white" alt="Google Scholar" /></a>
+    <a href="https://huggingface.co/AG31625874"><img src="https://img.shields.io/badge/HuggingFace-Profile-FFD21E?style=for-the-badge" alt="Hugging Face" /></a>
   </p>
 </div>
 
 ---
 
-### 📌 Profile Status
+I build security tools and research how AI systems get attacked, where application security, security automation and AI agents meet.
 
 | | |
 |---|---|
-| **Role** | Cybersecurity Engineer & AI Security Researcher |
-| **Education** | B.Sc. Computer Network Systems @ WISE |
-| **Experience** | Former Trainee @ Jordan National Cyber Security Center (NCSC) |
-| **Publication** | SemGuard (IEEE AEECT 2026) |
-| **Featured** | ThreatLens in Awesome-OSINT (27.5k+ ⭐) |
+| **Leading** | OWASP Amman Chapter Leader · Section Lead, OWASP GenAI Security Project (Agentic Identity Maturity Model) |
+| **Research** | SemGuard, IEEE AEECT 2026 (0.989 mean F1) · 2 preprints on agent identity and impersonation detection |
+| **Merged upstream** | Microsoft PyRIT · OWASP Cheat Sheet Series · FIASSE · CVE Lite CLI · SecOpsTM · AI Data Center Top 10 · Awesome OSINT |
+| **Education** | B.Sc. Computer Network Systems, WISE University (2026) |
 
----
+### Featured work
 
-### 🛠️ Built With & Tech Stack
+- [**SemGuard**](https://github.com/AbdaullahAG/SemGuard): the first multilingual (Arabic, Arabizi, English) LLM security gateway.
+- [**Autonomous AI Red/Blue Lab**](https://github.com/AbdaullahAG/autonomous-ai-red-blue-lab): agents attack, patch and re-verify under SPIFFE-style identities and hash-chained logs.
+- [**ThreatLens**](https://github.com/AbdaullahAG/ThreatLens): threat-intelligence CLI over 6 free APIs, listed in Awesome OSINT.
+- [**TrustGuard AI**](https://github.com/AbdaullahAG/Trustguard_AI): six-agent privacy policy analyzer for Microsoft's Agents League Hackathon.
+- [**tawfeer-llm**](https://github.com/AbdaullahAG/tawfeer-llm): Arabic text normalizer that reports measured LLM token and cost savings.
 
-<div align="center">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5" />
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript" />
-  <img src="https://img.shields.io/badge/GitHub_Pages-222222?style=flat-square&logo=github&logoColor=white" alt="GitHub Pages" />
-</div>
+### About this site
 
----
+Plain HTML, CSS and JavaScript on GitHub Pages, with no framework. Every section is hashed together with the one before it (SHA-256), the same idea as the audit log in my paper *Traceable Autonomy*.
 
-### 📬 Connect With Me
+### Contact
 
-<div align="center">
-  <a href="https://linkedin.com/in/abdallahabughallous">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-  </a>
-  <a href="mailto:abd.moh9999@yahoo.com">
-    <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
-  </a>
-  <a href="https://abdallah-abughallous.medium.com/">
-    <img src="https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white" alt="Medium" />
-  </a>
-  <a href="https://dev.to/abdallahag">
-    <img src="https://img.shields.io/badge/DEV.to-0A0A0A?style=for-the-badge&logo=devto&logoColor=white" alt="DEV.to" />
-  </a>
-</div>
+[LinkedIn](https://linkedin.com/in/abdallahabughallous) · [Email](mailto:abdallah.m.abughallous@gmail.com) · [Medium](https://abdallah-abughallous.medium.com/) · [DEV.to](https://dev.to/abdallahag)
